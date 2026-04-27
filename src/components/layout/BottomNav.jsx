@@ -26,10 +26,10 @@ export default function BottomNav() {
               to={to}
               className={({ isActive }) =>
                 cn(
-                  'relative flex flex-col items-center justify-center gap-1.5 py-3 text-[9px] uppercase tracking-[0.18em] transition',
+                  'relative flex flex-col items-center justify-center gap-1.5 py-3 text-[9px] uppercase tracking-[0.18em] transition-colors duration-200',
                   isActive
                     ? 'text-cognac'
-                    : 'text-body/40 hover:text-body/80'
+                    : 'text-champagne hover:text-cognac'
                 )
               }
             >

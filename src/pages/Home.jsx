@@ -40,24 +40,29 @@ export default function Home() {
         <h1 className="font-display text-5xl mt-3 leading-none">Hi, {greetingName}</h1>
       </header>
 
-      {/* Unboxed stat row — typography on hairlines */}
-      <section className="grid grid-cols-2 gap-8 border-y border-cognac/20 py-7 stagger">
-        <Link to="/whos-looking" className="block group">
-          <div className="flex items-center justify-between">
-            <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">Who's Looking</p>
-            <span className="dot-hermes" />
-          </div>
-          <p className="font-display text-5xl mt-3 leading-none transition-transform group-hover:translate-x-0.5">
-            {isBrand ? 9 : 4}
-          </p>
-          <p className="text-[11px] text-muted/85 mt-2">
-            {isBrand ? 'visiting your campaigns' : 'visiting your profile'}
-          </p>
+      {/* Champagne stat tiles */}
+      <section className="grid grid-cols-2 gap-3 stagger">
+        <Link to="/whos-looking" className="block h-full">
+          <Card className="cursor-pointer h-full flex flex-col">
+            <div className="flex items-center justify-between">
+              <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">Who's Looking</p>
+              <span className="dot-hermes" />
+            </div>
+            <p className="font-display text-4xl mt-3 leading-none">{isBrand ? 9 : 4}</p>
+            <p className="text-[11px] text-muted/85 mt-2 leading-relaxed">
+              {isBrand ? 'visiting your campaigns' : 'visiting your profile'}
+            </p>
+          </Card>
         </Link>
-        <Link to="/missed-opportunities" className="block group">
-          <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">Invitations</p>
-          <p className="font-display text-5xl mt-3 leading-none transition-transform group-hover:translate-x-0.5">2</p>
-          <p className="text-[11px] text-muted/85 mt-2">new in your inbox</p>
+        <Link to="/missed-opportunities" className="block h-full">
+          <Card className="cursor-pointer h-full flex flex-col">
+            <div className="flex items-center justify-between">
+              <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">Invitations</p>
+              <span className="opacity-0 dot-hermes" aria-hidden />
+            </div>
+            <p className="font-display text-4xl mt-3 leading-none">2</p>
+            <p className="text-[11px] text-muted/85 mt-2 leading-relaxed">new in your inbox</p>
+          </Card>
         </Link>
       </section>
 
