@@ -40,13 +40,13 @@ export default function CreatorStatCard({ creator, onClick }) {
       </div>
 
       <div className="grid grid-cols-2 gap-3">
-        <div className="rounded-md bg-bg/40 p-3">
+        <div className="rounded-md bg-slateblue/15 p-3">
           <div className="flex items-center gap-1 text-[10px] uppercase tracking-wider text-muted">
             <Users className="h-3 w-3" /> Followers
           </div>
           <div className="font-display text-2xl mt-1">{formatFollowers(c.follower_count)}</div>
         </div>
-        <div className="rounded-md bg-bg/40 p-3">
+        <div className="rounded-md bg-slateblue/15 p-3">
           <div className="flex items-center gap-1 text-[10px] uppercase tracking-wider text-muted">
             <TrendingUp className="h-3 w-3" /> Engagement
           </div>

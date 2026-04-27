@@ -66,7 +66,7 @@ export default function Settings() {
             </div>
             {emailScanner && (
               <p className="text-xs text-success mt-2">
-                Connected: {emailProvider} · <Link to="/missed-opportunities" className="text-champagne">View results</Link>
+                Connected: {emailProvider} · <Link to="/missed-opportunities" className="text-cognac">View results</Link>
               </p>
             )}
           </div>
@@ -122,7 +122,7 @@ export default function Settings() {
               key={l.code}
               onClick={() => changeLang(l.code)}
               className={`rounded-md border p-3 text-sm transition ${
-                lang === l.code ? 'border-champagne bg-champagne/10 text-champagne' : 'border-border text-body hover:border-cognac/60'
+                lang === l.code ? 'border-champagne bg-champagne/10 text-cognac' : 'border-border text-body hover:border-cognac/60'
               }`}
             >
               {l.label}

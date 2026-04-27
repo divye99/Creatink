@@ -40,13 +40,13 @@ export default function CampaignDetail() {
         <p className="text-sm text-body/90 leading-relaxed mt-4">{c.brief}</p>
 
         <div className="grid grid-cols-2 gap-3 mt-5">
-          <div className="rounded-md bg-bg/40 p-3">
+          <div className="rounded-md bg-slateblue/15 p-3">
             <div className="text-[10px] uppercase tracking-wider text-muted flex items-center gap-1">
               <Tag className="h-3 w-3" /> Budget
             </div>
             <p className="font-display text-lg mt-1">{c.budget != null ? formatINR(c.budget) : 'Barter'}</p>
           </div>
-          <div className="rounded-md bg-bg/40 p-3">
+          <div className="rounded-md bg-slateblue/15 p-3">
             <div className="text-[10px] uppercase tracking-wider text-muted flex items-center gap-1">
               <Calendar className="h-3 w-3" /> Timeline
             </div>

@@ -20,7 +20,7 @@ export default function Notifications() {
       <div className="grid gap-2">
         {ITEMS.map(({ id, icon: Icon, title, meta, unread }) => (
           <Card key={id} className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-md bg-bg/40 flex items-center justify-center text-cognac">
+            <div className="h-10 w-10 rounded-md bg-slateblue/15 flex items-center justify-center text-cognac">
               <Icon className="h-5 w-5" />
             </div>
             <div className="flex-1 min-w-0">

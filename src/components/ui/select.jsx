@@ -46,7 +46,7 @@ export const SelectItem = React.forwardRef(({ className, children, ...props }, r
     ref={ref}
     className={cn(
       'relative flex w-full cursor-pointer select-none items-center rounded-sm py-2 pl-8 pr-3 text-sm text-body',
-      'data-[highlighted]:bg-bg data-[highlighted]:text-champagne data-[highlighted]:outline-none',
+      'data-[highlighted]:bg-bg data-[highlighted]:text-cognac data-[highlighted]:outline-none',
       className
     )}
     {...props}

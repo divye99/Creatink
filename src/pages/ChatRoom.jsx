@@ -62,14 +62,14 @@ export default function ChatRoom() {
               <div
                 className={cn(
                   'max-w-[80%] rounded-lg px-3 py-2 text-sm',
-                  mine ? 'bg-champagne text-bg' : 'bg-card border border-border'
+                  mine ? 'bg-champagne text-body' : 'bg-card border border-border'
                 )}
               >
                 {m.attachment_url && (
                   <p className="text-xs mb-1 opacity-80 underline">{m.attachment_url.split('/').pop()}</p>
                 )}
                 <p>{m.content}</p>
-                <p className={cn('text-[10px] mt-1', mine ? 'text-bg/60' : 'text-muted')}>{dayDelta(m.created_at)}</p>
+                <p className={cn('text-[10px] mt-1', mine ? 'text-body/60' : 'text-muted')}>{dayDelta(m.created_at)}</p>
               </div>
             </div>
           )

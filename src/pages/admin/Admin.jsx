@@ -33,7 +33,7 @@ export default function Admin() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-bg p-6">
         <Card className="w-full max-w-sm">
-          <h1 className="font-display text-2xl flex items-center gap-2"><Lock className="h-5 w-5 text-champagne" /> Admin</h1>
+          <h1 className="font-display text-2xl flex items-center gap-2"><Lock className="h-5 w-5 text-cognac" /> Admin</h1>
           <p className="text-xs text-muted mt-1">Restricted area. This route is not linked from the main app.</p>
           <Label className="mt-4 block">Password</Label>
           <Input
@@ -52,7 +52,7 @@ export default function Admin() {
   return (
     <div className="min-h-screen bg-bg text-body">
       <header className="border-b border-border px-6 h-14 flex items-center justify-between">
-        <h1 className="font-display text-xl text-slateblue">CREATINK · Admin</h1>
+        <h1 className="font-display text-xl text-body">CREATINK · Admin</h1>
         <Button variant="ghost" size="sm" onClick={() => setAuthed(false)}>Lock</Button>
       </header>
       <div className="mx-auto max-w-5xl px-6 py-8 space-y-6">
@@ -74,11 +74,11 @@ export default function Admin() {
           <h2 className="font-display text-lg">Signups per day</h2>
           <ResponsiveContainer width="100%" height={200}>
             <LineChart data={SIGNUPS_TREND}>
-              <CartesianGrid stroke="#26221C" strokeDasharray="3 3" vertical={false} />
-              <XAxis dataKey="d" stroke="#8A8F99" fontSize={11} />
-              <YAxis stroke="#8A8F99" fontSize={11} />
-              <Tooltip contentStyle={{ background: '#16130F', border: '1px solid #26221C', borderRadius: 8 }} />
-              <Line type="monotone" dataKey="v" stroke="#E8D5B0" strokeWidth={2} />
+              <CartesianGrid stroke="#C9B8A0" strokeDasharray="3 3" vertical={false} />
+              <XAxis dataKey="d" stroke="#6B5D4F" fontSize={11} />
+              <YAxis stroke="#6B5D4F" fontSize={11} />
+              <Tooltip contentStyle={{ background: '#F5F0E8', border: '1px solid #C9B8A0', color: '#1A1410', borderRadius: 8 }} />
+              <Line type="monotone" dataKey="v" stroke="#8B5E3C" strokeWidth={2} />
             </LineChart>
           </ResponsiveContainer>
         </Card>

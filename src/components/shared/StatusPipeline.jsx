@@ -25,7 +25,7 @@ export default function StatusPipeline({ status }) {
             <div
               className={cn(
                 'h-5 w-5 rounded-full flex items-center justify-center border',
-                i <= idx ? 'bg-champagne border-champagne text-bg' : 'bg-card border-border text-muted'
+                i <= idx ? 'bg-champagne border-champagne text-body' : 'bg-card border-border text-muted'
               )}
             >
               {i <= idx ? <Check className="h-3 w-3" strokeWidth={3} /> : <span>{i + 1}</span>}

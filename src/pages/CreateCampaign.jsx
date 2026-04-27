@@ -52,7 +52,7 @@ export default function CreateCampaign() {
           <div><Label>Start</Label><Input className="mt-2" type="date" value={start} onChange={(e) => setStart(e.target.value)} /></div>
           <div><Label>End</Label><Input className="mt-2" type="date" value={end} onChange={(e) => setEnd(e.target.value)} /></div>
         </div>
-        <label className="flex items-center justify-between rounded-md border border-border bg-bg/40 p-3">
+        <label className="flex items-center justify-between rounded-md border border-border bg-slateblue/15 p-3">
           <div>
             <p className="text-sm">Exclusivity required</p>
             <p className="text-xs text-muted">Creator cannot work with competing brands during the campaign.</p>

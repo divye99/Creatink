@@ -6,29 +6,30 @@ export default {
     container: { center: true, padding: '1rem', screens: { '2xl': '1400px' } },
     extend: {
       colors: {
-        // Creatink brand palette — dark warm canvas, slate-blue + cognac + champagne as accents
-        bg: '#0E0E0F',
-        slateblue: '#8FA3BF',
-        cognac: '#8B5E3C',
-        hermes: '#E8600A',
-        champagne: '#E8D5B0',
-        card: '#16130F',
-        body: '#F5F0E8',
-        muted: '#8A8F99',
+        // Creatink palette — slate-blue canvas with cream "paper" cards;
+        // champagne, cognac, hermès as warm accents on top.
+        bg: '#8FA3BF',          // slate blue — the entire canvas
+        slateblue: '#8FA3BF',   // same — kept for explicit accent uses
+        cognac: '#8B5E3C',      // primary warm accent
+        hermes: '#E8600A',      // notification dots / unread / urgency only
+        champagne: '#E8D5B0',   // CTA fills, active nav
+        card: '#F5F0E8',        // cream paper-card surface
+        body: '#1A1410',        // dark warm near-black — body text
+        muted: '#6B5D4F',       // warm muted text
         success: '#2ECC71',
         warning: '#F39C12',
         error: '#E74C3C',
 
         // shadcn semantic tokens mapped to brand
-        background: '#0E0E0F',
-        foreground: '#F5F0E8',
-        primary: { DEFAULT: '#E8D5B0', foreground: '#0E0E0F' },
-        secondary: { DEFAULT: '#16130F', foreground: '#F5F0E8' },
+        background: '#8FA3BF',
+        foreground: '#1A1410',
+        primary: { DEFAULT: '#E8D5B0', foreground: '#1A1410' },
+        secondary: { DEFAULT: '#F5F0E8', foreground: '#1A1410' },
         accent: { DEFAULT: '#8B5E3C', foreground: '#F5F0E8' },
         destructive: { DEFAULT: '#E74C3C', foreground: '#F5F0E8' },
-        border: '#26221C',
-        input: '#16130F',
-        ring: '#E8D5B0',
+        border: '#C9B8A0',     // warm tan — soft champagne-darker
+        input: '#F5F0E8',
+        ring: '#8B5E3C',
       },
       fontFamily: {
         display: ['"Playfair Display"', 'serif'],

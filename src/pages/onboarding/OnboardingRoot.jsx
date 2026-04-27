@@ -15,7 +15,7 @@ export default function OnboardingRoot() {
         <Card onClick={() => nav('/onboarding/creator')} className="cursor-pointer">
           <div className="flex items-start gap-4">
             <div className="h-12 w-12 rounded-md bg-slateblue/20 flex items-center justify-center">
-              <Sparkles className="h-5 w-5 text-slateblue" />
+              <Sparkles className="h-5 w-5 text-body" />
             </div>
             <div className="flex-1">
               <h3 className="font-display text-xl">I'm a Creator</h3>

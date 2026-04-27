@@ -92,9 +92,9 @@ export default function Login({ signupMode = false }) {
 
           <p className="text-xs text-muted text-center">
             {signupMode ? (
-              <>Already have an account? <Link to="/login" className="text-champagne">Log in</Link></>
+              <>Already have an account? <Link to="/login" className="text-cognac">Log in</Link></>
             ) : (
-              <>New to Creatink? <Link to="/signup" className="text-champagne">Sign up</Link></>
+              <>New to Creatink? <Link to="/signup" className="text-cognac">Sign up</Link></>
             )}
           </p>
         </form>
@@ -113,7 +113,7 @@ export default function Login({ signupMode = false }) {
               onChange={(e) => setOtp(e.target.value.replace(/\D/g, ''))}
               className="text-center text-lg tracking-[0.4em]"
             />
-            <p className="text-xs text-muted">Sent to +91 {phone}. <button type="button" onClick={() => setStep('phone')} className="text-champagne">Change</button></p>
+            <p className="text-xs text-muted">Sent to +91 {phone}. <button type="button" onClick={() => setStep('phone')} className="text-cognac">Change</button></p>
           </div>
 
           {err && (

@@ -130,13 +130,13 @@ export default function OnboardingCreator() {
                       <Check className="h-4 w-4" /> {oauth[k].handle} · {oauth[k].follower_count.toLocaleString('en-IN')}
                     </span>
                   ) : (
-                    <span className="text-xs text-champagne">{busyPlatform === k ? 'Connecting…' : 'Connect'}</span>
+                    <span className="text-xs text-cognac">{busyPlatform === k ? 'Connecting…' : 'Connect'}</span>
                   )}
                 </button>
               ))}
             </div>
             {totalConnected > 0 && (
-              <div className="mt-4 p-3 rounded-md bg-bg/40 text-sm flex items-center justify-between">
+              <div className="mt-4 p-3 rounded-md bg-slateblue/15 text-sm flex items-center justify-between">
                 <span className="text-muted">Total reach</span>
                 <span className="font-display text-lg">{followerSum.toLocaleString('en-IN')} · {engAvg.toFixed(1)}%</span>
               </div>
@@ -162,11 +162,11 @@ export default function OnboardingCreator() {
             {photo ? (
               <img src={photo} alt="" className="h-32 w-32 rounded-full object-cover ring-2 ring-champagne" />
             ) : (
-              <div className="h-32 w-32 rounded-full bg-bg/40 border-2 border-dashed border-border flex items-center justify-center">
+              <div className="h-32 w-32 rounded-full bg-slateblue/15 border-2 border-dashed border-border flex items-center justify-center">
                 <Camera className="h-8 w-8 text-muted" />
               </div>
             )}
-            <span className="text-sm text-champagne">{photo ? 'Change photo' : 'Upload profile photo'}</span>
+            <span className="text-sm text-cognac">{photo ? 'Change photo' : 'Upload profile photo'}</span>
             <input id="photo" type="file" accept="image/*" className="hidden" onChange={onPhoto} />
           </label>
         </Card>

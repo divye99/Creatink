@@ -8,7 +8,7 @@ export default function TopBar({ title }) {
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-bg/95 backdrop-blur supports-[backdrop-filter]:bg-bg/80">
       <div className="mx-auto max-w-2xl flex items-center justify-between px-4 h-14">
-        <Link to="/home" className="font-display text-xl text-slateblue tracking-tight">
+        <Link to="/home" className="font-display text-xl text-body tracking-tight">
           {title || 'CREATINK'}
         </Link>
         <div className="flex items-center gap-1">
@@ -22,11 +22,11 @@ export default function TopBar({ title }) {
               <option key={l.code} value={l.code} className="bg-card">{l.label}</option>
             ))}
           </select>
-          <Link to="/notifications" className="p-2 text-muted hover:text-champagne relative">
+          <Link to="/notifications" className="p-2 text-muted hover:text-cognac relative">
             <Bell className="h-5 w-5" />
             <span className="dot-hermes absolute top-1.5 right-1.5" />
           </Link>
-          <Link to="/settings" className="p-2 text-muted hover:text-champagne">
+          <Link to="/settings" className="p-2 text-muted hover:text-cognac">
             <Settings className="h-5 w-5" />
           </Link>
         </div>

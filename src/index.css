@@ -7,8 +7,8 @@
 html, body, #root { height: 100%; }
 
 body {
-  background-color: #0E0E0F;
-  color: #F5F0E8;
+  background-color: #8FA3BF;
+  color: #1A1410;
   font-family: 'Inter', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -19,11 +19,11 @@ h1, h2, h3, h4, h5, h6, .font-display {
   letter-spacing: -0.01em;
 }
 
-::selection { background: #E8D5B0; color: #0E0E0F; }
+::selection { background: #E8D5B0; color: #1A1410; }
 
-/* Editorial focus rings — subtle champagne, not browser blue */
+/* Editorial focus rings — cognac to anchor the warm accents */
 *:focus-visible {
-  outline: 2px solid #E8D5B0;
+  outline: 2px solid #8B5E3C;
   outline-offset: 2px;
   border-radius: 8px;
 }
@@ -31,15 +31,15 @@ h1, h2, h3, h4, h5, h6, .font-display {
 /* Scrollbar */
 ::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #26221C; border-radius: 8px; }
-::-webkit-scrollbar-thumb:hover { background: #3A332A; }
+::-webkit-scrollbar-thumb { background: #C9B8A0; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #8B5E3C; }
 
 /* Cognac glow on hover for cards */
 .card-glow {
   transition: box-shadow 250ms ease, transform 250ms ease, border-color 250ms ease;
 }
 .card-glow:hover, .card-glow:focus-within {
-  box-shadow: 0 0 0 1px rgba(139, 94, 60, 0.65), 0 12px 32px -12px rgba(139, 94, 60, 0.45);
+  box-shadow: 0 0 0 1px rgba(139, 94, 60, 0.7), 0 12px 32px -12px rgba(139, 94, 60, 0.45);
   transform: translateY(-1px);
 }
 

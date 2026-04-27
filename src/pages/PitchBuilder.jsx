@@ -79,7 +79,7 @@ export default function PitchBuilder() {
       )}
 
       <Card className="space-y-5">
-        <label className="flex items-center justify-between rounded-md border border-border bg-bg/40 p-3">
+        <label className="flex items-center justify-between rounded-md border border-border bg-slateblue/15 p-3">
           <div>
             <p className="text-sm">{paid ? 'Paid collaboration' : 'Gifting / Barter'}</p>
             <p className="text-xs text-muted">{paid ? 'Compensation in INR' : 'No payment exchanged'}</p>
@@ -109,7 +109,7 @@ export default function PitchBuilder() {
         )}
 
         {userType === 'brand' && (
-          <label className="flex items-center justify-between rounded-md border border-border bg-bg/40 p-3">
+          <label className="flex items-center justify-between rounded-md border border-border bg-slateblue/15 p-3">
             <div>
               <p className="text-sm">Exclusivity</p>
               <p className="text-xs text-muted">Creator cannot work with competing brands during the campaign.</p>
