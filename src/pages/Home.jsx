@@ -4,8 +4,8 @@ import { useAuth } from '@/contexts/AuthContext'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import CreatorStatCard from '@/components/shared/CreatorStatCard'
 import CampaignCard from '@/components/shared/CampaignCard'
+import SmartMatchesStack from '@/components/shared/SmartMatchesStack'
 import { matchCreatorsForBrand, matchCampaignsForCreator } from '@/lib/match'
 import { cn } from '@/lib/utils'
 
@@ -81,31 +81,29 @@ export default function Home() {
               ? 'Add categories to your brand profile to see matched creators.'
               : 'Add niches to your profile to see matched campaigns.'}
           </p>
+        ) : isBrand ? (
+          <SmartMatchesStack
+            matches={matches}
+            onTap={(c) => nav(`/pitch/${c.creator_id || c.user_id}`)}
+          />
         ) : (
           <div className="space-y-6 stagger">
             {matches.map((c, i) => {
               const flushLeft = i % 2 === 0
               return (
                 <div
-                  key={c.creator_id || c.user_id || c.campaign_id || c.id}
+                  key={c.campaign_id || c.id}
                   className={cn(
                     'max-w-sm transition-transform duration-500',
                     flushLeft ? 'mr-auto' : 'ml-auto',
                   )}
                 >
-                  {isBrand ? (
-                    <CreatorStatCard
-                      creator={c}
-                      onClick={() => nav(`/pitch/${c.creator_id || c.user_id}`)}
-                    />
-                  ) : (
-                    <CampaignCard
-                      campaign={c}
-                      brandName={c.brand_name}
-                      onClick={() => nav(`/campaigns/${c.campaign_id || c.id}`)}
-                      trending={c.score >= 90}
-                    />
-                  )}
+                  <CampaignCard
+                    campaign={c}
+                    brandName={c.brand_name}
+                    onClick={() => nav(`/campaigns/${c.campaign_id || c.id}`)}
+                    trending={c.score >= 90}
+                  />
                 </div>
               )
             })}
