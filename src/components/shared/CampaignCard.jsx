@@ -1,43 +1,50 @@
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Calendar, Tag } from 'lucide-react'
 import { formatINR, dayDelta } from '@/lib/utils'
 
 export default function CampaignCard({ campaign, brandName, onClick, trending }) {
   const c = campaign || {}
+  const dels = c.deliverables || []
+  const delsSummary =
+    dels.length === 0 ? '' :
+    dels.length === 1 ? dels[0] :
+    dels.length === 2 ? dels.join(' + ') :
+    `${dels[0]} + ${dels.length - 1} more`
+
   return (
-    <Card onClick={onClick} className="cursor-pointer flex flex-col gap-3" role="button" tabIndex={0}>
-      <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0">
-          <p className="text-xs uppercase tracking-wider text-muted">{brandName}</p>
-          <h3 className="font-display text-lg mt-0.5 truncate">{c.title}</h3>
+    <Card
+      onClick={onClick}
+      className="cursor-pointer flex flex-col gap-4"
+      role="button"
+      tabIndex={0}
+    >
+      <div className="flex items-start justify-between gap-4">
+        <div className="min-w-0 flex-1">
+          <p className="text-[10px] uppercase tracking-[0.18em] text-muted">{brandName}</p>
+          <h3 className="font-display text-xl mt-1 leading-tight">{c.title}</h3>
         </div>
-        <div className="flex flex-col items-end gap-1">
-          {trending && <Badge variant="hermes">Trending</Badge>}
-          {c.score != null && <Badge variant="cognac">{c.score}% match</Badge>}
+        <div className="flex flex-col items-end gap-1.5 shrink-0">
+          {trending && <Badge variant="hermes">Featured</Badge>}
+          {c.score != null && <Badge variant="cognac">{c.score}%</Badge>}
         </div>
       </div>
 
-      <p className="text-sm text-muted line-clamp-2">{c.brief}</p>
-      {c.reasoning && <p className="text-xs text-cognac -mt-1">{c.reasoning}</p>}
+      {c.brief && (
+        <p className="text-sm text-muted line-clamp-2 leading-relaxed">{c.brief}</p>
+      )}
 
-      <div className="flex flex-wrap gap-1.5">
-        {(c.deliverables || []).slice(0, 3).map((d) => (
-          <Badge key={d} variant="cognac">{d}</Badge>
-        ))}
-        {(c.deliverables?.length || 0) > 3 && (
-          <Badge variant="muted">+{c.deliverables.length - 3}</Badge>
-        )}
-      </div>
-
-      <div className="flex items-center justify-between text-xs text-muted pt-1 border-t border-border/60">
-        <span className="inline-flex items-center gap-1">
-          <Tag className="h-3 w-3" /> {c.budget != null ? formatINR(c.budget) : 'Barter'}
-        </span>
-        <span className="inline-flex items-center gap-1">
-          <Calendar className="h-3 w-3" /> {dayDelta(c.created_at)}
+      <div className="flex items-center justify-between gap-3 pt-3 border-t border-border/50 text-xs">
+        <span className="text-muted">{delsSummary || '—'}</span>
+        <span className="font-display text-base text-body">
+          {c.budget != null ? formatINR(c.budget) : 'Barter'}
         </span>
       </div>
+
+      {c.reasoning && (
+        <p className="text-[11px] text-cognac/90 italic">{c.reasoning}</p>
+      )}
+
+      <p className="text-[10px] uppercase tracking-wider text-muted/70">{dayDelta(c.created_at)}</p>
     </Card>
   )
 }

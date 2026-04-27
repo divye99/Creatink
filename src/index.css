@@ -7,47 +7,50 @@
 html, body, #root { height: 100%; }
 
 body {
-  background-color: #0E0E0F;
+  background-color: #121417;
   color: #F5F0E8;
   font-family: 'Inter', system-ui, sans-serif;
+  font-feature-settings: 'ss01', 'cv11';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
 }
 
 h1, h2, h3, h4, h5, h6, .font-display {
   font-family: 'Playfair Display', serif;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
 }
 
-::selection { background: #E8D5B0; color: #0E0E0F; }
+::selection { background: #F2E7D3; color: #121417; }
 
 /* Editorial focus rings — champagne, the CTA color */
 *:focus-visible {
-  outline: 2px solid #E8D5B0;
-  outline-offset: 2px;
-  border-radius: 8px;
+  outline: 1px solid #F2E7D3;
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar { width: 8px; height: 8px; }
+/* Scrollbar — narrower, calmer */
+::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #2A2419; border-radius: 8px; }
+::-webkit-scrollbar-thumb { background: #2A2D31; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #8B5E3C; }
 
-/* Cognac glow on hover for cards */
+/* Cognac glow on hover for cards — subtler, leather not paint */
 .card-glow {
-  transition: box-shadow 250ms ease, transform 250ms ease, border-color 250ms ease;
+  transition: box-shadow 320ms ease, transform 320ms ease, border-color 320ms ease;
 }
 .card-glow:hover, .card-glow:focus-within {
-  box-shadow: 0 0 0 1px rgba(139, 94, 60, 0.65), 0 12px 32px -12px rgba(139, 94, 60, 0.4);
+  box-shadow: 0 0 0 1px rgba(139, 94, 60, 0.45), 0 18px 40px -20px rgba(139, 94, 60, 0.3);
   transform: translateY(-1px);
 }
 
-/* Hermes orange dot — for unread / live / urgency */
+/* Hermes orange dot — calmer halo, smaller footprint */
 .dot-hermes {
-  width: 8px; height: 8px; border-radius: 9999px;
+  width: 6px; height: 6px; border-radius: 9999px;
   background: #E8600A;
-  box-shadow: 0 0 0 3px rgba(232, 96, 10, 0.18);
+  box-shadow: 0 0 0 2px rgba(232, 96, 10, 0.12);
 }
 
 /* Page transition baseline */
