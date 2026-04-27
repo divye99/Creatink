@@ -89,14 +89,15 @@ psql $SUPABASE_DB_URL < supabase/seed.sql       # optional dev seed
 
 | Role            | Token       | Hex       | Usage                                                   |
 |-----------------|-------------|-----------|---------------------------------------------------------|
-| Background      | `bg`        | `#1A1A2E` | App canvas                                              |
-| Hero / brand    | `slateblue` | `#8FA3BF` | Wordmarks, headings on splash                          |
-| Warm accent     | `cognac`    | `#B85E30` | Card hover glow, secondary chips                       |
-| Energy accent   | `hermes`    | `#E8600A` | **Only** for unread dots, live indicators, urgency     |
-| CTA             | `champagne` | `#E8D5B0` | Primary buttons, active nav, success accents           |
-| Card surface    | `card`      | `#232338` |                                                         |
+| Background      | `bg`        | `#0E0E0F` | Near-black canvas, barely warm                          |
+| Card surface    | `card`      | `#16130F` | Very dark warm near-black                               |
+| Hero / brand    | `slateblue` | `#8FA3BF` | Wordmarks, headings, icons — accent only, never canvas |
+| Warm accent     | `cognac`    | `#8B5E3C` | Card hover glow, badges, secondary chips                |
+| Energy accent   | `hermes`    | `#E8600A` | **Only** for unread dots, live indicators, urgency      |
+| CTA             | `champagne` | `#E8D5B0` | Primary buttons, active nav, splash tagline            |
 | Body            | `body`      | `#F5F0E8` |                                                         |
 | Muted           | `muted`     | `#8A8F99` |                                                         |
+| Border          | `border`    | `#26221C` | Warm-dark hairlines                                     |
 | Success / Warn / Error | … | `#2ECC71` `#F39C12` `#E74C3C` |                                |
 
 - Headings use **Playfair Display**, body uses **Inter**.

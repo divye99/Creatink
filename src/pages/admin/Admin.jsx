@@ -74,10 +74,10 @@ export default function Admin() {
           <h2 className="font-display text-lg">Signups per day</h2>
           <ResponsiveContainer width="100%" height={200}>
             <LineChart data={SIGNUPS_TREND}>
-              <CartesianGrid stroke="#2E2E45" strokeDasharray="3 3" vertical={false} />
+              <CartesianGrid stroke="#26221C" strokeDasharray="3 3" vertical={false} />
               <XAxis dataKey="d" stroke="#8A8F99" fontSize={11} />
               <YAxis stroke="#8A8F99" fontSize={11} />
-              <Tooltip contentStyle={{ background: '#232338', border: '1px solid #2E2E45', borderRadius: 8 }} />
+              <Tooltip contentStyle={{ background: '#16130F', border: '1px solid #26221C', borderRadius: 8 }} />
               <Line type="monotone" dataKey="v" stroke="#E8D5B0" strokeWidth={2} />
             </LineChart>
           </ResponsiveContainer>

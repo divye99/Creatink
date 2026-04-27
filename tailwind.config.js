@@ -6,13 +6,13 @@ export default {
     container: { center: true, padding: '1rem', screens: { '2xl': '1400px' } },
     extend: {
       colors: {
-        // Creatink brand palette
-        bg: '#1A1A2E',
+        // Creatink brand palette — dark warm canvas, slate-blue + cognac + champagne as accents
+        bg: '#0E0E0F',
         slateblue: '#8FA3BF',
-        cognac: '#B85E30',
+        cognac: '#8B5E3C',
         hermes: '#E8600A',
         champagne: '#E8D5B0',
-        card: '#232338',
+        card: '#16130F',
         body: '#F5F0E8',
         muted: '#8A8F99',
         success: '#2ECC71',
@@ -20,14 +20,14 @@ export default {
         error: '#E74C3C',
 
         // shadcn semantic tokens mapped to brand
-        background: '#1A1A2E',
+        background: '#0E0E0F',
         foreground: '#F5F0E8',
-        primary: { DEFAULT: '#E8D5B0', foreground: '#1A1A2E' },
-        secondary: { DEFAULT: '#232338', foreground: '#F5F0E8' },
-        accent: { DEFAULT: '#B85E30', foreground: '#F5F0E8' },
+        primary: { DEFAULT: '#E8D5B0', foreground: '#0E0E0F' },
+        secondary: { DEFAULT: '#16130F', foreground: '#F5F0E8' },
+        accent: { DEFAULT: '#8B5E3C', foreground: '#F5F0E8' },
         destructive: { DEFAULT: '#E74C3C', foreground: '#F5F0E8' },
-        border: '#2E2E45',
-        input: '#232338',
+        border: '#26221C',
+        input: '#16130F',
         ring: '#E8D5B0',
       },
       fontFamily: {
@@ -36,7 +36,7 @@ export default {
       },
       borderRadius: { lg: '16px', md: '12px', sm: '8px' },
       boxShadow: {
-        cognac: '0 0 0 1px rgba(184, 94, 48, 0.45), 0 8px 24px -8px rgba(184, 94, 48, 0.25)',
+        cognac: '0 0 0 1px rgba(139, 94, 60, 0.55), 0 8px 24px -8px rgba(139, 94, 60, 0.35)',
         champagne: '0 8px 24px -8px rgba(232, 213, 176, 0.35)',
       },
       keyframes: {
