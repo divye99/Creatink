@@ -85,7 +85,7 @@ export default function OnboardingBrand() {
                   <Camera className="h-7 w-7 text-muted" />
                 </div>
               )}
-              <span className="text-sm text-champagne">{logo ? 'Change logo' : 'Upload brand logo'}</span>
+              <span className="text-sm text-cognac">{logo ? 'Change logo' : 'Upload brand logo'}</span>
               <input id="logo" type="file" accept="image/*" className="hidden" onChange={onLogo} />
             </label>
           </Card>

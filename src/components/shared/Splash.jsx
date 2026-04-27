@@ -9,11 +9,11 @@ export default function Splash({ onDone }) {
 
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-bg">
-      <h1 className="splash-fade-in font-display font-bold text-6xl sm:text-7xl text-slateblue tracking-tight">
+      <h1 className="splash-fade-in font-display font-bold text-6xl sm:text-7xl text-body tracking-tight">
         CREATINK
       </h1>
       <p
-        className="splash-fade-in mt-3 text-lg font-light tracking-[0.18em] text-champagne"
+        className="splash-fade-in mt-3 text-lg font-light tracking-[0.18em] text-cognac"
         style={{ animationDelay: '300ms' }}
       >
         Creator Link

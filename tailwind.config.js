@@ -6,31 +6,31 @@ export default {
     container: { center: true, padding: '1rem', screens: { '2xl': '1400px' } },
     extend: {
       colors: {
-        // Creatink palette — luxury editorial. Materials, not a theme.
-        // Black = space, champagne = paper, cognac = leather, blue = fabric.
-        bg: '#121417',          // charcoal/ink — the canvas (not pure black)
-        slateblue: '#8FA3BF',   // light slate — wordmarks + headings accent
-        inkslate: '#2F3E55',    // deeper ink slate — accent SURFACES only
-        cognac: '#8B5E3C',      // leather — small highlights, never large fills
-        hermes: '#E8600A',      // notification dots / urgency only — used sparingly
-        champagne: '#F2E7D3',   // paper — warmer, lighter, less yellow than before
-        card: '#1A1C1F',        // very subtle charcoal card (cleaner than before)
-        body: '#F5F0E8',        // cream body text on dark surfaces
-        muted: '#6F7480',       // calmer cool muted (was #8A8F99 — too cold)
+        // Slate canvas + champagne paper cards. Cognac is the action color
+        // (warm, saturated against the soft canvas), hermès for urgency dots.
+        bg: '#8FA3BF',          // slate blue — entire canvas
+        slateblue: '#8FA3BF',
+        inkslate: '#2F3E55',    // deeper accent surface (kept for future use)
+        cognac: '#8B5E3C',      // primary CTA fill, active states, links
+        hermes: '#E8600A',      // notification dots / urgency only
+        champagne: '#F2E7D3',   // card surface + light text on cognac
+        card: '#F2E7D3',        // champagne paper-card surface
+        body: '#1A1410',        // dark warm near-black — body text on cards
+        muted: '#6B5D4F',       // warm muted brown
         success: '#2ECC71',
         warning: '#F39C12',
         error: '#E74C3C',
 
         // shadcn semantic tokens mapped to brand
-        background: '#121417',
-        foreground: '#F5F0E8',
-        primary: { DEFAULT: '#F2E7D3', foreground: '#121417' },
-        secondary: { DEFAULT: '#1A1C1F', foreground: '#F5F0E8' },
-        accent: { DEFAULT: '#8B5E3C', foreground: '#F5F0E8' },
-        destructive: { DEFAULT: '#E74C3C', foreground: '#F5F0E8' },
-        border: '#2A2D31',     // soft divider — luxury hairline
-        input: '#1A1C1F',
-        ring: '#F2E7D3',
+        background: '#8FA3BF',
+        foreground: '#1A1410',
+        primary: { DEFAULT: '#8B5E3C', foreground: '#F2E7D3' }, // cognac CTA, champagne text
+        secondary: { DEFAULT: '#F2E7D3', foreground: '#1A1410' },
+        accent: { DEFAULT: '#8B5E3C', foreground: '#F2E7D3' },
+        destructive: { DEFAULT: '#E74C3C', foreground: '#F2E7D3' },
+        border: '#BFA47C',     // darker tan — gives champagne cards visible edges
+        input: '#F2E7D3',
+        ring: '#8B5E3C',
       },
       fontFamily: {
         display: ['"Playfair Display"', 'serif'],

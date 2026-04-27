@@ -7,8 +7,8 @@
 html, body, #root { height: 100%; }
 
 body {
-  background-color: #121417;
-  color: #F5F0E8;
+  background-color: #8FA3BF;
+  color: #1A1410;
   font-family: 'Inter', system-ui, sans-serif;
   font-feature-settings: 'ss01', 'cv11';
   -webkit-font-smoothing: antialiased;
@@ -22,19 +22,19 @@ h1, h2, h3, h4, h5, h6, .font-display {
   line-height: 1.15;
 }
 
-::selection { background: #F2E7D3; color: #121417; }
+::selection { background: #F2E7D3; color: #1A1410; }
 
-/* Editorial focus rings — champagne, the CTA color */
+/* Editorial focus rings — cognac, visible on both slate canvas + champagne cards */
 *:focus-visible {
-  outline: 1px solid #F2E7D3;
+  outline: 1px solid #8B5E3C;
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-/* Scrollbar — narrower, calmer */
+/* Scrollbar — narrow, warm tan */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #2A2D31; border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: #BFA47C; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #8B5E3C; }
 
 /* Cognac glow on hover for cards — subtler, leather not paint */

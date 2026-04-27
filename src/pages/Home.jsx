@@ -66,7 +66,7 @@ export default function Home() {
             <p className="text-[10px] uppercase tracking-[0.2em] text-muted">Curated for you</p>
             <h2 className="font-display text-2xl mt-1">Smart Matches</h2>
           </div>
-          <Link to="/discover" className="text-[11px] uppercase tracking-[0.18em] text-champagne hover:underline">
+          <Link to="/discover" className="text-[11px] uppercase tracking-[0.18em] text-cognac hover:underline">
             See all
           </Link>
         </div>
@@ -118,13 +118,13 @@ export default function Home() {
 
       {isBrand && (
         <section>
-          <Card variant="paper" className="text-center py-10 px-6">
-            <p className="text-[10px] uppercase tracking-[0.22em] text-bg/60">Brand Studio</p>
-            <h3 className="font-display text-2xl mt-2 text-bg">Ready to launch?</h3>
-            <p className="text-sm text-bg/75 mt-2 max-w-sm mx-auto leading-relaxed">
+          <Card className="text-center py-10 px-6">
+            <p className="text-[10px] uppercase tracking-[0.22em] text-muted">Brand Studio</p>
+            <h3 className="font-display text-2xl mt-2">Ready to launch?</h3>
+            <p className="text-sm text-muted mt-2 max-w-sm mx-auto leading-relaxed">
               Post a brief, get matched with creators in your niche, and run end-to-end.
             </p>
-            <Button variant="secondary" className="mt-5" asChild>
+            <Button className="mt-5" asChild>
               <Link to="/campaigns/new">Create campaign</Link>
             </Button>
           </Card>

@@ -8,12 +8,12 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default:     'bg-champagne text-bg hover:brightness-110 shadow-champagne',
+        default:     'bg-cognac text-champagne hover:brightness-110 shadow-cognac',
         secondary:   'bg-card text-body border border-border hover:border-cognac/60',
         ghost:       'text-body hover:bg-card',
         outline:     'border border-cognac/40 text-body hover:border-cognac hover:bg-card',
         destructive: 'bg-error text-white hover:brightness-110',
-        link:        'text-champagne underline-offset-4 hover:underline',
+        link:        'text-cognac underline-offset-4 hover:underline',
       },
       size: {
         default: 'h-11 px-5 py-2',

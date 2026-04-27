@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils'
 
 const styles = {
   default:   'bg-card text-body border border-border',
-  champagne: 'bg-champagne/15 text-champagne border border-champagne/40',
+  champagne: 'bg-cognac/10 text-cognac border border-cognac/40',
   cognac:    'bg-cognac/15 text-cognac border border-cognac/40',
   slate:     'bg-slateblue/15 text-slateblue border border-slateblue/40',
   hermes:    'bg-hermes/15 text-hermes border border-hermes/40',

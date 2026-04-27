@@ -52,7 +52,7 @@ export default function Admin() {
   return (
     <div className="min-h-screen bg-bg text-body">
       <header className="border-b border-border px-6 h-14 flex items-center justify-between">
-        <h1 className="font-display text-xl text-slateblue">CREATINK · Admin</h1>
+        <h1 className="font-display text-xl text-body">CREATINK · Admin</h1>
         <Button variant="ghost" size="sm" onClick={() => setAuthed(false)}>Lock</Button>
       </header>
       <div className="mx-auto max-w-5xl px-6 py-8 space-y-6">
@@ -74,10 +74,10 @@ export default function Admin() {
           <h2 className="font-display text-lg">Signups per day</h2>
           <ResponsiveContainer width="100%" height={200}>
             <LineChart data={SIGNUPS_TREND}>
-              <CartesianGrid stroke="#2A2419" strokeDasharray="3 3" vertical={false} />
-              <XAxis dataKey="d" stroke="#8A8F99" fontSize={11} />
-              <YAxis stroke="#8A8F99" fontSize={11} />
-              <Tooltip contentStyle={{ background: '#1A1410', border: '1px solid #2A2419', color: '#F5F0E8', borderRadius: 8 }} />
+              <CartesianGrid stroke="#BFA47C" strokeDasharray="3 3" vertical={false} />
+              <XAxis dataKey="d" stroke="#6B5D4F" fontSize={11} />
+              <YAxis stroke="#6B5D4F" fontSize={11} />
+              <Tooltip contentStyle={{ background: '#F2E7D3', border: '1px solid #BFA47C', color: '#1A1410', borderRadius: 8 }} />
               <Line type="monotone" dataKey="v" stroke="#8B5E3C" strokeWidth={2} />
             </LineChart>
           </ResponsiveContainer>

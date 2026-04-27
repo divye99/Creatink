@@ -130,7 +130,7 @@ export default function OnboardingCreator() {
                       <Check className="h-4 w-4" /> {oauth[k].handle} · {oauth[k].follower_count.toLocaleString('en-IN')}
                     </span>
                   ) : (
-                    <span className="text-xs text-champagne">{busyPlatform === k ? 'Connecting…' : 'Connect'}</span>
+                    <span className="text-xs text-cognac">{busyPlatform === k ? 'Connecting…' : 'Connect'}</span>
                   )}
                 </button>
               ))}
@@ -166,7 +166,7 @@ export default function OnboardingCreator() {
                 <Camera className="h-8 w-8 text-muted" />
               </div>
             )}
-            <span className="text-sm text-champagne">{photo ? 'Change photo' : 'Upload profile photo'}</span>
+            <span className="text-sm text-cognac">{photo ? 'Change photo' : 'Upload profile photo'}</span>
             <input id="photo" type="file" accept="image/*" className="hidden" onChange={onPhoto} />
           </label>
         </Card>
