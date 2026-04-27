@@ -50,7 +50,7 @@ export default function Campaigns() {
                 >
                   <div className="flex items-start justify-between">
                     <div>
-                      <p className="text-xs uppercase tracking-wider text-muted">
+                      <p className="text-[10px] uppercase tracking-[0.2em] text-cognac/70">
                         {userType === 'brand' ? 'Creator' : 'Brand'}
                       </p>
                       <h3 className="font-display text-lg mt-0.5">{counterparty?.name}</h3>

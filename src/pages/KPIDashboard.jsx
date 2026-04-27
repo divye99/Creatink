@@ -67,7 +67,7 @@ export default function KPIDashboard() {
 
       <header className="flex items-center justify-between">
         <div>
-          <p className="text-xs uppercase tracking-wider text-muted">{counterparty?.name}</p>
+          <p className="text-[10px] uppercase tracking-[0.2em] text-cognac/70">{counterparty?.name}</p>
           <h1 className="font-display text-2xl">KPI Dashboard</h1>
         </div>
         <Button variant="outline" size="sm" onClick={() => alert('PDF exported')}>

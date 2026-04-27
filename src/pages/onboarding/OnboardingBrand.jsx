@@ -69,7 +69,7 @@ export default function OnboardingBrand() {
   return (
     <div className="space-y-6">
       <div>
-        <p className="text-xs uppercase tracking-wider text-muted">Step {step + 1} of {STEPS.length}</p>
+        <p className="text-[10px] uppercase tracking-[0.2em] text-cognac/70">Step {step + 1} of {STEPS.length}</p>
         <h1 className="font-display text-2xl mt-1">{STEPS[step]}</h1>
         <Progress value={((step + 1) / STEPS.length) * 100} className="mt-3" />
       </div>

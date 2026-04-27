@@ -15,17 +15,17 @@ export default {
         hermes: '#E8600A',      // notification dots / urgency only
         champagne: '#F2E7D3',   // card surface + light text on cognac
         card: '#F2E7D3',        // champagne paper-card surface
-        body: '#1A1410',        // dark warm near-black — body text on cards
-        muted: '#6B5D4F',       // warm muted brown
+        body: '#4B3326',        // chocolate brown — softer, warmer than near-black
+        muted: '#7A6450',       // lighter warm muted (paired with chocolate body)
         success: '#2ECC71',
         warning: '#F39C12',
         error: '#E74C3C',
 
         // shadcn semantic tokens mapped to brand
         background: '#8FA3BF',
-        foreground: '#1A1410',
+        foreground: '#4B3326',
         primary: { DEFAULT: '#8B5E3C', foreground: '#F2E7D3' }, // cognac CTA, champagne text
-        secondary: { DEFAULT: '#F2E7D3', foreground: '#1A1410' },
+        secondary: { DEFAULT: '#F2E7D3', foreground: '#4B3326' },
         accent: { DEFAULT: '#8B5E3C', foreground: '#F2E7D3' },
         destructive: { DEFAULT: '#E74C3C', foreground: '#F2E7D3' },
         border: '#BFA47C',     // darker tan — gives champagne cards visible edges

@@ -22,8 +22,8 @@ export const formatFollowers = (n) => {
 
 export const engagementColor = (rate) => {
   if (rate == null) return 'text-muted'
-  if (rate > 4) return 'text-success'
-  if (rate >= 2) return 'text-warning'
+  if (rate > 4) return 'text-cognac'
+  if (rate >= 2) return 'text-cognac/70'
   return 'text-error'
 }
 

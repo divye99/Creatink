@@ -54,7 +54,7 @@ export default function PitchBuilder() {
       </button>
 
       <header>
-        <p className="text-xs uppercase tracking-wider text-muted">Pitch to</p>
+        <p className="text-[10px] uppercase tracking-[0.2em] text-cognac/70">Pitch to</p>
         <h1 className="font-display text-2xl">{target.name}</h1>
       </header>
 

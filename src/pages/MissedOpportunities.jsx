@@ -17,7 +17,7 @@ export default function MissedOpportunities() {
       </button>
 
       <header>
-        <p className="text-[10px] uppercase tracking-[0.22em] text-muted">AI-summarised invitations</p>
+        <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">AI-summarised invitations</p>
         <h1 className="font-display text-4xl mt-1">
           {userType === 'brand' ? 'Creator Outreach' : 'New Invitations'}
         </h1>
@@ -31,7 +31,7 @@ export default function MissedOpportunities() {
             <Card key={m.id} className="space-y-3">
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="text-xs uppercase tracking-wider text-muted">{m.sender_name}</p>
+                  <p className="text-[10px] uppercase tracking-[0.2em] text-cognac/70">{m.sender_name}</p>
                   <h3 className="font-display text-lg">{m.brand_name}</h3>
                 </div>
                 <p className="text-xs text-muted">{m.date_received}</p>

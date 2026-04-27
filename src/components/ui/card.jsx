@@ -9,7 +9,7 @@ export const Card = React.forwardRef(({ className, glow = true, variant = 'defau
   return (
     <div
       ref={ref}
-      className={cn('rounded-lg border p-7', surface, glow && 'card-glow', className)}
+      className={cn('rounded-lg border p-5', surface, glow && 'card-glow', className)}
       {...props}
     />
   )

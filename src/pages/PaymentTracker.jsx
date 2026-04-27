@@ -78,7 +78,7 @@ export default function PaymentTracker() {
 
       <header className="flex items-center justify-between">
         <div>
-          <p className="text-xs uppercase tracking-wider text-muted">Deal · {brand?.name} ↔ {creator?.name}</p>
+          <p className="text-[10px] uppercase tracking-[0.2em] text-cognac/70">Deal · {brand?.name} ↔ {creator?.name}</p>
           <h1 className="font-display text-2xl">Payments</h1>
         </div>
         <p className="font-display text-2xl">{formatINR(deal.terms.amount)}</p>

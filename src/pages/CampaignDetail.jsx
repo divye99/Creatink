@@ -32,7 +32,7 @@ export default function CampaignDetail() {
             <AvatarImage src={brand?.logo_url} /><AvatarFallback>{brand?.name?.[0]}</AvatarFallback>
           </Avatar>
           <div className="flex-1 min-w-0">
-            <p className="text-xs uppercase tracking-wider text-muted">{brand?.name}</p>
+            <p className="text-[10px] uppercase tracking-[0.2em] text-cognac/70">{brand?.name}</p>
             <h1 className="font-display text-2xl mt-0.5">{c.title}</h1>
           </div>
         </div>
@@ -75,7 +75,7 @@ export default function CampaignDetail() {
       </Card>
 
       <section>
-        <p className="text-[10px] uppercase tracking-[0.22em] text-muted mb-1">Curated for this brief</p>
+        <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70 mb-1">Curated for this brief</p>
         <h2 className="font-display text-2xl mb-4">Suggested creators</h2>
         <div className="grid gap-3">
           {DEMO_CREATORS.slice(0, 3).map((cr) => (

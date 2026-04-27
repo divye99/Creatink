@@ -34,28 +34,31 @@ export default function Home() {
   return (
     <div className="space-y-10">
       <header className="pt-2">
-        <p className="text-[10px] uppercase tracking-[0.2em] text-muted">Welcome back</p>
+        <p className="text-[10px] uppercase tracking-[0.2em] text-cognac/70">Welcome back</p>
         <h1 className="font-display text-4xl mt-2">Hi, {greetingName}</h1>
       </header>
 
       <section className="grid grid-cols-2 gap-3 stagger">
-        <Link to="/whos-looking" className="block">
-          <Card className="cursor-pointer">
+        <Link to="/whos-looking" className="block h-full">
+          <Card className="cursor-pointer h-full flex flex-col">
             <div className="flex items-center justify-between">
-              <span className="text-[10px] uppercase tracking-[0.18em] text-muted">Who's Looking</span>
+              <span className="text-[10px] uppercase tracking-[0.18em] text-cognac/70">Who's Looking</span>
               <span className="dot-hermes" />
             </div>
-            <p className="font-display text-3xl mt-3">{isBrand ? 9 : 4}</p>
-            <p className="text-xs text-muted/90 mt-1">
+            <p className="font-display text-3xl mt-2.5">{isBrand ? 9 : 4}</p>
+            <p className="text-[11px] text-muted/90 mt-1 leading-relaxed">
               {isBrand ? 'visiting your campaigns' : 'visiting your profile'}
             </p>
           </Card>
         </Link>
-        <Link to="/missed-opportunities" className="block">
-          <Card className="cursor-pointer">
-            <span className="text-[10px] uppercase tracking-[0.18em] text-muted">Invitations</span>
-            <p className="font-display text-3xl mt-3">2</p>
-            <p className="text-xs text-muted/90 mt-1">new in your inbox</p>
+        <Link to="/missed-opportunities" className="block h-full">
+          <Card className="cursor-pointer h-full flex flex-col">
+            <div className="flex items-center justify-between">
+              <span className="text-[10px] uppercase tracking-[0.18em] text-cognac/70">Invitations</span>
+              <span className="opacity-0 dot-hermes" aria-hidden />
+            </div>
+            <p className="font-display text-3xl mt-2.5">2</p>
+            <p className="text-[11px] text-muted/90 mt-1 leading-relaxed">new in your inbox</p>
           </Card>
         </Link>
       </section>
@@ -63,7 +66,7 @@ export default function Home() {
       <section>
         <div className="flex items-end justify-between mb-5">
           <div>
-            <p className="text-[10px] uppercase tracking-[0.2em] text-muted">Curated for you</p>
+            <p className="text-[10px] uppercase tracking-[0.2em] text-cognac/70">Curated for you</p>
             <h2 className="font-display text-2xl mt-1">Smart Matches</h2>
           </div>
           <Link to="/discover" className="text-[11px] uppercase tracking-[0.18em] text-cognac hover:underline">
@@ -106,7 +109,7 @@ export default function Home() {
 
       <section>
         <div className="mb-4">
-          <p className="text-[10px] uppercase tracking-[0.2em] text-muted">In motion this week</p>
+          <p className="text-[10px] uppercase tracking-[0.2em] text-cognac/70">In motion this week</p>
           <h2 className="font-display text-2xl mt-1">Trending</h2>
         </div>
         <div className="flex flex-wrap gap-2">
@@ -119,7 +122,7 @@ export default function Home() {
       {isBrand && (
         <section>
           <Card className="text-center py-10 px-6">
-            <p className="text-[10px] uppercase tracking-[0.22em] text-muted">Brand Studio</p>
+            <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">Brand Studio</p>
             <h3 className="font-display text-2xl mt-2">Ready to launch?</h3>
             <p className="text-sm text-muted mt-2 max-w-sm mx-auto leading-relaxed">
               Post a brief, get matched with creators in your niche, and run end-to-end.

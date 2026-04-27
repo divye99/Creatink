@@ -8,7 +8,7 @@ html, body, #root { height: 100%; }
 
 body {
   background-color: #8FA3BF;
-  color: #1A1410;
+  color: #4B3326;
   font-family: 'Inter', system-ui, sans-serif;
   font-feature-settings: 'ss01', 'cv11';
   -webkit-font-smoothing: antialiased;
@@ -27,7 +27,7 @@ p, span, div, label, button, input, textarea, select {
   letter-spacing: -0.005em;
 }
 
-::selection { background: #F2E7D3; color: #1A1410; }
+::selection { background: #F2E7D3; color: #4B3326; }
 
 /* Editorial focus rings — cognac, visible on both slate canvas + champagne cards */
 *:focus-visible {
