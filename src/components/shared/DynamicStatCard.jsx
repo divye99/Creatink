@@ -21,7 +21,7 @@ export default function DynamicStatCard({
     <Link to={href} className="block h-full group">
       <div
         className={cn(
-          'relative h-full overflow-hidden rounded-lg border border-cognac/70',
+          'relative h-full overflow-hidden border border-cognac/70',
           'p-5 text-champagne flex flex-col',
           'transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]',
           'shadow-[0_18px_40px_-22px_rgba(139,94,60,0.55)]',
@@ -31,6 +31,7 @@ export default function DynamicStatCard({
         style={{
           backgroundImage:
             'linear-gradient(135deg, #9C6B47 0%, #7B5232 55%, #5F3E25 100%)',
+          borderRadius: '28px 4px 28px 4px', // tl tr br bl — diagonal asymmetry
         }}
       >
         {/* Diagonal pinstripe — barely-there texture */}
