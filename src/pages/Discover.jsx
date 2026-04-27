@@ -114,7 +114,7 @@ export default function Discover() {
               </Select>
               <Chip active={verifiedOnly} onClick={() => setVerifiedOnly(!verifiedOnly)}>Verified only</Chip>
             </div>
-            <div className="grid gap-3">
+            <div className="grid gap-3 stagger">
               {filteredCreators.map((c) => (
                 <CreatorStatCard key={c.user_id} creator={c} onClick={() => nav(`/pitch/${c.user_id}`)} />
               ))}
@@ -123,7 +123,7 @@ export default function Discover() {
         </TabsContent>
 
         <TabsContent value="brands">
-          <div className="grid gap-3">
+          <div className="grid gap-3 stagger">
             {filteredBrands.map((b) => (
               <BrandCard key={b.user_id} brand={b} onClick={() => nav(`/pitch/${b.user_id}`)} />
             ))}
@@ -131,7 +131,7 @@ export default function Discover() {
         </TabsContent>
 
         <TabsContent value="campaigns">
-          <div className="grid gap-3">
+          <div className="grid gap-3 stagger">
             {filteredCampaigns.map((c) => (
               <CampaignCard
                 key={c.id} campaign={c}

@@ -31,7 +31,7 @@ export default function Messages() {
   return (
     <div className="space-y-4">
       <header><h1 className="font-display text-3xl">Messages</h1></header>
-      <div className="grid gap-2">
+      <div className="grid gap-2 stagger">
         {threads.map((t) => (
           <Link key={t.dealId} to={`/messages/${t.dealId}`}>
             <Card className="flex items-center gap-3 cursor-pointer p-4">

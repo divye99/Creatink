@@ -35,7 +35,7 @@ export default function Campaigns() {
         </TabsList>
 
         <TabsContent value="active">
-          <div className="grid gap-3">
+          <div className="grid gap-3 stagger">
             {DEMO_DEALS.length === 0 ? (
               <EmptyState icon={Megaphone} title="No active deals yet" description="Pitch a brand or apply to a campaign to start." />
             ) : DEMO_DEALS.map((d) => {
@@ -65,7 +65,7 @@ export default function Campaigns() {
         </TabsContent>
 
         <TabsContent value="open">
-          <div className="grid gap-3">
+          <div className="grid gap-3 stagger">
             {DEMO_CAMPAIGNS.map((c) => (
               <CampaignCard
                 key={c.id} campaign={c}

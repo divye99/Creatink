@@ -42,13 +42,15 @@ p, span, div, label, button, input, textarea, select {
 ::-webkit-scrollbar-thumb { background: #BFA47C; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #8B5E3C; }
 
-/* Cognac glow on hover for cards — subtler, leather not paint */
+/* Cognac glow on hover for cards — slow, leather not paint */
 .card-glow {
-  transition: box-shadow 320ms ease, transform 320ms ease, border-color 320ms ease;
+  transition: box-shadow 480ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform   480ms cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 480ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .card-glow:hover, .card-glow:focus-within {
-  box-shadow: 0 0 0 1px rgba(139, 94, 60, 0.45), 0 18px 40px -20px rgba(139, 94, 60, 0.3);
-  transform: translateY(-1px);
+  box-shadow: 0 0 0 1px rgba(139, 94, 60, 0.45), 0 24px 48px -22px rgba(139, 94, 60, 0.35);
+  transform: translateY(-2px);
 }
 
 /* Notification dot — cognac (calm awareness, not alarm).
@@ -64,17 +66,73 @@ p, span, div, label, button, input, textarea, select {
   box-shadow: 0 0 0 2px rgba(232, 96, 10, 0.14);
 }
 
-/* Page transition baseline */
-.page-enter { animation: pageIn 280ms ease-out both; }
+/* Page transition — slow opacity-only fade, no slide.
+   Per design crit: "subtle fades instead of slides". */
+.page-enter { animation: pageIn 600ms cubic-bezier(0.16, 1, 0.3, 1) both; }
 @keyframes pageIn {
-  from { opacity: 0; transform: translateY(6px); }
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Splash fade — already smooth, slightly longer for editorial pacing */
+.splash-fade-in { animation: splashFade 1600ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+@keyframes splashFade {
+  0%   { opacity: 0; transform: translateY(6px); letter-spacing: 0.04em; }
+  60%  { opacity: 1; }
+  100% { opacity: 1; transform: translateY(0); letter-spacing: 0; }
+}
+
+/* Stagger — children fade-rise in sequence. Apply to a list parent. */
+.stagger > * { animation: fadeRise 720ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+.stagger > *:nth-child(1)   { animation-delay:  60ms; }
+.stagger > *:nth-child(2)   { animation-delay: 140ms; }
+.stagger > *:nth-child(3)   { animation-delay: 220ms; }
+.stagger > *:nth-child(4)   { animation-delay: 300ms; }
+.stagger > *:nth-child(5)   { animation-delay: 380ms; }
+.stagger > *:nth-child(6)   { animation-delay: 460ms; }
+.stagger > *:nth-child(7)   { animation-delay: 540ms; }
+.stagger > *:nth-child(n+8) { animation-delay: 600ms; }
+
+@keyframes fadeRise {
+  from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Splash fade */
-.splash-fade-in { animation: splashFade 1400ms ease-out both; }
-@keyframes splashFade {
-  0%   { opacity: 0; transform: translateY(8px); letter-spacing: 0.04em; }
-  60%  { opacity: 1; }
-  100% { opacity: 1; transform: translateY(0); letter-spacing: 0; }
+/* Generic slow fade-in utility — for individual elements */
+.fade-in { animation: pageIn 600ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+/* Tab content — cross-fade when switching tabs */
+[role='tabpanel'][data-state='active'] {
+  animation: tabFade 320ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes tabFade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Avatar / image hover — slow scale, restrained */
+.img-hover {
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.img-hover:hover { transform: scale(1.025); }
+
+/* Button press — subtle, fast on the way in, slow on the way out */
+button:not(:disabled):active {
+  transform: scale(0.985);
+  transition: transform 80ms ease-out;
+}
+
+/* Smooth anchor scrolling */
+html { scroll-behavior: smooth; }
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
 }

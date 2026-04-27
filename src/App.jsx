@@ -31,7 +31,7 @@ import NotFound from './pages/NotFound'
 
 export default function App() {
   const [showSplash, setShowSplash] = useState(true)
-  useEffect(() => { const t = setTimeout(() => setShowSplash(false), 1700); return () => clearTimeout(t) }, [])
+  useEffect(() => { const t = setTimeout(() => setShowSplash(false), 2100); return () => clearTimeout(t) }, [])
   if (showSplash) return <Splash />
 
   return (

@@ -38,7 +38,7 @@ export default function Home() {
         <h1 className="font-display text-4xl mt-2">Hi, {greetingName}</h1>
       </header>
 
-      <section className="grid grid-cols-2 gap-3">
+      <section className="grid grid-cols-2 gap-3 stagger">
         <Link to="/whos-looking" className="block">
           <Card className="cursor-pointer">
             <div className="flex items-center justify-between">
@@ -80,7 +80,7 @@ export default function Home() {
               : 'Add niches to your profile to see matched campaigns.'}
           </p>
         ) : isBrand ? (
-          <div className="grid gap-3">
+          <div className="grid gap-3 stagger">
             {matches.map((c) => (
               <CreatorStatCard
                 key={c.creator_id || c.user_id}
@@ -90,7 +90,7 @@ export default function Home() {
             ))}
           </div>
         ) : (
-          <div className="grid gap-3">
+          <div className="grid gap-3 stagger">
             {matches.map((c) => (
               <CampaignCard
                 key={c.campaign_id || c.id}
