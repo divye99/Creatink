@@ -5,6 +5,7 @@ const styles = {
   default:   'bg-card text-body border border-border',
   champagne: 'bg-cognac/10 text-cognac border border-cognac/40',
   cognac:    'bg-cognac/15 text-cognac border border-cognac/40',
+  leather:   'bg-cognac text-champagne border border-cognac',
   slate:     'bg-slateblue/15 text-slateblue border border-slateblue/40',
   hermes:    'bg-hermes/15 text-hermes border border-hermes/40',
   success:   'bg-success/15 text-success border border-success/40',

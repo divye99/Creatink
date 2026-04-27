@@ -33,17 +33,13 @@ export default function BottomNav() {
                 )
               }
             >
-              {({ isActive }) => (
-                <>
-                  <span className="relative">
-                    <Icon className="h-[18px] w-[18px]" strokeWidth={1.5} />
-                    {dot && unread > 0 && (
-                      <span className="dot-hermes absolute -top-0.5 -right-1.5" />
-                    )}
-                  </span>
-                  <span className={cn(isActive ? 'opacity-100' : 'opacity-90')}>{t(lang, key)}</span>
-                </>
-              )}
+              <span className="relative">
+                <Icon className="h-[18px] w-[18px]" strokeWidth={1.5} />
+                {dot && unread > 0 && (
+                  <span className="dot-hermes absolute -top-0.5 -right-1.5" />
+                )}
+              </span>
+              <span>{t(lang, key)}</span>
             </NavLink>
           </li>
         ))}

@@ -122,7 +122,7 @@ export default function Home() {
         <h2 className="font-display text-3xl mt-2 leading-none">Trending</h2>
         <div className="flex flex-wrap gap-1.5 mt-5">
           {['Beauty','Tech','Food','Travel','Fitness'].map((n, i) => (
-            <Badge key={n} variant={i < 2 ? 'hermes' : 'cognac'}>{n}</Badge>
+            <Badge key={n} variant={i < 2 ? 'hermes' : 'leather'}>{n}</Badge>
           ))}
         </div>
       </section>
@@ -132,7 +132,7 @@ export default function Home() {
         <section className="border-t border-cognac/20 pt-10">
           <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">Brand Studio</p>
           <h3 className="font-display text-3xl mt-2 leading-tight max-w-md">Ready to launch?</h3>
-          <p className="text-sm text-muted mt-3 max-w-md leading-relaxed">
+          <p className="text-sm text-champagne mt-3 max-w-md leading-relaxed">
             Post a brief, get matched with creators in your niche, and run end-to-end.
           </p>
           <Button className="mt-5" asChild>

@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button'
 import {
   Dialog, DialogContent, DialogTitle, DialogHeader, DialogTrigger,
 } from '@/components/ui/dialog'
-import CreatorStatCard from '@/components/shared/CreatorStatCard'
+import DiscoverCreatorCard from '@/components/shared/DiscoverCreatorCard'
 import BrandCard from '@/components/shared/BrandCard'
 import CampaignCard from '@/components/shared/CampaignCard'
 import { DEMO_CREATORS, DEMO_BRANDS, DEMO_CAMPAIGNS } from '@/lib/demoData'
@@ -138,9 +138,13 @@ export default function Discover() {
               </button>
             </div>
           )}
-          <div className="grid gap-3 stagger">
+          <div className="grid gap-4 stagger">
             {filteredCreators.map((c) => (
-              <CreatorStatCard key={c.user_id} creator={c} onClick={() => nav(`/pitch/${c.user_id}`)} />
+              <DiscoverCreatorCard
+                key={c.user_id}
+                creator={c}
+                onClick={() => nav(`/pitch/${c.user_id}`)}
+              />
             ))}
           </div>
         </TabsContent>

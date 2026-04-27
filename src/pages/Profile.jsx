@@ -97,6 +97,13 @@ function Section({ eyebrow, title, action, children }) {
 }
 
 function CreatorSections({ profile, taxComplete }) {
+  const pastCollabs = profile.past_collabs?.length
+    ? profile.past_collabs
+    : MOCK_CREATOR_COLLABS
+  const memberSince = profile.created_at
+    ? new Date(profile.created_at)
+    : new Date('2026-03-01')
+
   return (
     <>
       <Section eyebrow="At a glance" title="Reach">
@@ -145,6 +152,35 @@ function CreatorSections({ profile, taxComplete }) {
         </div>
       </Section>
 
+      <Section eyebrow="History" title="Past collaborations">
+        <div className="divide-y divide-cognac/15">
+          {pastCollabs.map((c, i) => (
+            <div key={i} className="flex items-baseline justify-between py-3">
+              <div>
+                <p className="font-display text-lg">{c.brand}</p>
+                <p className="text-[11px] text-champagne/85 mt-0.5">{c.campaign}</p>
+              </div>
+              <span className="text-[10px] uppercase tracking-[0.22em] text-muted">{c.date}</span>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section eyebrow="Spoken" title="Languages">
+        <div className="flex flex-wrap gap-1.5">
+          {(profile.languages || ['English', 'Hindi']).map((l) => (
+            <Badge key={l} variant="cognac">{l}</Badge>
+          ))}
+        </div>
+      </Section>
+
+      <Section eyebrow="On Creatink" title="Member since">
+        <p className="font-display text-3xl leading-none">
+          {memberSince.toLocaleDateString('en-IN', { month: 'long', year: 'numeric' })}
+        </p>
+        <p className="text-[10px] uppercase tracking-[0.22em] text-muted mt-3">{profile.city || 'India'}</p>
+      </Section>
+
       {!taxComplete && (
         <ActionCard
           eyebrow="Required for paid deals"
@@ -157,6 +193,18 @@ function CreatorSections({ profile, taxComplete }) {
     </>
   )
 }
+
+const MOCK_CREATOR_COLLABS = [
+  { brand: 'Saanvi Skincare', campaign: 'Monsoon Glow Launch · Reel × 2',  date: 'Apr 2026' },
+  { brand: 'Khoya Kitchen',   campaign: 'Diwali Sweet Box · Stories',       date: 'Nov 2025' },
+  { brand: 'Vellum Fitness',  campaign: '90-Day Transformation · YouTube',  date: 'Jul 2025' },
+]
+
+const MOCK_BRAND_COLLABS = [
+  { creator: 'Aanya Kapoor', campaign: 'Monsoon Glow Launch',  date: 'Apr 2026' },
+  { creator: 'Mira Sen',     campaign: 'Diwali Recipe Series',  date: 'Oct 2025' },
+  { creator: 'Tara Mehta',   campaign: 'Goa Travel Diary',     date: 'Jun 2025' },
+]
 
 function BrandSections({ profile, contractUploaded }) {
   const budgetRange =
@@ -212,6 +260,42 @@ function BrandSections({ profile, contractUploaded }) {
             <Button size="sm" asChild><Link to="/profile/edit#contract">Upload contract</Link></Button>
           </div>
         )}
+      </Section>
+
+      <Section eyebrow="Activity" title="Brand Studio">
+        <div className="grid grid-cols-3 divide-x divide-cognac/15">
+          <div className="pr-4">
+            <p className="text-[10px] uppercase tracking-[0.22em] text-muted">Active</p>
+            <p className="font-display text-3xl mt-2 leading-none">3</p>
+          </div>
+          <div className="px-4">
+            <p className="text-[10px] uppercase tracking-[0.22em] text-muted">Completed</p>
+            <p className="font-display text-3xl mt-2 leading-none">12</p>
+          </div>
+          <div className="pl-4">
+            <p className="text-[10px] uppercase tracking-[0.22em] text-muted">Avg. Rating</p>
+            <p className="font-display text-3xl mt-2 leading-none">4.8</p>
+          </div>
+        </div>
+      </Section>
+
+      <Section eyebrow="Past partnerships" title="Featured collaborations">
+        <div className="divide-y divide-cognac/15">
+          {MOCK_BRAND_COLLABS.map((c, i) => (
+            <div key={i} className="flex items-baseline justify-between py-3">
+              <div>
+                <p className="font-display text-lg">{c.creator}</p>
+                <p className="text-[11px] text-champagne/85 mt-0.5">{c.campaign}</p>
+              </div>
+              <span className="text-[10px] uppercase tracking-[0.22em] text-muted">{c.date}</span>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section eyebrow="On Creatink" title="Member since">
+        <p className="font-display text-3xl leading-none">March 2026</p>
+        <p className="text-[10px] uppercase tracking-[0.22em] text-muted mt-3">India</p>
       </Section>
     </>
   )
