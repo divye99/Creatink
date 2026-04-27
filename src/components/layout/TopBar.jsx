@@ -15,7 +15,7 @@ export default function TopBar({ title }) {
           <select
             value={lang}
             onChange={(e) => changeLang(e.target.value)}
-            className="bg-transparent text-xs text-muted focus:outline-none cursor-pointer pr-2"
+            className="bg-transparent text-xs font-semibold text-muted focus:outline-none cursor-pointer pr-2"
             aria-label="Language"
           >
             {LANGS.map((l) => (

@@ -33,7 +33,9 @@ const SORTS = [
 export default function Discover() {
   const { userType } = useAuth()
   const nav = useNavigate()
-  const [tab, setTab] = useState('creators')
+  const isCreator = userType === 'creator'
+  const peopleTab = isCreator ? 'brands' : 'creators'
+  const [tab, setTab] = useState(peopleTab)
   const [q, setQ] = useState('')
 
   // Creator filters
@@ -109,7 +111,11 @@ export default function Discover() {
       <Tabs value={tab} onValueChange={setTab}>
         <div className="flex items-end justify-between gap-3 border-b border-cognac/15">
           <TabsList className="!bg-transparent !border-0 !p-0 !rounded-none gap-7 flex-1 justify-start">
-            <DiscoverTabTrigger value="creators">Creators</DiscoverTabTrigger>
+            {isCreator ? (
+              <DiscoverTabTrigger value="brands">Brands</DiscoverTabTrigger>
+            ) : (
+              <DiscoverTabTrigger value="creators">Creators</DiscoverTabTrigger>
+            )}
             <DiscoverTabTrigger value="campaigns">Campaigns</DiscoverTabTrigger>
           </TabsList>
 
@@ -129,26 +135,42 @@ export default function Discover() {
           )}
         </div>
 
-        <TabsContent value="creators" className="mt-6">
-          {activeFilters > 0 && (
-            <div className="mb-5 flex flex-wrap items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-cognac/70">
-              <span>{filteredCreators.length} matches</span>
-              <span className="text-cognac/30">·</span>
-              <button onClick={clearFilters} className="text-cognac hover:underline">
-                Clear all
-              </button>
+        {!isCreator && (
+          <TabsContent value="creators" className="mt-6">
+            {activeFilters > 0 && (
+              <div className="mb-5 flex flex-wrap items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-cognac/70">
+                <span>{filteredCreators.length} matches</span>
+                <span className="text-cognac/30">·</span>
+                <button onClick={clearFilters} className="text-cognac hover:underline">
+                  Clear all
+                </button>
+              </div>
+            )}
+            <div className="grid gap-3 stagger">
+              {filteredCreators.map((c) => (
+                <DiscoverCreatorCard
+                  key={c.user_id}
+                  creator={c}
+                  onClick={() => nav(`/pitch/${c.user_id}`)}
+                />
+              ))}
             </div>
-          )}
-          <div className="grid gap-3 stagger">
-            {filteredCreators.map((c) => (
-              <DiscoverCreatorCard
-                key={c.user_id}
-                creator={c}
-                onClick={() => nav(`/pitch/${c.user_id}`)}
-              />
-            ))}
-          </div>
-        </TabsContent>
+          </TabsContent>
+        )}
+
+        {isCreator && (
+          <TabsContent value="brands" className="mt-6">
+            <div className="grid gap-3 stagger">
+              {filteredBrands.map((b) => (
+                <BrandCard
+                  key={b.user_id}
+                  brand={b}
+                  onClick={() => nav(`/pitch/${b.user_id}`)}
+                />
+              ))}
+            </div>
+          </TabsContent>
+        )}
 
         <TabsContent value="campaigns" className="mt-6">
           <div className="grid gap-3 stagger">

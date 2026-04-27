@@ -7,17 +7,16 @@ import { Label } from '@/components/ui/label'
 import { Dialog, DialogContent, DialogTitle, DialogHeader, DialogDescription } from '@/components/ui/dialog'
 import { useAuth } from '@/contexts/AuthContext'
 import { connectGmail, connectOutlook } from '@/lib/oauth'
-import { Mail, Eye, EyeOff, Sparkles, Link2, ArrowLeft, Globe } from 'lucide-react'
+import { Mail, Eye, Sparkles, Link2, ArrowLeft, Globe } from 'lucide-react'
 import { useApp } from '@/contexts/AppContext'
 
 export default function Settings() {
   const nav = useNavigate()
-  const { profile, updateProfile, signOut } = useAuth()
+  const { profile, updateProfile, signOut, userType } = useAuth()
   const { lang, changeLang } = useApp()
 
   const [emailScanner, setEmailScanner] = useState(false)
   const [whosLooking, setWhosLooking] = useState(false)
-  const [anonBrowse, setAnonBrowse] = useState(false)
   const [emailProvider, setEmailProvider] = useState(null)
   const [castinkVis, setCastinkVis] = useState({
     follower_count: true, engagement_rate: true,
@@ -45,12 +44,12 @@ export default function Settings() {
       </button>
       <h1 className="font-display text-3xl">Settings</h1>
 
-      <Card>
+      <Card variant="cognac">
         <h3 className="font-display text-2xl">AI Features</h3>
-        <p className="text-xs text-muted mt-1">All AI features are off by default and revocable instantly.</p>
+        <p className="text-xs text-champagne/75 mt-1">All AI features are off by default and revocable instantly.</p>
 
         <div className="mt-4 space-y-4">
-          <div className="rounded-md border border-border p-4">
+          <div className="rounded-md border border-border p-4 bg-card text-cognac">
             <div className="flex items-start justify-between gap-3">
               <div>
                 <p className="text-sm flex items-center gap-2"><Mail className="h-4 w-4" /> Smart Email Scanner</p>
@@ -71,7 +70,7 @@ export default function Settings() {
             )}
           </div>
 
-          <div className="rounded-md border border-border p-4">
+          <div className="rounded-md border border-border p-4 bg-card text-cognac">
             <div className="flex items-start justify-between gap-3">
               <div>
                 <p className="text-sm flex items-center gap-2"><Eye className="h-4 w-4" /> Who's Looking</p>
@@ -86,30 +85,23 @@ export default function Settings() {
             </div>
           </div>
 
-          <div className="rounded-md border border-border p-4">
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <p className="text-sm flex items-center gap-2"><EyeOff className="h-4 w-4" /> Anonymous Browse</p>
-                <p className="text-xs text-muted mt-1">Hide your views from others, regardless of opt-in.</p>
-              </div>
-              <Switch checked={anonBrowse} onCheckedChange={setAnonBrowse} />
-            </div>
-          </div>
         </div>
       </Card>
 
-      <Card>
-        <h3 className="font-display text-2xl">CASTINK Linked Stats</h3>
-        <p className="text-xs text-muted mt-1">Choose which Creatink stats are visible on your CASTINK profile.</p>
-        <div className="mt-4 space-y-3">
-          {Object.entries(castinkVis).map(([k, v]) => (
-            <label key={k} className="flex items-center justify-between">
-              <span className="text-sm capitalize">{k.replace(/_/g, ' ')}</span>
-              <Switch checked={v} onCheckedChange={(val) => setCastinkVis({ ...castinkVis, [k]: val })} />
-            </label>
-          ))}
-        </div>
-      </Card>
+      {userType !== 'brand' && (
+        <Card>
+          <h3 className="font-display text-2xl">CASTINK Linked Stats</h3>
+          <p className="text-xs text-muted mt-1">Choose which Creatink stats are visible on your CASTINK profile.</p>
+          <div className="mt-4 space-y-3">
+            {Object.entries(castinkVis).map(([k, v]) => (
+              <label key={k} className="flex items-center justify-between">
+                <span className="text-sm capitalize">{k.replace(/_/g, ' ')}</span>
+                <Switch checked={v} onCheckedChange={(val) => setCastinkVis({ ...castinkVis, [k]: val })} />
+              </label>
+            ))}
+          </div>
+        </Card>
+      )}
 
       <Card>
         <h3 className="font-display text-2xl">Language</h3>
@@ -121,8 +113,8 @@ export default function Settings() {
             <button
               key={l.code}
               onClick={() => changeLang(l.code)}
-              className={`rounded-md border p-3 text-sm transition ${
-                lang === l.code ? 'border-cognac bg-cognac/10 text-cognac' : 'border-border text-body hover:border-cognac/60'
+              className={`rounded-md border p-3 text-sm transition bg-cognac text-champagne ${
+                lang === l.code ? 'border-champagne ring-2 ring-champagne/50' : 'border-cognac hover:brightness-110'
               }`}
             >
               {l.label}

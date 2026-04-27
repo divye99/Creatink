@@ -32,6 +32,11 @@ p, span, div, label, button, input, textarea, select {
   letter-spacing: -0.005em;
 }
 
+.uppercase[class*="tracking-["] {
+  font-weight: 700;
+  font-size: 12px;
+}
+
 ::selection { background: #F2E7D3; color: #4B3326; }
 
 /* Editorial focus rings — cognac, visible on both slate canvas + champagne cards */

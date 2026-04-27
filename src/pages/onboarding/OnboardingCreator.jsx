@@ -13,7 +13,7 @@ import { NICHES } from '@/lib/utils'
 import { connectInstagram, connectYouTube, connectTwitter } from '@/lib/oauth'
 import { Instagram, Youtube, Twitter, Camera, Check, ArrowRight, ArrowLeft } from 'lucide-react'
 
-const STEPS = ['Connect', 'Niches', 'Photo', 'Rates', 'Bio']
+const STEPS = ['Connect', 'Niches', 'Photo', 'Bio']
 
 export default function OnboardingCreator() {
   const nav = useNavigate()
@@ -25,7 +25,6 @@ export default function OnboardingCreator() {
   const [busyPlatform, setBusyPlatform] = useState(null)
   const [niches, setNiches] = useState([])
   const [photo, setPhoto] = useState(null)
-  const [rates, setRates] = useState({ reel: '', story: '', static_post: '', youtube_video: '', custom_package: '' })
   const [availability, setAvailability] = useState('available')
   const [bio, setBio] = useState('')
   const [name, setName] = useState('')
@@ -61,8 +60,7 @@ export default function OnboardingCreator() {
     if (step === 0) return totalConnected >= 1 && name.trim().length > 1
     if (step === 1) return niches.length >= 1
     if (step === 2) return Boolean(photo)
-    if (step === 3) return Object.values(rates).some(Boolean)
-    if (step === 4) return bio.trim().length > 0
+    if (step === 3) return bio.trim().length > 0
     return true
   }
 
@@ -80,9 +78,6 @@ export default function OnboardingCreator() {
       niches,
       follower_count: followerSum,
       engagement_rate: Number(engAvg.toFixed(2)),
-      rate_card: Object.fromEntries(
-        Object.entries(rates).map(([k, v]) => [k, v ? Number(v) : null])
-      ),
       availability,
       oauth_handles: Object.fromEntries(
         Object.entries(oauth).filter(([, v]) => v).map(([k, v]) => [k, v.handle])
@@ -173,27 +168,19 @@ export default function OnboardingCreator() {
       )}
 
       {step === 3 && (
-        <div className="space-y-3">
-          <p className="text-sm text-muted">Set your rate card in INR. Leave blank what doesn't apply.</p>
-          {[
-            ['reel', 'Reel'], ['story', 'Story'], ['static_post', 'Static Post'],
-            ['youtube_video', 'YouTube Video'], ['custom_package', 'Custom Package'],
-          ].map(([k, label]) => (
-            <div key={k} className="flex items-center gap-3">
-              <Label className="w-32">{label}</Label>
-              <div className="flex-1 flex items-center gap-2">
-                <span className="text-muted">₹</span>
-                <Input
-                  type="number"
-                  inputMode="numeric"
-                  value={rates[k]}
-                  onChange={(e) => setRates({ ...rates, [k]: e.target.value })}
-                  placeholder="0"
-                />
-              </div>
-            </div>
-          ))}
-          <div className="pt-3">
+        <div className="space-y-5">
+          <div className="space-y-2">
+            <Label htmlFor="bio">Short bio (max 280 chars)</Label>
+            <Textarea
+              id="bio"
+              value={bio}
+              maxLength={280}
+              onChange={(e) => setBio(e.target.value)}
+              placeholder="Mumbai-based fashion + lifestyle creator. Honest reviews, calm aesthetics."
+            />
+            <p className="text-xs text-muted text-right">{bio.length}/280</p>
+          </div>
+          <div>
             <Label>Availability</Label>
             <Select value={availability} onValueChange={setAvailability}>
               <SelectTrigger className="mt-2"><SelectValue /></SelectTrigger>
@@ -204,20 +191,6 @@ export default function OnboardingCreator() {
               </SelectContent>
             </Select>
           </div>
-        </div>
-      )}
-
-      {step === 4 && (
-        <div className="space-y-2">
-          <Label htmlFor="bio">Short bio (max 280 chars)</Label>
-          <Textarea
-            id="bio"
-            value={bio}
-            maxLength={280}
-            onChange={(e) => setBio(e.target.value)}
-            placeholder="Mumbai-based fashion + lifestyle creator. Honest reviews, calm aesthetics."
-          />
-          <p className="text-xs text-muted text-right">{bio.length}/280</p>
         </div>
       )}
 

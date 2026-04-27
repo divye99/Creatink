@@ -137,21 +137,6 @@ function CreatorSections({ profile, taxComplete }) {
         </div>
       </Section>
 
-      <Section eyebrow="Pricing" title="Rate card">
-        <div className="divide-y divide-cognac/15">
-          {Object.entries(profile.rate_card || {}).map(([k, v]) => (
-            <div key={k} className="flex items-baseline justify-between py-3">
-              <span className="text-[11px] uppercase tracking-[0.22em] text-muted capitalize">
-                {k.replace(/_/g, ' ')}
-              </span>
-              <span className="font-display text-xl">
-                {v ? formatINR(v) : <span className="text-muted/60">—</span>}
-              </span>
-            </div>
-          ))}
-        </div>
-      </Section>
-
       <Section eyebrow="History" title="Past collaborations">
         <CollabList items={pastCollabs} primaryKey="brand" />
       </Section>
