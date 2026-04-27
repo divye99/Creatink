@@ -79,7 +79,7 @@ export default function SwipeableCampaignCard({ campaign, isFront, slot = 0, onS
             draggable={false}
             className="absolute inset-0 w-full h-full object-cover pointer-events-none scale-110 blur-md opacity-55"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-cognac/55 via-body/60 to-black/85 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-br from-cognac/45 via-black/70 to-black/95 pointer-events-none" />
         </>
       )}
       {!c.brand_logo_url && (

@@ -44,16 +44,16 @@ export default function Settings() {
       </button>
       <h1 className="font-display text-3xl">Settings</h1>
 
-      <Card variant="cognac">
+      <Card>
         <h3 className="font-display text-2xl">AI Features</h3>
-        <p className="text-xs text-champagne/75 mt-1">All AI features are off by default and revocable instantly.</p>
+        <p className="text-xs text-body/60 mt-1">All AI features are off by default and revocable instantly.</p>
 
-        <div className="mt-4 space-y-4">
-          <div className="rounded-md border border-border p-4 bg-card text-cognac">
+        <div className="mt-4 space-y-3">
+          <div className="rounded-md border border-cognac/20 p-4 bg-surface2">
             <div className="flex items-start justify-between gap-3">
               <div>
-                <p className="text-sm flex items-center gap-2"><Mail className="h-4 w-4" /> Smart Email Scanner</p>
-                <p className="text-xs text-muted mt-1">
+                <p className="text-sm flex items-center gap-2 text-body"><Mail className="h-4 w-4 text-slateblue" /> Smart Email Scanner</p>
+                <p className="text-xs text-body/55 mt-1">
                   Scans your Gmail/Outlook for missed brand collaborations. Raw emails are processed and discarded — only summaries are kept.
                 </p>
               </div>
@@ -65,16 +65,16 @@ export default function Settings() {
             </div>
             {emailScanner && (
               <p className="text-xs text-success mt-2">
-                Connected: {emailProvider} · <Link to="/missed-opportunities" className="text-cognac">View results</Link>
+                Connected: {emailProvider} · <Link to="/missed-opportunities" className="text-hermes">View results</Link>
               </p>
             )}
           </div>
 
-          <div className="rounded-md border border-border p-4 bg-card text-cognac">
+          <div className="rounded-md border border-cognac/20 p-4 bg-surface2">
             <div className="flex items-start justify-between gap-3">
               <div>
-                <p className="text-sm flex items-center gap-2"><Eye className="h-4 w-4" /> Who's Looking</p>
-                <p className="text-xs text-muted mt-1">
+                <p className="text-sm flex items-center gap-2 text-body"><Eye className="h-4 w-4 text-slateblue" /> Who's Looking</p>
+                <p className="text-xs text-body/55 mt-1">
                   See who viewed your profile — but only if both you and the viewer have opted in.
                 </p>
               </div>
@@ -84,7 +84,6 @@ export default function Settings() {
               />
             </div>
           </div>
-
         </div>
       </Card>
 
@@ -113,8 +112,8 @@ export default function Settings() {
             <button
               key={l.code}
               onClick={() => changeLang(l.code)}
-              className={`rounded-md border p-3 text-sm transition bg-cognac text-champagne ${
-                lang === l.code ? 'border-champagne ring-2 ring-champagne/50' : 'border-cognac hover:brightness-110'
+              className={`rounded-md border p-3 text-sm transition bg-surface2 ${
+                lang === l.code ? 'border-hermes text-champagne' : 'border-cognac/20 text-body/70 hover:border-cognac/45'
               }`}
             >
               {l.label}

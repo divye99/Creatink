@@ -7,8 +7,8 @@
 html, body, #root { height: 100%; }
 
 body {
-  background-color: #8FA3BF;
-  color: #4B3326;
+  background-color: #080808;
+  color: #F5F0E8;
   font-family: 'Manrope', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -21,6 +21,7 @@ h1, h2, h3, h4, h5, h6, .font-display {
   font-weight: 800;
   letter-spacing: -0.022em;
   line-height: 1.05;
+  color: #F5F0E8;
 }
 .font-display-roman {
   font-family: 'Manrope', system-ui, sans-serif;
@@ -33,34 +34,31 @@ p, span, div, label, button, input, textarea, select {
 }
 
 .uppercase[class*="tracking-["] {
-  font-weight: 700;
-  font-size: 12px;
+  font-weight: 300;
+  letter-spacing: 0.2em;
 }
 
-::selection { background: #F2E7D3; color: #4B3326; }
+::selection { background: #E8D5B0; color: #080808; }
 
-/* Editorial focus rings — cognac, visible on both slate canvas + champagne cards */
 *:focus-visible {
-  outline: 1px solid #8B5E3C;
+  outline: 1px solid #E8600A;
   outline-offset: 3px;
   border-radius: 4px;
 }
 
-/* Scrollbar — narrow, warm tan */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #BFA47C; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #8B5E3C; }
+::-webkit-scrollbar-thumb { background: rgba(139, 94, 60, 0.4); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(139, 94, 60, 0.7); }
 
-/* Cognac glow on hover for cards — slow, leather not paint */
 .card-glow {
   transition: box-shadow 480ms cubic-bezier(0.22, 1, 0.36, 1),
               transform   480ms cubic-bezier(0.22, 1, 0.36, 1),
               border-color 480ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .card-glow:hover, .card-glow:focus-within {
-  box-shadow: 0 0 0 1px rgba(139, 94, 60, 0.45), 0 24px 48px -22px rgba(139, 94, 60, 0.35);
-  transform: translateY(-2px);
+  box-shadow: 0 0 0 1px rgba(139, 94, 60, 0.4), 0 0 32px rgba(139, 94, 60, 0.18);
+  transform: translateY(-1px);
 }
 
 /* Hermès orange dot — for unread / urgency / live indicators (per spec) */

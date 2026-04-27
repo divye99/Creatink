@@ -21,69 +21,48 @@ export default function DynamicStatCard({
     <Link to={href} className="block h-full group">
       <div
         className={cn(
-          'relative h-full overflow-hidden border border-cognac/70',
-          'p-4 text-champagne flex flex-col',
+          'relative h-full overflow-hidden bg-card border border-cognac/25 rounded-2xl',
+          'p-5 text-body flex flex-col',
           'transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]',
-          'shadow-[0_14px_32px_-18px_rgba(139,94,60,0.55)]',
-          'group-hover:shadow-[0_22px_44px_-18px_rgba(139,94,60,0.7)]',
-          'group-hover:-translate-y-0.5',
+          'shadow-cognac group-hover:shadow-glow group-hover:border-cognac/45 group-hover:-translate-y-0.5',
         )}
-        style={{
-          backgroundImage:
-            'linear-gradient(135deg, #9C6B47 0%, #7B5232 55%, #5F3E25 100%)',
-          borderRadius: '28px 4px 28px 4px', // tl tr br bl — diagonal asymmetry
-        }}
       >
-        {/* Diagonal pinstripe — barely-there texture */}
-        <span
-          aria-hidden
-          className="absolute inset-0 opacity-[0.06] pointer-events-none"
-          style={{
-            backgroundImage:
-              'repeating-linear-gradient(135deg, transparent 0, transparent 7px, #F2E7D3 7px, #F2E7D3 8px)',
-          }}
-        />
-        {/* Soft inner light from top-left */}
-        <span
-          aria-hidden
-          className="absolute -top-12 -left-12 w-40 h-40 rounded-full opacity-[0.18] pointer-events-none blur-2xl"
-          style={{ background: 'radial-gradient(circle, #F2E7D3 0%, transparent 70%)' }}
-        />
-
-        {/* Top row — eyebrow + index */}
         <div className="relative flex items-start justify-between">
-          <p className="text-[10px] uppercase tracking-[0.22em] text-champagne/75 flex items-center gap-2">
+          <p
+            className="uppercase text-slateblue flex items-center gap-2"
+            style={{ fontSize: 11, letterSpacing: '0.22em', fontWeight: 300 }}
+          >
             {eyebrow}
             {showHermesDot && <span className="dot-hermes" />}
           </p>
           {index && (
-            <span className="font-display italic text-[12px] text-champagne/40 tracking-[0.18em]">
+            <span className="text-[11px] text-muted tracking-[0.22em]">
               {index}
             </span>
           )}
         </div>
 
-        {/* Hero number + trend pill */}
-        <div className="relative mt-2 flex items-baseline gap-2">
-          <p className="font-display text-[48px] leading-[0.9] transition-transform duration-500 group-hover:translate-x-1 origin-left">
-            {number}
-          </p>
-          {trend && (
-            <p className="text-[9px] uppercase tracking-[0.2em] text-hermes/95 flex items-center gap-0.5 mb-1">
-              <ArrowUpRight className="h-2.5 w-2.5" strokeWidth={2.4} />
-              {trend}
-              {trendLabel && <span className="text-champagne/40 ml-1">·  {trendLabel}</span>}
-            </p>
-          )}
-        </div>
+        <p
+          className="font-display text-champagne mt-3 leading-none"
+          style={{ fontSize: 72, fontWeight: 800, letterSpacing: '-0.03em' }}
+        >
+          {number}
+        </p>
 
-        {/* Hairline + caption + chevron */}
-        <div className="relative mt-auto pt-3">
-          <span className="block h-px bg-champagne/15 mb-2.5" />
+        {trend && (
+          <p className="text-[10px] uppercase tracking-[0.2em] text-success flex items-center gap-1 mt-3">
+            <ArrowUpRight className="h-3 w-3" strokeWidth={2.4} />
+            {trend}
+            {trendLabel && <span className="text-muted ml-1">· {trendLabel}</span>}
+          </p>
+        )}
+
+        <div className="relative mt-auto pt-4">
+          <span className="block h-px bg-cognac/20 mb-3" />
           <div className="flex items-center justify-between gap-3">
-            <p className="text-[11px] text-champagne/75 leading-snug">{caption}</p>
+            <p className="text-[12px] text-body/70 leading-snug">{caption}</p>
             <ArrowUpRight
-              className="h-3.5 w-3.5 text-champagne/55 shrink-0 transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-champagne/95"
+              className="h-4 w-4 text-slateblue shrink-0 transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-champagne"
               strokeWidth={1.5}
             />
           </div>

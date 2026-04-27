@@ -6,40 +6,41 @@ export default {
     container: { center: true, padding: '1rem', screens: { '2xl': '1400px' } },
     extend: {
       colors: {
-        // Slate canvas + champagne paper cards. Cognac is the action color
-        // (warm, saturated against the soft canvas), hermès for urgency dots.
-        bg: '#8FA3BF',          // slate blue — entire canvas
+        // WHOOP-style: near-black canvas, dark cards, champagne hero numbers,
+        // slate-blue secondary accent, cognac for hairline borders, hermes for CTAs.
+        bg: '#080808',
         slateblue: '#8FA3BF',
-        inkslate: '#2F3E55',    // deeper accent surface (kept for future use)
-        cognac: '#8B5E3C',      // primary CTA fill, active states, links
-        hermes: '#E8600A',      // notification dots / urgency only
-        champagne: '#F2E7D3',   // card surface + light text on cognac
-        card: '#F2E7D3',        // champagne paper-card surface
-        body: '#4B3326',        // chocolate brown — softer, warmer than near-black
-        muted: '#7A6450',       // lighter warm muted (paired with chocolate body)
+        surface2: '#161616',
+        inkslate: '#161616',
+        cognac: '#8B5E3C',
+        hermes: '#E8600A',
+        champagne: '#E8D5B0',
+        card: '#111111',
+        body: '#F5F0E8',
+        muted: '#444444',
         success: '#2ECC71',
         warning: '#F39C12',
         error: '#E74C3C',
 
-        // shadcn semantic tokens mapped to brand
-        background: '#8FA3BF',
-        foreground: '#4B3326',
-        primary: { DEFAULT: '#8B5E3C', foreground: '#F2E7D3' }, // cognac CTA, champagne text
-        secondary: { DEFAULT: '#F2E7D3', foreground: '#4B3326' },
-        accent: { DEFAULT: '#8B5E3C', foreground: '#F2E7D3' },
-        destructive: { DEFAULT: '#E74C3C', foreground: '#F2E7D3' },
-        border: '#BFA47C',     // darker tan — gives champagne cards visible edges
-        input: '#F2E7D3',
-        ring: '#8B5E3C',
+        background: '#080808',
+        foreground: '#F5F0E8',
+        primary: { DEFAULT: '#E8600A', foreground: '#F5F0E8' },
+        secondary: { DEFAULT: '#161616', foreground: '#F5F0E8' },
+        accent: { DEFAULT: '#8B5E3C', foreground: '#F5F0E8' },
+        destructive: { DEFAULT: '#E74C3C', foreground: '#F5F0E8' },
+        border: 'rgba(139, 94, 60, 0.25)',
+        input: '#161616',
+        ring: '#E8600A',
       },
       fontFamily: {
         display: ['Manrope', 'system-ui', 'sans-serif'],
         sans: ['Manrope', 'system-ui', 'sans-serif'],
       },
-      borderRadius: { lg: '6px', md: '4px', sm: '2px' },
+      borderRadius: { lg: '16px', md: '10px', sm: '6px' },
       boxShadow: {
-        cognac: '0 0 0 1px rgba(139, 94, 60, 0.55), 0 8px 24px -8px rgba(139, 94, 60, 0.35)',
-        champagne: '0 8px 24px -8px rgba(232, 213, 176, 0.35)',
+        cognac: '0 0 20px rgba(139, 94, 60, 0.08)',
+        glow: '0 0 24px rgba(139, 94, 60, 0.12)',
+        champagne: '0 0 24px rgba(232, 213, 176, 0.08)',
       },
       keyframes: {
         'fade-in': { '0%': { opacity: 0 }, '100%': { opacity: 1 } },

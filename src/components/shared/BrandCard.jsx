@@ -1,31 +1,73 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Badge } from '@/components/ui/badge'
-import { Card } from '@/components/ui/card'
-import { ContractReadyBadge, RegisteredBusinessBadge } from './VerifiedBadges'
+import { cn } from '@/lib/utils'
 
 export default function BrandCard({ brand, onClick }) {
   const b = brand || {}
+  const cats = (b.categories || []).slice(0, 3)
+  const verified = b.gst_pan
+  const contractReady = Boolean(b.contract_vault_url)
+
   return (
-    <Card onClick={onClick} className="cursor-pointer flex flex-col gap-4" role="button" tabIndex={0}>
-      <div className="flex items-start gap-4">
-        <Avatar className="h-14 w-14 rounded-md">
-          <AvatarImage src={b.logo_url} alt={b.name} />
-          <AvatarFallback>{b.name?.[0] || 'B'}</AvatarFallback>
-        </Avatar>
-        <div className="min-w-0 flex-1">
-          <h3 className="font-display text-lg truncate">{b.name}</h3>
-          <p className="text-sm text-muted line-clamp-2">{b.description}</p>
+    <button
+      onClick={onClick}
+      className={cn(
+        'relative w-full aspect-[16/7] rounded-lg overflow-hidden',
+        'border border-cognac/15 group text-left',
+        'transition-all duration-500 hover:border-cognac/40',
+      )}
+    >
+      {b.logo_url && (
+        <img
+          src={b.logo_url}
+          alt={b.name}
+          loading="lazy"
+          draggable={false}
+          className="absolute inset-0 w-full h-full object-cover scale-110 blur-md opacity-65 transition-transform duration-700 group-hover:scale-[1.18]"
+        />
+      )}
+
+      <div className="absolute inset-0 bg-gradient-to-br from-cognac/45 via-black/70 to-black/95 pointer-events-none" />
+
+      {verified && (
+        <div className="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-cognac/95 text-champagne text-[9px] tracking-[0.18em] uppercase backdrop-blur-sm">
+          Verified
+        </div>
+      )}
+
+      {b.logo_url && (
+        <div className="absolute top-3 left-3">
+          <img
+            src={b.logo_url}
+            alt=""
+            draggable={false}
+            className="w-10 h-10 rounded-md border border-champagne/40 object-cover"
+          />
+        </div>
+      )}
+
+      <div className="absolute inset-x-0 bottom-0 p-4 text-white">
+        <h3 className="font-display text-xl leading-none">{b.name}</h3>
+        {b.description && (
+          <p className="text-[11px] text-white/80 mt-2 leading-relaxed line-clamp-2 max-w-prose">
+            {b.description}
+          </p>
+        )}
+
+        <div className="flex flex-wrap items-center gap-1.5 mt-3">
+          {cats.map((c) => (
+            <span
+              key={c}
+              className="px-2 py-0.5 rounded-full bg-white/10 text-white/85 text-[9px] tracking-[0.18em] uppercase backdrop-blur-sm"
+            >
+              {c}
+            </span>
+          ))}
+          {contractReady && (
+            <span className="px-2 py-0.5 rounded-full bg-cognac/90 text-champagne text-[9px] tracking-[0.18em] uppercase">
+              Contract ready
+            </span>
+          )}
         </div>
       </div>
-      <div className="flex flex-wrap gap-1.5">
-        {(b.categories || []).slice(0, 3).map((c) => (
-          <Badge key={c} variant="slate">{c}</Badge>
-        ))}
-      </div>
-      <div className="flex flex-wrap gap-1.5">
-        {b.gst_pan && <RegisteredBusinessBadge />}
-        {b.contract_vault_url && <ContractReadyBadge />}
-      </div>
-    </Card>
+    </button>
   )
 }

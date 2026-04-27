@@ -3,6 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { Switch } from '@/components/ui/switch'
 import { useAuth } from '@/contexts/AuthContext'
 import {
   AvailabilityBadge,
@@ -15,7 +16,7 @@ import {
 import { engagementColor, formatFollowers, formatINR } from '@/lib/utils'
 
 export default function Profile() {
-  const { profile, userType, signOut } = useAuth()
+  const { profile, userType, signOut, updateProfile } = useAuth()
   const isCreator = userType === 'creator'
 
   if (!profile) {
@@ -72,7 +73,7 @@ export default function Profile() {
       </header>
 
       {isCreator ? (
-        <CreatorSections profile={profile} taxComplete={taxComplete} />
+        <CreatorSections profile={profile} taxComplete={taxComplete} updateProfile={updateProfile} />
       ) : (
         <BrandSections profile={profile} contractUploaded={contractUploaded} />
       )}
@@ -96,13 +97,16 @@ function Section({ eyebrow, title, action, children }) {
   )
 }
 
-function CreatorSections({ profile, taxComplete }) {
+function CreatorSections({ profile, taxComplete, updateProfile }) {
   const pastCollabs = profile.past_collabs?.length
     ? profile.past_collabs
     : MOCK_CREATOR_COLLABS
   const memberSince = profile.created_at
     ? new Date(profile.created_at)
     : new Date('2026-03-01')
+
+  const showPastCollabs = profile.show_past_collabs !== false
+  const togglePastCollabs = (v) => updateProfile?.({ show_past_collabs: v })
 
   return (
     <>
@@ -137,8 +141,33 @@ function CreatorSections({ profile, taxComplete }) {
         </div>
       </Section>
 
-      <Section eyebrow="History" title="Past collaborations">
-        <CollabList items={pastCollabs} primaryKey="brand" />
+      <Section eyebrow="Activity" title="Creator Studio">
+        <div className="grid grid-cols-3 gap-2">
+          <LeatherStat label="Active" value="2" accent="↗ +1" />
+          <LeatherStat label="Completed" value="9" />
+          <LeatherStat label="Avg. Rating" value="4.9" />
+        </div>
+      </Section>
+
+      <Section
+        eyebrow="History"
+        title="Past collaborations"
+        action={
+          <label className="flex items-center gap-2.5 cursor-pointer">
+            <span className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">
+              {showPastCollabs ? 'Visible to brands' : 'Hidden from brands'}
+            </span>
+            <Switch checked={showPastCollabs} onCheckedChange={togglePastCollabs} />
+          </label>
+        }
+      >
+        {showPastCollabs ? (
+          <CollabList items={pastCollabs} primaryKey="brand" />
+        ) : (
+          <p className="text-sm italic text-muted">
+            Hidden from brands. Toggle on to share your collaboration history.
+          </p>
+        )}
       </Section>
 
       <Section eyebrow="Spoken" title="Languages">
