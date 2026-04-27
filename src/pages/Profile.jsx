@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button'
 import { useAuth } from '@/contexts/AuthContext'
 import {
   AvailabilityBadge,
-  CastinkLinkedBadge,
   ContractReadyBadge,
   RegisteredBusinessBadge,
   TaxReadyBadge,
@@ -27,7 +26,7 @@ export default function Profile() {
   const contractUploaded = !isCreator && profile.contract_vault_url
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-12">
       {/* Hero header */}
       <header className="space-y-5">
         <div className="flex items-start gap-5">
@@ -42,14 +41,14 @@ export default function Profile() {
             <AvatarFallback className="text-3xl">{profile.name?.[0]}</AvatarFallback>
           </Avatar>
           <div className="flex-1 min-w-0 pt-1">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-cognac/70">
+            <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">
               {isCreator ? 'Creator profile' : 'Brand profile'}
             </p>
-            <h1 className="font-display text-4xl mt-1 leading-tight truncate">
+            <h1 className="font-display text-5xl mt-2 leading-none truncate">
               {profile.name || 'Your name'}
             </h1>
             {isCreator && profile.handle && (
-              <p className="text-sm text-muted mt-0.5">{profile.handle}</p>
+              <p className="text-sm text-muted mt-2">{profile.handle}</p>
             )}
           </div>
         </div>
@@ -60,12 +59,10 @@ export default function Profile() {
           ) : <UnverifiedBadge />}
           {isCreator && taxComplete && <TaxReadyBadge />}
           {!isCreator && contractUploaded && <ContractReadyBadge />}
-          {isCreator && profile.castink_linked && <CastinkLinkedBadge />}
           {isCreator && <AvailabilityBadge availability={profile.availability} />}
         </div>
 
-        {/* Editorial action row — text links, not heavy buttons */}
-        <div className="flex items-center gap-5 pt-2 border-t border-cognac/15 text-[11px] uppercase tracking-[0.2em]">
+        <div className="flex items-center gap-5 pt-2 border-t border-cognac/20 text-[10px] uppercase tracking-[0.22em]">
           <Link to="/profile/edit" className="text-cognac hover:underline">Edit profile</Link>
           <span className="text-cognac/30">/</span>
           <Link to="/settings" className="text-muted hover:text-cognac transition-colors">Settings</Link>
@@ -83,13 +80,14 @@ export default function Profile() {
   )
 }
 
+/** Unboxed editorial section — no card chrome, just typography on canvas. */
 function Section({ eyebrow, title, action, children }) {
   return (
-    <section>
+    <section className="border-t border-cognac/15 pt-6">
       <div className="flex items-end justify-between mb-4">
         <div>
           <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">{eyebrow}</p>
-          <h2 className="font-display text-2xl mt-1">{title}</h2>
+          <h2 className="font-display text-3xl mt-2 leading-none">{title}</h2>
         </div>
         {action}
       </div>
@@ -101,28 +99,27 @@ function Section({ eyebrow, title, action, children }) {
 function CreatorSections({ profile, taxComplete }) {
   return (
     <>
-      {/* Stats — divider, not boxes */}
       <Section eyebrow="At a glance" title="Reach">
-        <Card className="grid grid-cols-2 divide-x divide-cognac/15">
+        <div className="grid grid-cols-2 divide-x divide-cognac/15">
           <div className="pr-5">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-muted">Followers</p>
-            <p className="font-display text-4xl mt-1">{formatFollowers(profile.follower_count)}</p>
+            <p className="text-[10px] uppercase tracking-[0.22em] text-muted">Followers</p>
+            <p className="font-display text-5xl mt-2 leading-none">
+              {formatFollowers(profile.follower_count)}
+            </p>
           </div>
           <div className="pl-5">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-muted">Engagement</p>
-            <p className={`font-display text-4xl mt-1 ${engagementColor(profile.engagement_rate)}`}>
+            <p className="text-[10px] uppercase tracking-[0.22em] text-muted">Engagement</p>
+            <p className={`font-display text-5xl mt-2 leading-none ${engagementColor(profile.engagement_rate)}`}>
               {profile.engagement_rate != null ? `${Number(profile.engagement_rate).toFixed(1)}%` : '—'}
             </p>
           </div>
-        </Card>
+        </div>
       </Section>
 
       <Section eyebrow="In their words" title="Bio">
-        <Card>
-          <p className="text-sm leading-relaxed text-cognac/90">
-            {profile.bio || <span className="italic text-muted">No bio yet.</span>}
-          </p>
-        </Card>
+        <p className="text-sm leading-relaxed text-cognac/90 max-w-prose">
+          {profile.bio || <span className="italic text-muted">No bio yet.</span>}
+        </p>
       </Section>
 
       <Section eyebrow="Categories" title="Niches">
@@ -134,18 +131,18 @@ function CreatorSections({ profile, taxComplete }) {
       </Section>
 
       <Section eyebrow="Pricing" title="Rate card">
-        <Card className="divide-y divide-cognac/15">
+        <div className="divide-y divide-cognac/15">
           {Object.entries(profile.rate_card || {}).map(([k, v]) => (
-            <div key={k} className="flex items-baseline justify-between py-2.5 first:pt-0 last:pb-0">
-              <span className="text-[11px] uppercase tracking-[0.18em] text-muted capitalize">
+            <div key={k} className="flex items-baseline justify-between py-3">
+              <span className="text-[11px] uppercase tracking-[0.22em] text-muted capitalize">
                 {k.replace(/_/g, ' ')}
               </span>
-              <span className="font-display text-base">
+              <span className="font-display text-xl">
                 {v ? formatINR(v) : <span className="text-muted/60">—</span>}
               </span>
             </div>
           ))}
-        </Card>
+        </div>
       </Section>
 
       {!taxComplete && (
@@ -170,11 +167,9 @@ function BrandSections({ profile, contractUploaded }) {
   return (
     <>
       <Section eyebrow="The story" title="About">
-        <Card>
-          <p className="text-sm leading-relaxed text-cognac/90">
-            {profile.description || <span className="italic text-muted">No description yet.</span>}
-          </p>
-        </Card>
+        <p className="text-sm leading-relaxed text-cognac/90 max-w-prose">
+          {profile.description || <span className="italic text-muted">No description yet.</span>}
+        </p>
       </Section>
 
       <Section eyebrow="Categories" title="Verticals">
@@ -187,42 +182,36 @@ function BrandSections({ profile, contractUploaded }) {
 
       {profile.target_audience && (
         <Section eyebrow="Target audience" title="Customer">
-          <Card>
-            <p className="text-sm leading-relaxed text-cognac/90">{profile.target_audience}</p>
-          </Card>
+          <p className="text-sm leading-relaxed text-cognac/90 max-w-prose">
+            {profile.target_audience}
+          </p>
         </Section>
       )}
 
       {budgetRange && (
         <Section eyebrow="Typical budget" title="Range">
-          <Card>
-            <p className="font-display text-3xl">{budgetRange}</p>
-            <p className="text-[11px] uppercase tracking-[0.18em] text-muted mt-1">per campaign</p>
-          </Card>
+          <p className="font-display text-4xl leading-none">{budgetRange}</p>
+          <p className="text-[10px] uppercase tracking-[0.22em] text-muted mt-3">per campaign</p>
         </Section>
       )}
 
       <Section
         eyebrow="Compliance"
         title="Contract Vault"
-        action={
-          contractUploaded ? <Badge variant="cognac">Uploaded</Badge> : null
-        }
+        action={contractUploaded ? <Badge variant="cognac">Uploaded</Badge> : null}
       >
-        <Card>
-          {contractUploaded ? (
+        {contractUploaded ? (
+          <p className="text-sm text-cognac/90 leading-relaxed max-w-prose">
+            Your standard collaboration contract is on file. Creators acknowledge a copy at deal confirmation.
+          </p>
+        ) : (
+          <div className="space-y-4 max-w-prose">
             <p className="text-sm text-cognac/90 leading-relaxed">
-              Your standard collaboration contract is on file. Creators acknowledge a copy at deal confirmation.
+              Upload a contract template to begin paid collaborations. Creators tap-acknowledge it at deal confirmation — not a legal e-signature, just a record of receipt.
             </p>
-          ) : (
-            <div className="space-y-3">
-              <p className="text-sm text-cognac/90 leading-relaxed">
-                Upload a contract template to begin paid collaborations. Creators tap-acknowledge it at deal confirmation — not a legal e-signature, just a record of receipt.
-              </p>
-              <Button size="sm" asChild><Link to="/profile/edit#contract">Upload contract</Link></Button>
-            </div>
-          )}
-        </Card>
+            <Button size="sm" asChild><Link to="/profile/edit#contract">Upload contract</Link></Button>
+          </div>
+        )}
       </Section>
     </>
   )
@@ -232,8 +221,8 @@ function ActionCard({ eyebrow, title, body, cta, to }) {
   return (
     <Card className="border-l-2 border-l-cognac">
       <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">{eyebrow}</p>
-      <h3 className="font-display text-xl mt-1">{title}</h3>
-      <p className="text-sm text-cognac/85 mt-2 leading-relaxed">{body}</p>
+      <h3 className="font-display text-2xl mt-2">{title}</h3>
+      <p className="text-sm text-cognac/85 mt-3 leading-relaxed">{body}</p>
       <Button size="sm" asChild className="mt-4"><Link to={to}>{cta}</Link></Button>
     </Card>
   )

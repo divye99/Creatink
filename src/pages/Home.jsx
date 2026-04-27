@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import CreatorStatCard from '@/components/shared/CreatorStatCard'
 import CampaignCard from '@/components/shared/CampaignCard'
 import { matchCreatorsForBrand, matchCampaignsForCreator } from '@/lib/match'
+import { cn } from '@/lib/utils'
 
 export default function Home() {
   const { profile, userType } = useAuth()
@@ -26,50 +27,48 @@ export default function Home() {
       ? matchCreatorsForBrand(id, profile.categories || [])
       : matchCampaignsForCreator(id, profile.niches || [])
     fetcher
-      .then((rows) => setMatches(rows.slice(0, 3)))
+      .then((rows) => setMatches(rows.slice(0, 4)))
       .catch((e) => { console.error('match error', e); setMatches([]) })
       .finally(() => setMatching(false))
   }, [profile, isBrand])
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-12">
+      {/* Hero greeting */}
       <header className="pt-2">
-        <p className="text-[10px] uppercase tracking-[0.2em] text-cognac/70">Welcome back</p>
-        <h1 className="font-display text-4xl mt-2">Hi, {greetingName}</h1>
+        <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">Welcome back</p>
+        <h1 className="font-display text-5xl mt-3 leading-none">Hi, {greetingName}</h1>
       </header>
 
-      <section className="grid grid-cols-2 gap-3 stagger">
-        <Link to="/whos-looking" className="block h-full">
-          <Card className="cursor-pointer h-full flex flex-col">
-            <div className="flex items-center justify-between">
-              <span className="text-[10px] uppercase tracking-[0.18em] text-cognac/70">Who's Looking</span>
-              <span className="dot-hermes" />
-            </div>
-            <p className="font-display text-3xl mt-2.5">{isBrand ? 9 : 4}</p>
-            <p className="text-[11px] text-muted/90 mt-1 leading-relaxed">
-              {isBrand ? 'visiting your campaigns' : 'visiting your profile'}
-            </p>
-          </Card>
+      {/* Unboxed stat row — typography on hairlines */}
+      <section className="grid grid-cols-2 gap-8 border-y border-cognac/20 py-7 stagger">
+        <Link to="/whos-looking" className="block group">
+          <div className="flex items-center justify-between">
+            <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">Who's Looking</p>
+            <span className="dot-hermes" />
+          </div>
+          <p className="font-display text-5xl mt-3 leading-none transition-transform group-hover:translate-x-0.5">
+            {isBrand ? 9 : 4}
+          </p>
+          <p className="text-[11px] text-muted/85 mt-2">
+            {isBrand ? 'visiting your campaigns' : 'visiting your profile'}
+          </p>
         </Link>
-        <Link to="/missed-opportunities" className="block h-full">
-          <Card className="cursor-pointer h-full flex flex-col">
-            <div className="flex items-center justify-between">
-              <span className="text-[10px] uppercase tracking-[0.18em] text-cognac/70">Invitations</span>
-              <span className="opacity-0 dot-hermes" aria-hidden />
-            </div>
-            <p className="font-display text-3xl mt-2.5">2</p>
-            <p className="text-[11px] text-muted/90 mt-1 leading-relaxed">new in your inbox</p>
-          </Card>
+        <Link to="/missed-opportunities" className="block group">
+          <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">Invitations</p>
+          <p className="font-display text-5xl mt-3 leading-none transition-transform group-hover:translate-x-0.5">2</p>
+          <p className="text-[11px] text-muted/85 mt-2">new in your inbox</p>
         </Link>
       </section>
 
+      {/* Smart Matches — alternating editorial layout */}
       <section>
-        <div className="flex items-end justify-between mb-5">
+        <div className="flex items-end justify-between mb-6">
           <div>
-            <p className="text-[10px] uppercase tracking-[0.2em] text-cognac/70">Curated for you</p>
-            <h2 className="font-display text-2xl mt-1">Smart Matches</h2>
+            <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">Curated for you</p>
+            <h2 className="font-display text-3xl mt-2 leading-none">Smart Matches</h2>
           </div>
-          <Link to="/discover" className="text-[11px] uppercase tracking-[0.18em] text-cognac hover:underline">
+          <Link to="/discover" className="text-[10px] uppercase tracking-[0.22em] text-cognac hover:underline">
             See all
           </Link>
         </div>
@@ -82,55 +81,60 @@ export default function Home() {
               ? 'Add categories to your brand profile to see matched creators.'
               : 'Add niches to your profile to see matched campaigns.'}
           </p>
-        ) : isBrand ? (
-          <div className="grid gap-3 stagger">
-            {matches.map((c) => (
-              <CreatorStatCard
-                key={c.creator_id || c.user_id}
-                creator={c}
-                onClick={() => nav(`/pitch/${c.creator_id || c.user_id}`)}
-              />
-            ))}
-          </div>
         ) : (
-          <div className="grid gap-3 stagger">
-            {matches.map((c) => (
-              <CampaignCard
-                key={c.campaign_id || c.id}
-                campaign={c}
-                brandName={c.brand_name}
-                onClick={() => nav(`/campaigns/${c.campaign_id || c.id}`)}
-                trending={c.score >= 90}
-              />
-            ))}
+          <div className="space-y-6 stagger -mx-4">
+            {matches.map((c, i) => {
+              const flushLeft = i % 2 === 0
+              return (
+                <div
+                  key={c.creator_id || c.user_id || c.campaign_id || c.id}
+                  className={cn(
+                    'transition-transform duration-500',
+                    flushLeft ? 'pr-12 sm:pr-20' : 'pl-12 sm:pl-20',
+                  )}
+                >
+                  {isBrand ? (
+                    <CreatorStatCard
+                      creator={c}
+                      onClick={() => nav(`/pitch/${c.creator_id || c.user_id}`)}
+                    />
+                  ) : (
+                    <CampaignCard
+                      campaign={c}
+                      brandName={c.brand_name}
+                      onClick={() => nav(`/campaigns/${c.campaign_id || c.id}`)}
+                      trending={c.score >= 90}
+                    />
+                  )}
+                </div>
+              )
+            })}
           </div>
         )}
       </section>
 
+      {/* Trending — unboxed */}
       <section>
-        <div className="mb-4">
-          <p className="text-[10px] uppercase tracking-[0.2em] text-cognac/70">In motion this week</p>
-          <h2 className="font-display text-2xl mt-1">Trending</h2>
-        </div>
-        <div className="flex flex-wrap gap-2">
+        <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">In motion this week</p>
+        <h2 className="font-display text-3xl mt-2 leading-none">Trending</h2>
+        <div className="flex flex-wrap gap-1.5 mt-5">
           {['Beauty','Tech','Food','Travel','Fitness'].map((n, i) => (
-            <Badge key={n} variant={i < 2 ? 'hermes' : 'slate'}>{n}</Badge>
+            <Badge key={n} variant={i < 2 ? 'hermes' : 'cognac'}>{n}</Badge>
           ))}
         </div>
       </section>
 
+      {/* Brand Studio CTA — only for brands */}
       {isBrand && (
-        <section>
-          <Card className="text-center py-10 px-6">
-            <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">Brand Studio</p>
-            <h3 className="font-display text-2xl mt-2">Ready to launch?</h3>
-            <p className="text-sm text-muted mt-2 max-w-sm mx-auto leading-relaxed">
-              Post a brief, get matched with creators in your niche, and run end-to-end.
-            </p>
-            <Button className="mt-5" asChild>
-              <Link to="/campaigns/new">Create campaign</Link>
-            </Button>
-          </Card>
+        <section className="border-t border-cognac/20 pt-10">
+          <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">Brand Studio</p>
+          <h3 className="font-display text-3xl mt-2 leading-tight max-w-md">Ready to launch?</h3>
+          <p className="text-sm text-muted mt-3 max-w-md leading-relaxed">
+            Post a brief, get matched with creators in your niche, and run end-to-end.
+          </p>
+          <Button className="mt-5" asChild>
+            <Link to="/campaigns/new">Create campaign</Link>
+          </Button>
         </section>
       )}
     </div>

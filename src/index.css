@@ -18,8 +18,15 @@ body {
 
 h1, h2, h3, h4, h5, h6, .font-display {
   font-family: 'Cormorant Garamond', Georgia, serif;
-  letter-spacing: -0.022em;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.018em;
   line-height: 1.05;
+}
+/* Roman (non-italic) variant for places where italic is too much */
+.font-display-roman {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: normal;
   font-weight: 500;
 }
 
@@ -53,17 +60,16 @@ p, span, div, label, button, input, textarea, select {
   transform: translateY(-2px);
 }
 
-/* Notification dot — cognac (calm awareness, not alarm).
-   Hermès orange reserved for true urgency moments only. */
+/* Hermès orange dot — for unread / urgency / live indicators (per spec) */
 .dot-hermes {
-  width: 5px; height: 5px; border-radius: 9999px;
-  background: #8B5E3C;
-  box-shadow: 0 0 0 1.5px rgba(139, 94, 60, 0.18);
-}
-.dot-urgent {
   width: 6px; height: 6px; border-radius: 9999px;
   background: #E8600A;
-  box-shadow: 0 0 0 2px rgba(232, 96, 10, 0.14);
+  box-shadow: 0 0 0 2px rgba(232, 96, 10, 0.18);
+}
+.dot-urgent {
+  width: 7px; height: 7px; border-radius: 9999px;
+  background: #E8600A;
+  box-shadow: 0 0 0 2.5px rgba(232, 96, 10, 0.22);
 }
 
 /* Page transition — slow opacity-only fade, no slide.
