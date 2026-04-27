@@ -46,7 +46,7 @@ export default function Settings() {
       <h1 className="font-display text-3xl">Settings</h1>
 
       <Card>
-        <h3 className="font-display text-lg flex items-center gap-2"><Sparkles className="h-5 w-5 text-cognac" /> AI Features</h3>
+        <h3 className="font-display text-2xl">AI Features</h3>
         <p className="text-xs text-muted mt-1">All AI features are off by default and revocable instantly.</p>
 
         <div className="mt-4 space-y-4">
@@ -99,7 +99,7 @@ export default function Settings() {
       </Card>
 
       <Card>
-        <h3 className="font-display text-lg flex items-center gap-2"><Link2 className="h-5 w-5 text-cognac" /> CASTINK Linked Stats</h3>
+        <h3 className="font-display text-2xl">CASTINK Linked Stats</h3>
         <p className="text-xs text-muted mt-1">Choose which Creatink stats are visible on your CASTINK profile.</p>
         <div className="mt-4 space-y-3">
           {Object.entries(castinkVis).map(([k, v]) => (
@@ -112,7 +112,7 @@ export default function Settings() {
       </Card>
 
       <Card>
-        <h3 className="font-display text-lg flex items-center gap-2"><Globe className="h-5 w-5 text-cognac" /> Language</h3>
+        <h3 className="font-display text-2xl">Language</h3>
         <div className="mt-3 grid grid-cols-2 gap-2">
           {[
             { code: 'en', label: 'English' },

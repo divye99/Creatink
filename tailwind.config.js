@@ -33,10 +33,10 @@ export default {
         ring: '#8B5E3C',
       },
       fontFamily: {
-        display: ['"Playfair Display"', 'serif'],
+        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
-      borderRadius: { lg: '10px', md: '6px', sm: '3px' },
+      borderRadius: { lg: '6px', md: '4px', sm: '2px' },
       boxShadow: {
         cognac: '0 0 0 1px rgba(139, 94, 60, 0.55), 0 8px 24px -8px rgba(139, 94, 60, 0.35)',
         champagne: '0 8px 24px -8px rgba(232, 213, 176, 0.35)',

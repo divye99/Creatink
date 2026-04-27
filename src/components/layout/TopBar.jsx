@@ -22,12 +22,12 @@ export default function TopBar({ title }) {
               <option key={l.code} value={l.code} className="bg-card">{l.label}</option>
             ))}
           </select>
-          <Link to="/notifications" className="p-2 text-muted hover:text-cognac relative">
-            <Bell className="h-5 w-5" />
+          <Link to="/notifications" className="p-2 text-body/50 hover:text-cognac relative">
+            <Bell className="h-[18px] w-[18px]" strokeWidth={1.5} />
             <span className="dot-hermes absolute top-1.5 right-1.5" />
           </Link>
-          <Link to="/settings" className="p-2 text-muted hover:text-cognac">
-            <Settings className="h-5 w-5" />
+          <Link to="/settings" className="p-2 text-body/50 hover:text-cognac">
+            <Settings className="h-[18px] w-[18px]" strokeWidth={1.5} />
           </Link>
         </div>
       </div>

@@ -17,10 +17,11 @@ export default function MissedOpportunities() {
       </button>
 
       <header>
-        <h1 className="font-display text-3xl flex items-center gap-2"><Inbox className="h-7 w-7 text-cognac" />
-          {userType === 'brand' ? "Creator Outreach You Missed" : "Missed Opportunities"}
+        <p className="text-[10px] uppercase tracking-[0.22em] text-muted">AI-summarised invitations</p>
+        <h1 className="font-display text-4xl mt-1">
+          {userType === 'brand' ? 'Creator Outreach' : 'New Invitations'}
         </h1>
-        <p className="text-sm text-muted mt-1">AI-summarised collaboration emails. Raw email content is never stored.</p>
+        <p className="text-sm text-muted mt-2 leading-relaxed">Raw email content is never stored — only the summary, brand, and date.</p>
       </header>
 
       <div className="grid gap-3">

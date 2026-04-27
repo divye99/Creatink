@@ -30,8 +30,9 @@ export default function WhosLooking() {
       </button>
 
       <header>
-        <h1 className="font-display text-3xl flex items-center gap-2"><Eye className="h-7 w-7 text-cognac" /> Who's Looking</h1>
-        <p className="text-sm text-muted mt-1">Mutual opt-in. Data shown only when both parties have enabled this feature.</p>
+        <p className="text-[10px] uppercase tracking-[0.22em] text-muted">Mutual opt-in</p>
+        <h1 className="font-display text-4xl mt-1">Who's Looking</h1>
+        <p className="text-sm text-muted mt-2 leading-relaxed">Data shown only when both parties have enabled this feature.</p>
       </header>
 
       <Card className="bg-gradient-to-br from-card to-cognac/15">

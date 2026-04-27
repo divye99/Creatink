@@ -3,13 +3,13 @@ import { cn } from '@/lib/utils'
 
 export const Card = React.forwardRef(({ className, glow = true, variant = 'default', ...props }, ref) => {
   const surface =
-    variant === 'paper' ? 'bg-champagne text-bg' :
-    variant === 'ink'   ? 'bg-inkslate text-body' :
-                          'bg-card text-body'
+    variant === 'outline' ? 'bg-transparent border-cognac/40 text-cognac'
+  : variant === 'ink'     ? 'bg-inkslate border-inkslate text-body'
+                          : 'bg-card border-border text-cognac'  // champagne paper, cognac type
   return (
     <div
       ref={ref}
-      className={cn('rounded-lg border border-border p-6', surface, glow && 'card-glow', className)}
+      className={cn('rounded-lg border p-7', surface, glow && 'card-glow', className)}
       {...props}
     />
   )

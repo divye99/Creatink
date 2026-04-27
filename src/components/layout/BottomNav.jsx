@@ -16,7 +16,7 @@ export default function BottomNav() {
   const { lang, unread } = useApp()
   return (
     <nav
-      className="fixed bottom-0 inset-x-0 z-40 border-t border-border bg-bg/95 backdrop-blur supports-[backdrop-filter]:bg-bg/80"
+      className="fixed bottom-0 inset-x-0 z-40 border-t border-border/40 bg-bg/95 backdrop-blur supports-[backdrop-filter]:bg-bg/85"
       style={{ paddingBottom: 'env(safe-area-inset-bottom)' }}
     >
       <ul className="mx-auto max-w-2xl grid grid-cols-5">
@@ -26,16 +26,24 @@ export default function BottomNav() {
               to={to}
               className={({ isActive }) =>
                 cn(
-                  'relative flex flex-col items-center justify-center gap-0.5 py-2.5 text-[10px] uppercase tracking-wider',
-                  isActive ? 'text-cognac' : 'text-muted hover:text-body'
+                  'relative flex flex-col items-center justify-center gap-1.5 py-3 text-[9px] uppercase tracking-[0.18em] transition',
+                  isActive
+                    ? 'text-cognac'
+                    : 'text-body/40 hover:text-body/80'
                 )
               }
             >
-              <span className="relative">
-                <Icon className="h-5 w-5" />
-                {dot && unread > 0 && <span className="dot-hermes absolute -top-0.5 -right-1.5" />}
-              </span>
-              <span>{t(lang, key)}</span>
+              {({ isActive }) => (
+                <>
+                  <span className="relative">
+                    <Icon className="h-[18px] w-[18px]" strokeWidth={1.5} />
+                    {dot && unread > 0 && (
+                      <span className="dot-hermes absolute -top-0.5 -right-1.5" />
+                    )}
+                  </span>
+                  <span className={cn(isActive ? 'opacity-100' : 'opacity-90')}>{t(lang, key)}</span>
+                </>
+              )}
             </NavLink>
           </li>
         ))}
