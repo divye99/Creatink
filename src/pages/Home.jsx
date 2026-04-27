@@ -82,15 +82,15 @@ export default function Home() {
               : 'Add niches to your profile to see matched campaigns.'}
           </p>
         ) : (
-          <div className="space-y-6 stagger -mx-4">
+          <div className="space-y-6 stagger">
             {matches.map((c, i) => {
               const flushLeft = i % 2 === 0
               return (
                 <div
                   key={c.creator_id || c.user_id || c.campaign_id || c.id}
                   className={cn(
-                    'transition-transform duration-500',
-                    flushLeft ? 'pr-12 sm:pr-20' : 'pl-12 sm:pl-20',
+                    'max-w-sm transition-transform duration-500',
+                    flushLeft ? 'mr-auto' : 'ml-auto',
                   )}
                 >
                   {isBrand ? (
