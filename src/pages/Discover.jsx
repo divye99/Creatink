@@ -3,13 +3,17 @@ import { useNavigate } from 'react-router-dom'
 import { Input } from '@/components/ui/input'
 import { Chip } from '@/components/ui/chip'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Switch } from '@/components/ui/switch'
+import { Button } from '@/components/ui/button'
+import {
+  Dialog, DialogContent, DialogTitle, DialogHeader, DialogTrigger,
+} from '@/components/ui/dialog'
 import CreatorStatCard from '@/components/shared/CreatorStatCard'
 import BrandCard from '@/components/shared/BrandCard'
 import CampaignCard from '@/components/shared/CampaignCard'
 import { DEMO_CREATORS, DEMO_BRANDS, DEMO_CAMPAIGNS } from '@/lib/demoData'
 import { useAuth } from '@/contexts/AuthContext'
-import { NICHES } from '@/lib/utils'
+import { NICHES, cn } from '@/lib/utils'
 import { Search, Sliders } from 'lucide-react'
 
 const FOLLOWER_BANDS = [
@@ -19,15 +23,35 @@ const FOLLOWER_BANDS = [
   { label: '100–200K',min: 100000,   max: 200000 },
 ]
 
+const SORTS = [
+  { value: 'relevance',  label: 'Most relevant' },
+  { value: 'followers',  label: 'Most followers' },
+  { value: 'engagement', label: 'Highest engagement' },
+  { value: 'newest',     label: 'Newest' },
+]
+
 export default function Discover() {
   const { userType } = useAuth()
   const nav = useNavigate()
   const [tab, setTab] = useState(userType === 'brand' ? 'creators' : 'campaigns')
   const [q, setQ] = useState('')
+
+  // Creator filters
   const [niche, setNiche] = useState(null)
   const [band, setBand] = useState(0)
   const [verifiedOnly, setVerifiedOnly] = useState(false)
   const [sort, setSort] = useState('relevance')
+  const [refineOpen, setRefineOpen] = useState(false)
+
+  const activeFilters =
+    (niche ? 1 : 0) +
+    (band > 0 ? 1 : 0) +
+    (sort !== 'relevance' ? 1 : 0) +
+    (verifiedOnly ? 1 : 0)
+
+  const clearFilters = () => {
+    setNiche(null); setBand(0); setSort('relevance'); setVerifiedOnly(false)
+  }
 
   const filteredCreators = useMemo(() => {
     let arr = [...DEMO_CREATORS]
@@ -67,14 +91,14 @@ export default function Discover() {
   }, [q])
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-8">
       <header>
-        <h1 className="font-display text-3xl">Discover</h1>
-        <p className="text-sm text-muted mt-1">Find the right partner for your next collab.</p>
+        <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">Search the platform</p>
+        <h1 className="font-display text-4xl mt-2 leading-none">Discover</h1>
       </header>
 
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted" />
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted" strokeWidth={1.5} />
         <Input
           value={q} onChange={(e) => setQ(e.target.value)}
           placeholder="Search by name, handle, niche…"
@@ -83,42 +107,41 @@ export default function Discover() {
       </div>
 
       <Tabs value={tab} onValueChange={setTab}>
-        <TabsList className="w-full grid grid-cols-3">
-          <TabsTrigger value="creators">Creators</TabsTrigger>
-          <TabsTrigger value="brands">Brands</TabsTrigger>
-          <TabsTrigger value="campaigns">Campaigns</TabsTrigger>
-        </TabsList>
+        <div className="flex items-center justify-between gap-3">
+          <TabsList className="grid grid-cols-3 flex-1">
+            <TabsTrigger value="creators">Creators</TabsTrigger>
+            <TabsTrigger value="brands">Brands</TabsTrigger>
+            <TabsTrigger value="campaigns">Campaigns</TabsTrigger>
+          </TabsList>
+
+          {tab === 'creators' && (
+            <RefineTrigger
+              activeFilters={activeFilters}
+              open={refineOpen}
+              setOpen={setRefineOpen}
+              niche={niche} setNiche={setNiche}
+              band={band} setBand={setBand}
+              sort={sort} setSort={setSort}
+              verifiedOnly={verifiedOnly} setVerifiedOnly={setVerifiedOnly}
+              clearFilters={clearFilters}
+            />
+          )}
+        </div>
 
         <TabsContent value="creators">
-          <div className="space-y-4">
-            <div className="flex flex-wrap gap-2">
-              <Chip active={!niche} onClick={() => setNiche(null)}>All niches</Chip>
-              {NICHES.slice(0, 8).map((n) => (
-                <Chip key={n} active={niche === n} onClick={() => setNiche(niche === n ? null : n)}>{n}</Chip>
-              ))}
+          {activeFilters > 0 && (
+            <div className="mb-5 flex flex-wrap items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-cognac/70">
+              <span>{filteredCreators.length} matches</span>
+              <span className="text-cognac/30">·</span>
+              <button onClick={clearFilters} className="text-cognac hover:underline">
+                Clear all
+              </button>
             </div>
-            <div className="flex items-center gap-2 text-xs">
-              <Sliders className="h-3.5 w-3.5 text-muted" />
-              <Select value={String(band)} onValueChange={(v) => setBand(Number(v))}>
-                <SelectTrigger className="h-9 w-[160px]"><SelectValue /></SelectTrigger>
-                <SelectContent>{FOLLOWER_BANDS.map((b, i) => <SelectItem key={i} value={String(i)}>{b.label}</SelectItem>)}</SelectContent>
-              </Select>
-              <Select value={sort} onValueChange={setSort}>
-                <SelectTrigger className="h-9 w-[160px]"><SelectValue /></SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="relevance">Most Relevant</SelectItem>
-                  <SelectItem value="followers">Most Followers</SelectItem>
-                  <SelectItem value="engagement">Highest Engagement</SelectItem>
-                  <SelectItem value="newest">Newest</SelectItem>
-                </SelectContent>
-              </Select>
-              <Chip active={verifiedOnly} onClick={() => setVerifiedOnly(!verifiedOnly)}>Verified only</Chip>
-            </div>
-            <div className="grid gap-3 stagger">
-              {filteredCreators.map((c) => (
-                <CreatorStatCard key={c.user_id} creator={c} onClick={() => nav(`/pitch/${c.user_id}`)} />
-              ))}
-            </div>
+          )}
+          <div className="grid gap-3 stagger">
+            {filteredCreators.map((c) => (
+              <CreatorStatCard key={c.user_id} creator={c} onClick={() => nav(`/pitch/${c.user_id}`)} />
+            ))}
           </div>
         </TabsContent>
 
@@ -142,6 +165,84 @@ export default function Discover() {
           </div>
         </TabsContent>
       </Tabs>
+    </div>
+  )
+}
+
+function RefineTrigger({
+  activeFilters, open, setOpen,
+  niche, setNiche, band, setBand, sort, setSort,
+  verifiedOnly, setVerifiedOnly, clearFilters,
+}) {
+  return (
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
+        <button
+          className={cn(
+            'inline-flex items-center gap-2 px-3 h-9 rounded-md',
+            'text-[10px] uppercase tracking-[0.22em]',
+            'border border-cognac/40 text-cognac hover:bg-cognac/5 transition-colors',
+            'shrink-0'
+          )}
+        >
+          <Sliders className="h-3.5 w-3.5" strokeWidth={1.5} />
+          Refine
+          {activeFilters > 0 && (
+            <span className="inline-flex items-center justify-center min-w-[16px] h-4 px-1 rounded-full bg-cognac text-champagne text-[9px] tracking-normal">
+              {activeFilters}
+            </span>
+          )}
+        </button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">Filters</p>
+          <DialogTitle className="text-3xl">Refine</DialogTitle>
+        </DialogHeader>
+
+        <div className="space-y-7 pt-2">
+          <FilterGroup title="Niche">
+            <Chip active={!niche} onClick={() => setNiche(null)}>All</Chip>
+            {NICHES.map((n) => (
+              <Chip key={n} active={niche === n} onClick={() => setNiche(niche === n ? null : n)}>{n}</Chip>
+            ))}
+          </FilterGroup>
+
+          <FilterGroup title="Followers">
+            {FOLLOWER_BANDS.map((b, i) => (
+              <Chip key={i} active={band === i} onClick={() => setBand(i)}>{b.label}</Chip>
+            ))}
+          </FilterGroup>
+
+          <FilterGroup title="Sort by">
+            {SORTS.map((o) => (
+              <Chip key={o.value} active={sort === o.value} onClick={() => setSort(o.value)}>{o.label}</Chip>
+            ))}
+          </FilterGroup>
+
+          <div className="flex items-center justify-between pt-1">
+            <div>
+              <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">Verified only</p>
+              <p className="text-[11px] text-muted/85 mt-1">Show only creators with social OAuth verified</p>
+            </div>
+            <Switch checked={verifiedOnly} onCheckedChange={setVerifiedOnly} />
+          </div>
+        </div>
+
+        <div className="flex gap-2 pt-5 mt-5 border-t border-cognac/15">
+          <Button variant="outline" onClick={clearFilters} className="flex-1">Clear all</Button>
+          <Button onClick={() => setOpen(false)} className="flex-1">Apply</Button>
+        </div>
+      </DialogContent>
+    </Dialog>
+  )
+}
+
+function FilterGroup({ title, children }) {
+  return (
+    <div>
+      <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70 mb-3">{title}</p>
+      <div className="flex flex-wrap gap-1.5">{children}</div>
     </div>
   )
 }
