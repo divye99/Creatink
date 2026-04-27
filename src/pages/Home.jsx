@@ -1,14 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '@/contexts/AuthContext'
-import { Card } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import CampaignCard from '@/components/shared/CampaignCard'
 import SmartMatchesStack from '@/components/shared/SmartMatchesStack'
 import DynamicStatCard from '@/components/shared/DynamicStatCard'
 import { matchCreatorsForBrand, matchCampaignsForCreator } from '@/lib/match'
-import { cn } from '@/lib/utils'
 
 export default function Home() {
   const { profile, userType } = useAuth()
@@ -86,31 +82,16 @@ export default function Home() {
           </p>
         ) : isBrand ? (
           <SmartMatchesStack
+            variant="creator"
             matches={matches}
             onTap={(c) => nav(`/pitch/${c.creator_id || c.user_id}`)}
           />
         ) : (
-          <div className="space-y-6 stagger">
-            {matches.map((c, i) => {
-              const flushLeft = i % 2 === 0
-              return (
-                <div
-                  key={c.campaign_id || c.id}
-                  className={cn(
-                    'max-w-sm transition-transform duration-500',
-                    flushLeft ? 'mr-auto' : 'ml-auto',
-                  )}
-                >
-                  <CampaignCard
-                    campaign={c}
-                    brandName={c.brand_name}
-                    onClick={() => nav(`/campaigns/${c.campaign_id || c.id}`)}
-                    trending={c.score >= 90}
-                  />
-                </div>
-              )
-            })}
-          </div>
+          <SmartMatchesStack
+            variant="campaign"
+            matches={matches}
+            onTap={(c) => nav(`/campaigns/${c.campaign_id || c.id}`)}
+          />
         )}
       </section>
 

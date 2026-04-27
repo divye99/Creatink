@@ -1,14 +1,10 @@
 import { useEffect, useState } from 'react'
 import SwipeableCard from './SwipeableCard'
+import SwipeableCampaignCard from './SwipeableCampaignCard'
 
-/**
- * Stack of SwipeableCards. Top card is interactive; cards behind
- * are visual peeks. Swipe up dismisses the front card.
- */
-export default function SmartMatchesStack({ matches, onTap }) {
+export default function SmartMatchesStack({ matches, onTap, variant = 'creator' }) {
   const [stack, setStack] = useState(matches || [])
 
-  // If matches prop changes (eg. on profile load), reset
   useEffect(() => { setStack(matches || []) }, [matches])
 
   const handleSwipeUp = () => {
@@ -25,8 +21,8 @@ export default function SmartMatchesStack({ matches, onTap }) {
     )
   }
 
-  // Render top 3 cards in DOM (back-to-front for z-index stacking)
   const visible = stack.slice(0, 3)
+  const isCampaign = variant === 'campaign'
 
   return (
     <div className="flex flex-col items-center">
@@ -35,11 +31,23 @@ export default function SmartMatchesStack({ matches, onTap }) {
         style={{ touchAction: 'pan-y' }}
       >
         {visible.slice().reverse().map((c, idxFromBack) => {
-          const slot = visible.length - 1 - idxFromBack // 0 = front
+          const slot = visible.length - 1 - idxFromBack
           const isFront = slot === 0
-          return (
+          const key = isCampaign
+            ? (c.campaign_id || c.id)
+            : (c.creator_id || c.user_id)
+          return isCampaign ? (
+            <SwipeableCampaignCard
+              key={key}
+              campaign={c}
+              isFront={isFront}
+              slot={slot}
+              onSwipeUp={handleSwipeUp}
+              onTap={() => onTap?.(c)}
+            />
+          ) : (
             <SwipeableCard
-              key={c.creator_id || c.user_id}
+              key={key}
               creator={c}
               isFront={isFront}
               slot={slot}
