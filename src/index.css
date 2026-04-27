@@ -9,25 +9,23 @@ html, body, #root { height: 100%; }
 body {
   background-color: #8FA3BF;
   color: #4B3326;
-  font-family: 'Inter', system-ui, sans-serif;
-  font-feature-settings: 'ss01', 'cv11';
+  font-family: 'Manrope', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
 }
 
 h1, h2, h3, h4, h5, h6, .font-display {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: -0.018em;
+  font-family: 'Manrope', system-ui, sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: -0.022em;
   line-height: 1.05;
 }
-/* Roman (non-italic) variant for places where italic is too much */
 .font-display-roman {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: 'Manrope', system-ui, sans-serif;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 p, span, div, label, button, input, textarea, select {

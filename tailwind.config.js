@@ -33,8 +33,8 @@ export default {
         ring: '#8B5E3C',
       },
       fontFamily: {
-        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Manrope', 'system-ui', 'sans-serif'],
+        sans: ['Manrope', 'system-ui', 'sans-serif'],
       },
       borderRadius: { lg: '6px', md: '4px', sm: '2px' },
       boxShadow: {
