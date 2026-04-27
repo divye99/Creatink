@@ -116,17 +116,6 @@ export default function Home() {
         )}
       </section>
 
-      {/* Trending — unboxed */}
-      <section>
-        <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">In motion this week</p>
-        <h2 className="font-display text-3xl mt-2 leading-none">Trending</h2>
-        <div className="flex flex-wrap gap-1.5 mt-5">
-          {['Beauty','Tech','Food','Travel','Fitness'].map((n, i) => (
-            <Badge key={n} variant={i < 2 ? 'hermes' : 'leather'}>{n}</Badge>
-          ))}
-        </div>
-      </section>
-
       {/* Brand Studio CTA — only for brands */}
       {isBrand && (
         <section className="border-t border-cognac/20 pt-10">
