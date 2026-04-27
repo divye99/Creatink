@@ -2,7 +2,7 @@ import { Badge } from '@/components/ui/badge'
 import { ShieldCheck, BadgeCheck, ReceiptText, FileSignature, Link2 } from 'lucide-react'
 
 export function VerifiedCreatorBadge() {
-  return <Badge variant="success"><BadgeCheck className="h-3 w-3" /> Verified Creator</Badge>
+  return <Badge variant="cognac"><BadgeCheck className="h-3 w-3" /> Verified Creator</Badge>
 }
 export function RegisteredBusinessBadge() {
   return <Badge variant="slate"><ShieldCheck className="h-3 w-3" /> Registered Business</Badge>
@@ -21,8 +21,8 @@ export function UnverifiedBadge() {
 }
 
 export function AvailabilityBadge({ availability }) {
-  if (availability === 'available')   return <Badge variant="success">Available</Badge>
-  if (availability === 'busy')        return <Badge variant="warning">Busy</Badge>
+  if (availability === 'available')   return <Badge variant="cognac">Available</Badge>
+  if (availability === 'busy')        return <Badge variant="muted">Busy</Badge>
   if (availability === 'not_taking')  return <Badge variant="muted">Not Taking Collabs</Badge>
   return null
 }
