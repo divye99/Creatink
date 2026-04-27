@@ -117,7 +117,7 @@ function CreatorSections({ profile, taxComplete }) {
       </Section>
 
       <Section eyebrow="In their words" title="Bio">
-        <p className="text-sm leading-relaxed text-cognac/90 max-w-prose">
+        <p className="text-sm leading-relaxed text-champagne max-w-prose">
           {profile.bio || <span className="italic text-muted">No bio yet.</span>}
         </p>
       </Section>
@@ -167,7 +167,7 @@ function BrandSections({ profile, contractUploaded }) {
   return (
     <>
       <Section eyebrow="The story" title="About">
-        <p className="text-sm leading-relaxed text-cognac/90 max-w-prose">
+        <p className="text-sm leading-relaxed text-champagne max-w-prose">
           {profile.description || <span className="italic text-muted">No description yet.</span>}
         </p>
       </Section>
@@ -182,7 +182,7 @@ function BrandSections({ profile, contractUploaded }) {
 
       {profile.target_audience && (
         <Section eyebrow="Target audience" title="Customer">
-          <p className="text-sm leading-relaxed text-cognac/90 max-w-prose">
+          <p className="text-sm leading-relaxed text-champagne max-w-prose">
             {profile.target_audience}
           </p>
         </Section>
@@ -201,12 +201,12 @@ function BrandSections({ profile, contractUploaded }) {
         action={contractUploaded ? <Badge variant="cognac">Uploaded</Badge> : null}
       >
         {contractUploaded ? (
-          <p className="text-sm text-cognac/90 leading-relaxed max-w-prose">
+          <p className="text-sm text-champagne leading-relaxed max-w-prose">
             Your standard collaboration contract is on file. Creators acknowledge a copy at deal confirmation.
           </p>
         ) : (
           <div className="space-y-4 max-w-prose">
-            <p className="text-sm text-cognac/90 leading-relaxed">
+            <p className="text-sm text-champagne leading-relaxed">
               Upload a contract template to begin paid collaborations. Creators tap-acknowledge it at deal confirmation — not a legal e-signature, just a record of receipt.
             </p>
             <Button size="sm" asChild><Link to="/profile/edit#contract">Upload contract</Link></Button>

@@ -3,7 +3,8 @@ import { cn } from '@/lib/utils'
 
 export const Card = React.forwardRef(({ className, glow = true, variant = 'default', ...props }, ref) => {
   const surface =
-    variant === 'outline' ? 'bg-transparent border-cognac/40 text-cognac'
+    variant === 'cognac'  ? 'bg-cognac border-cognac text-champagne'  // leather card, cream type
+  : variant === 'outline' ? 'bg-transparent border-cognac/40 text-cognac'
   : variant === 'ink'     ? 'bg-inkslate border-inkslate text-body'
                           : 'bg-card border-border text-cognac'  // champagne paper, cognac type
   return (
