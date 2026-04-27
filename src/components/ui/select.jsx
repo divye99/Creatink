@@ -12,7 +12,7 @@ export const SelectTrigger = React.forwardRef(({ className, children, ...props }
     ref={ref}
     className={cn(
       'flex h-11 w-full items-center justify-between rounded-md border border-border bg-card px-4 py-2 text-sm text-body',
-      'focus:border-cognac focus:outline-none focus:ring-2 focus:ring-cognac/40',
+      'focus:border-champagne focus:outline-none focus:ring-2 focus:ring-champagne/40',
       className
     )}
     {...props}

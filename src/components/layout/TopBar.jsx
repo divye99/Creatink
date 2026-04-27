@@ -8,7 +8,7 @@ export default function TopBar({ title }) {
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-bg/95 backdrop-blur supports-[backdrop-filter]:bg-bg/80">
       <div className="mx-auto max-w-2xl flex items-center justify-between px-4 h-14">
-        <Link to="/home" className="font-display text-xl text-body tracking-tight">
+        <Link to="/home" className="font-display text-xl text-slateblue tracking-tight">
           {title || 'CREATINK'}
         </Link>
         <div className="flex items-center gap-1">

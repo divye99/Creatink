@@ -8,7 +8,7 @@ export function Chip({ active, className, children, ...props }) {
       className={cn(
         'inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium transition',
         active
-          ? 'bg-cognac text-champagne border-cognac'
+          ? 'bg-champagne text-bg border-champagne'
           : 'bg-card text-body border-border hover:border-cognac/60',
         className
       )}

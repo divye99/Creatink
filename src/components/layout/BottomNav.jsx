@@ -27,7 +27,7 @@ export default function BottomNav() {
               className={({ isActive }) =>
                 cn(
                   'relative flex flex-col items-center justify-center gap-0.5 py-2.5 text-[10px] uppercase tracking-wider',
-                  isActive ? 'text-cognac' : 'text-muted hover:text-body'
+                  isActive ? 'text-champagne' : 'text-muted hover:text-body'
                 )
               }
             >

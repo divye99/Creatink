@@ -79,13 +79,13 @@ export default function OnboardingBrand() {
           <Card className="text-center py-8">
             <label htmlFor="logo" className="cursor-pointer inline-flex flex-col items-center gap-3">
               {logo ? (
-                <img src={logo} alt="" className="h-28 w-28 rounded-md object-cover ring-2 ring-cognac" />
+                <img src={logo} alt="" className="h-28 w-28 rounded-md object-cover ring-2 ring-champagne" />
               ) : (
-                <div className="h-28 w-28 rounded-md bg-slateblue/15 border-2 border-dashed border-border flex items-center justify-center">
+                <div className="h-28 w-28 rounded-md bg-bg/40 border-2 border-dashed border-border flex items-center justify-center">
                   <Camera className="h-7 w-7 text-muted" />
                 </div>
               )}
-              <span className="text-sm text-cognac">{logo ? 'Change logo' : 'Upload brand logo'}</span>
+              <span className="text-sm text-champagne">{logo ? 'Change logo' : 'Upload brand logo'}</span>
               <input id="logo" type="file" accept="image/*" className="hidden" onChange={onLogo} />
             </label>
           </Card>

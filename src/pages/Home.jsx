@@ -68,7 +68,7 @@ export default function Home() {
           <h2 className="font-display text-xl flex items-center gap-2">
             <Sparkles className="h-5 w-5 text-cognac" /> Smart Matches
           </h2>
-          <Link to="/discover" className="text-xs text-cognac">See all</Link>
+          <Link to="/discover" className="text-xs text-champagne">See all</Link>
         </div>
 
         {matching && matches.length === 0 ? (
