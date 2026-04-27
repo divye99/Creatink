@@ -33,7 +33,7 @@ const SORTS = [
 export default function Discover() {
   const { userType } = useAuth()
   const nav = useNavigate()
-  const [tab, setTab] = useState(userType === 'brand' ? 'creators' : 'campaigns')
+  const [tab, setTab] = useState('creators')
   const [q, setQ] = useState('')
 
   // Creator filters
@@ -107,28 +107,29 @@ export default function Discover() {
       </div>
 
       <Tabs value={tab} onValueChange={setTab}>
-        <div className="flex items-center justify-between gap-3">
-          <TabsList className="grid grid-cols-3 flex-1">
-            <TabsTrigger value="creators">Creators</TabsTrigger>
-            <TabsTrigger value="brands">Brands</TabsTrigger>
-            <TabsTrigger value="campaigns">Campaigns</TabsTrigger>
+        <div className="flex items-end justify-between gap-3 border-b border-cognac/15">
+          <TabsList className="!bg-transparent !border-0 !p-0 !rounded-none gap-7 flex-1 justify-start">
+            <DiscoverTabTrigger value="creators">Creators</DiscoverTabTrigger>
+            <DiscoverTabTrigger value="campaigns">Campaigns</DiscoverTabTrigger>
           </TabsList>
 
           {tab === 'creators' && (
-            <RefineTrigger
-              activeFilters={activeFilters}
-              open={refineOpen}
-              setOpen={setRefineOpen}
-              niche={niche} setNiche={setNiche}
-              band={band} setBand={setBand}
-              sort={sort} setSort={setSort}
-              verifiedOnly={verifiedOnly} setVerifiedOnly={setVerifiedOnly}
-              clearFilters={clearFilters}
-            />
+            <div className="pb-2">
+              <RefineTrigger
+                activeFilters={activeFilters}
+                open={refineOpen}
+                setOpen={setRefineOpen}
+                niche={niche} setNiche={setNiche}
+                band={band} setBand={setBand}
+                sort={sort} setSort={setSort}
+                verifiedOnly={verifiedOnly} setVerifiedOnly={setVerifiedOnly}
+                clearFilters={clearFilters}
+              />
+            </div>
           )}
         </div>
 
-        <TabsContent value="creators">
+        <TabsContent value="creators" className="mt-6">
           {activeFilters > 0 && (
             <div className="mb-5 flex flex-wrap items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-cognac/70">
               <span>{filteredCreators.length} matches</span>
@@ -138,7 +139,7 @@ export default function Discover() {
               </button>
             </div>
           )}
-          <div className="grid gap-4 stagger">
+          <div className="grid gap-3 stagger">
             {filteredCreators.map((c) => (
               <DiscoverCreatorCard
                 key={c.user_id}
@@ -149,15 +150,7 @@ export default function Discover() {
           </div>
         </TabsContent>
 
-        <TabsContent value="brands">
-          <div className="grid gap-3 stagger">
-            {filteredBrands.map((b) => (
-              <BrandCard key={b.user_id} brand={b} onClick={() => nav(`/pitch/${b.user_id}`)} />
-            ))}
-          </div>
-        </TabsContent>
-
-        <TabsContent value="campaigns">
+        <TabsContent value="campaigns" className="mt-6">
           <div className="grid gap-3 stagger">
             {filteredCampaigns.map((c) => (
               <CampaignCard
@@ -183,10 +176,10 @@ function RefineTrigger({
       <DialogTrigger asChild>
         <button
           className={cn(
-            'inline-flex items-center gap-2 px-3 h-9 rounded-md',
+            'inline-flex items-center gap-2 px-3.5 h-8 rounded-md',
             'text-[10px] uppercase tracking-[0.22em]',
-            'border border-cognac/40 text-cognac hover:bg-cognac/5 transition-colors',
-            'shrink-0'
+            'bg-champagne text-cognac border border-champagne hover:brightness-95 transition',
+            'shrink-0',
           )}
         >
           <Sliders className="h-3.5 w-3.5" strokeWidth={1.5} />
@@ -248,5 +241,25 @@ function FilterGroup({ title, children }) {
       <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70 mb-3">{title}</p>
       <div className="flex flex-wrap gap-1.5">{children}</div>
     </div>
+  )
+}
+
+/** Editorial tab trigger — text link with cognac underline indicator on active. */
+function DiscoverTabTrigger({ value, children }) {
+  return (
+    <TabsTrigger
+      value={value}
+      className={cn(
+        '!bg-transparent !rounded-none !px-0 !py-3 text-[11px] uppercase tracking-[0.22em] !font-medium',
+        'text-muted hover:text-cognac transition-colors duration-200',
+        'data-[state=active]:!bg-transparent data-[state=active]:text-cognac',
+        'relative',
+        "after:content-[''] after:absolute after:bottom-[-1px] after:left-0 after:right-0 after:h-[1.5px] after:bg-cognac",
+        'after:origin-left after:scale-x-0 data-[state=active]:after:scale-x-100',
+        'after:transition-transform after:duration-300 after:ease-out',
+      )}
+    >
+      {children}
+    </TabsTrigger>
   )
 }

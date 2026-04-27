@@ -17,7 +17,7 @@ export default function DiscoverCreatorCard({ creator, onClick }) {
     <button
       onClick={onClick}
       className={cn(
-        'relative w-full aspect-[5/3] rounded-lg overflow-hidden',
+        'relative w-full aspect-[16/7] rounded-lg overflow-hidden',
         'border border-cognac/15 group text-left',
         'transition-all duration-500 hover:border-cognac/40',
       )}

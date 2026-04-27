@@ -56,7 +56,7 @@ export default function Home() {
         <DynamicStatCard
           href="/missed-opportunities"
           index="02"
-          eyebrow="Invitations"
+          eyebrow="Proposals"
           number={2}
           caption="new in your inbox"
           trend="+2"

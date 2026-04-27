@@ -22,11 +22,11 @@ export default function DynamicStatCard({
       <div
         className={cn(
           'relative h-full overflow-hidden border border-cognac/70',
-          'p-5 text-champagne flex flex-col',
+          'p-4 text-champagne flex flex-col',
           'transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]',
-          'shadow-[0_18px_40px_-22px_rgba(139,94,60,0.55)]',
-          'group-hover:shadow-[0_28px_56px_-22px_rgba(139,94,60,0.7)]',
-          'group-hover:-translate-y-1',
+          'shadow-[0_14px_32px_-18px_rgba(139,94,60,0.55)]',
+          'group-hover:shadow-[0_22px_44px_-18px_rgba(139,94,60,0.7)]',
+          'group-hover:-translate-y-0.5',
         )}
         style={{
           backgroundImage:
@@ -63,27 +63,23 @@ export default function DynamicStatCard({
           )}
         </div>
 
-        {/* Hero number */}
-        <div className="relative mt-3 flex items-baseline gap-2.5">
-          <p className="font-display text-[64px] leading-[0.9] transition-transform duration-500 group-hover:translate-x-1 origin-left">
+        {/* Hero number + trend pill */}
+        <div className="relative mt-2 flex items-baseline gap-2">
+          <p className="font-display text-[48px] leading-[0.9] transition-transform duration-500 group-hover:translate-x-1 origin-left">
             {number}
           </p>
           {trend && (
-            <p className="text-[9px] uppercase tracking-[0.2em] text-hermes/95 flex items-center gap-0.5 mb-1.5">
+            <p className="text-[9px] uppercase tracking-[0.2em] text-hermes/95 flex items-center gap-0.5 mb-1">
               <ArrowUpRight className="h-2.5 w-2.5" strokeWidth={2.4} />
               {trend}
+              {trendLabel && <span className="text-champagne/40 ml-1">·  {trendLabel}</span>}
             </p>
           )}
         </div>
-        {trendLabel && (
-          <p className="relative text-[9px] uppercase tracking-[0.22em] text-champagne/45 mt-1.5">
-            {trendLabel}
-          </p>
-        )}
 
         {/* Hairline + caption + chevron */}
-        <div className="relative mt-auto pt-4">
-          <span className="block h-px bg-champagne/15 mb-3" />
+        <div className="relative mt-auto pt-3">
+          <span className="block h-px bg-champagne/15 mb-2.5" />
           <div className="flex items-center justify-between gap-3">
             <p className="text-[11px] text-champagne/75 leading-snug">{caption}</p>
             <ArrowUpRight

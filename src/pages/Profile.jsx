@@ -153,17 +153,7 @@ function CreatorSections({ profile, taxComplete }) {
       </Section>
 
       <Section eyebrow="History" title="Past collaborations">
-        <div className="divide-y divide-cognac/15">
-          {pastCollabs.map((c, i) => (
-            <div key={i} className="flex items-baseline justify-between py-3">
-              <div>
-                <p className="font-display text-lg">{c.brand}</p>
-                <p className="text-[11px] text-champagne/85 mt-0.5">{c.campaign}</p>
-              </div>
-              <span className="text-[10px] uppercase tracking-[0.22em] text-muted">{c.date}</span>
-            </div>
-          ))}
-        </div>
+        <CollabList items={pastCollabs} primaryKey="brand" />
       </Section>
 
       <Section eyebrow="Spoken" title="Languages">
@@ -263,34 +253,15 @@ function BrandSections({ profile, contractUploaded }) {
       </Section>
 
       <Section eyebrow="Activity" title="Brand Studio">
-        <div className="grid grid-cols-3 divide-x divide-cognac/15">
-          <div className="pr-4">
-            <p className="text-[10px] uppercase tracking-[0.22em] text-muted">Active</p>
-            <p className="font-display text-3xl mt-2 leading-none">3</p>
-          </div>
-          <div className="px-4">
-            <p className="text-[10px] uppercase tracking-[0.22em] text-muted">Completed</p>
-            <p className="font-display text-3xl mt-2 leading-none">12</p>
-          </div>
-          <div className="pl-4">
-            <p className="text-[10px] uppercase tracking-[0.22em] text-muted">Avg. Rating</p>
-            <p className="font-display text-3xl mt-2 leading-none">4.8</p>
-          </div>
+        <div className="grid grid-cols-3 gap-2">
+          <LeatherStat label="Active" value="3" accent="↗ +1" />
+          <LeatherStat label="Completed" value="12" />
+          <LeatherStat label="Avg. Rating" value="4.8" />
         </div>
       </Section>
 
       <Section eyebrow="Past partnerships" title="Featured collaborations">
-        <div className="divide-y divide-cognac/15">
-          {MOCK_BRAND_COLLABS.map((c, i) => (
-            <div key={i} className="flex items-baseline justify-between py-3">
-              <div>
-                <p className="font-display text-lg">{c.creator}</p>
-                <p className="text-[11px] text-champagne/85 mt-0.5">{c.campaign}</p>
-              </div>
-              <span className="text-[10px] uppercase tracking-[0.22em] text-muted">{c.date}</span>
-            </div>
-          ))}
-        </div>
+        <CollabList items={MOCK_BRAND_COLLABS} primaryKey="creator" />
       </Section>
 
       <Section eyebrow="On Creatink" title="Member since">
@@ -309,5 +280,60 @@ function ActionCard({ eyebrow, title, body, cta, to }) {
       <p className="text-sm text-cognac/85 mt-3 leading-relaxed">{body}</p>
       <Button size="sm" asChild className="mt-4"><Link to={to}>{cta}</Link></Button>
     </Card>
+  )
+}
+
+/** Mini leather-gradient stat pill — same material as DynamicStatCard, scaled down. */
+function LeatherStat({ label, value, accent }) {
+  return (
+    <div
+      className="relative overflow-hidden p-3 text-champagne flex flex-col"
+      style={{
+        borderRadius: '14px 2px 14px 2px',
+        backgroundImage: 'linear-gradient(135deg, #9C6B47 0%, #7B5232 55%, #5F3E25 100%)',
+        boxShadow: '0 10px 24px -16px rgba(139, 94, 60, 0.55)',
+      }}
+    >
+      <span
+        aria-hidden
+        className="absolute inset-0 opacity-[0.06] pointer-events-none"
+        style={{
+          backgroundImage:
+            'repeating-linear-gradient(135deg, transparent 0, transparent 6px, #F2E7D3 6px, #F2E7D3 7px)',
+        }}
+      />
+      <p className="relative text-[9px] uppercase tracking-[0.22em] text-champagne/65">{label}</p>
+      <p className="relative font-display text-3xl mt-1 leading-none">{value}</p>
+      {accent && (
+        <p className="relative text-[9px] tracking-[0.18em] uppercase text-hermes/95 mt-2">{accent}</p>
+      )}
+    </div>
+  )
+}
+
+/** Editorial divided list with index numerals + hover lift. */
+function CollabList({ items, primaryKey }) {
+  return (
+    <div className="divide-y divide-cognac/15">
+      {items.map((it, i) => (
+        <div
+          key={i}
+          className="flex items-baseline justify-between py-3 group transition-all duration-300 hover:pl-2"
+        >
+          <div className="flex items-baseline gap-3">
+            <span className="font-display italic text-[12px] text-cognac/35 tracking-[0.18em] w-6">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <div>
+              <p className="font-display text-lg leading-none">{it[primaryKey]}</p>
+              <p className="text-[11px] text-champagne/85 mt-1.5">{it.campaign}</p>
+            </div>
+          </div>
+          <span className="text-[10px] uppercase tracking-[0.22em] text-muted shrink-0 ml-3">
+            {it.date}
+          </span>
+        </div>
+      ))}
+    </div>
   )
 }

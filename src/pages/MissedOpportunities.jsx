@@ -17,9 +17,9 @@ export default function MissedOpportunities() {
       </button>
 
       <header>
-        <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">AI-summarised invitations</p>
+        <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">AI-summarised proposals</p>
         <h1 className="font-display text-4xl mt-1">
-          {userType === 'brand' ? 'Creator Outreach' : 'New Invitations'}
+          {userType === 'brand' ? 'Creator Outreach' : 'Proposals'}
         </h1>
         <p className="text-sm text-muted mt-2 leading-relaxed">Raw email content is never stored — only the summary, brand, and date.</p>
       </header>
