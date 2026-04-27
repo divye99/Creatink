@@ -79,7 +79,7 @@ export default function OnboardingBrand() {
           <Card className="text-center py-8">
             <label htmlFor="logo" className="cursor-pointer inline-flex flex-col items-center gap-3">
               {logo ? (
-                <img src={logo} alt="" className="h-28 w-28 rounded-md object-cover ring-2 ring-champagne" />
+                <img src={logo} alt="" className="h-28 w-28 rounded-md object-cover ring-2 ring-cognac" />
               ) : (
                 <div className="h-28 w-28 rounded-md bg-slateblue/15 border-2 border-dashed border-border flex items-center justify-center">
                   <Camera className="h-7 w-7 text-muted" />

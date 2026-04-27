@@ -81,10 +81,10 @@ export default function KPIDashboard() {
         <h3 className="font-display text-lg mb-3">Reach trend (6 days)</h3>
         <ResponsiveContainer width="100%" height={180}>
           <LineChart data={trend}>
-            <CartesianGrid stroke="#C9B8A0" strokeDasharray="3 3" vertical={false} />
+            <CartesianGrid stroke="#BFA47C" strokeDasharray="3 3" vertical={false} />
             <XAxis dataKey="d" stroke="#6B5D4F" fontSize={11} />
             <YAxis stroke="#6B5D4F" fontSize={11} />
-            <Tooltip contentStyle={{ background: '#F5F0E8', border: '1px solid #C9B8A0', color: '#1A1410', borderRadius: 8 }} />
+            <Tooltip contentStyle={{ background: '#E8D5B0', border: '1px solid #BFA47C', color: '#1A1410', borderRadius: 8 }} />
             <Line type="monotone" dataKey="v" stroke="#8B5E3C" strokeWidth={2} dot={false} />
           </LineChart>
         </ResponsiveContainer>
@@ -94,10 +94,10 @@ export default function KPIDashboard() {
         <h3 className="font-display text-lg mb-3">Engagement breakdown</h3>
         <ResponsiveContainer width="100%" height={220}>
           <BarChart data={chartData}>
-            <CartesianGrid stroke="#C9B8A0" strokeDasharray="3 3" vertical={false} />
+            <CartesianGrid stroke="#BFA47C" strokeDasharray="3 3" vertical={false} />
             <XAxis dataKey="name" stroke="#6B5D4F" fontSize={11} />
             <YAxis stroke="#6B5D4F" fontSize={11} />
-            <Tooltip contentStyle={{ background: '#F5F0E8', border: '1px solid #C9B8A0', color: '#1A1410', borderRadius: 8 }} />
+            <Tooltip contentStyle={{ background: '#E8D5B0', border: '1px solid #BFA47C', color: '#1A1410', borderRadius: 8 }} />
             <Bar dataKey="value" fill="#8B5E3C" radius={[6, 6, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
@@ -125,7 +125,7 @@ export default function KPIDashboard() {
           <div className="flex gap-2">
             {[1,2,3,4,5].map((n) => (
               <button key={n} onClick={() => setRating(n)} className="text-2xl">
-                <Star className={`h-7 w-7 ${n <= rating ? 'fill-champagne text-cognac' : 'text-border'}`} />
+                <Star className={`h-7 w-7 ${n <= rating ? 'fill-cognac text-cognac' : 'text-border'}`} />
               </button>
             ))}
           </div>

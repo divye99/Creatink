@@ -122,7 +122,7 @@ export default function Settings() {
               key={l.code}
               onClick={() => changeLang(l.code)}
               className={`rounded-md border p-3 text-sm transition ${
-                lang === l.code ? 'border-champagne bg-champagne/10 text-cognac' : 'border-border text-body hover:border-cognac/60'
+                lang === l.code ? 'border-cognac bg-cognac/10 text-cognac' : 'border-border text-body hover:border-cognac/60'
               }`}
             >
               {l.label}

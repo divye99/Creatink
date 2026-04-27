@@ -9,7 +9,7 @@ export const Progress = React.forwardRef(({ className, value = 0, ...props }, re
     {...props}
   >
     <ProgressPrimitive.Indicator
-      className="h-full bg-champagne transition-transform"
+      className="h-full bg-cognac transition-transform"
       style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
     />
   </ProgressPrimitive.Root>

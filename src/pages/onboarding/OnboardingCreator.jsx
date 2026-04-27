@@ -104,7 +104,7 @@ export default function OnboardingCreator() {
         <div className="space-y-5">
           <Card>
             <Label>Your name (as shown on profile)</Label>
-            <Input className="mt-2" value={name} onChange={(e) => setName(e.target.value)} placeholder="e.g. Aanya Kapoor" />
+            <Input className="mt-2" value={name} onChange={(e) => setName(e.target.value)} placeholder="e.g. Maahi Sharma Kumar" />
           </Card>
 
           <Card>
@@ -160,7 +160,7 @@ export default function OnboardingCreator() {
         <Card className="text-center py-10">
           <label htmlFor="photo" className="cursor-pointer inline-flex flex-col items-center gap-3">
             {photo ? (
-              <img src={photo} alt="" className="h-32 w-32 rounded-full object-cover ring-2 ring-champagne" />
+              <img src={photo} alt="" className="h-32 w-32 rounded-full object-cover ring-2 ring-cognac" />
             ) : (
               <div className="h-32 w-32 rounded-full bg-slateblue/15 border-2 border-dashed border-border flex items-center justify-center">
                 <Camera className="h-8 w-8 text-muted" />

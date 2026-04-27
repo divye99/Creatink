@@ -6,16 +6,16 @@ export default {
     container: { center: true, padding: '1rem', screens: { '2xl': '1400px' } },
     extend: {
       colors: {
-        // Creatink palette — slate-blue canvas with cream "paper" cards;
-        // champagne, cognac, hermès as warm accents on top.
-        bg: '#8FA3BF',          // slate blue — the entire canvas
-        slateblue: '#8FA3BF',   // same — kept for explicit accent uses
-        cognac: '#8B5E3C',      // primary warm accent
-        hermes: '#E8600A',      // notification dots / unread / urgency only
-        champagne: '#E8D5B0',   // CTA fills, active nav
-        card: '#F5F0E8',        // cream paper-card surface
-        body: '#1A1410',        // dark warm near-black — body text
-        muted: '#6B5D4F',       // warm muted text
+        // Creatink palette — slate-blue canvas with champagne paper cards;
+        // cognac is the primary action color, hermès for urgency dots.
+        bg: '#8FA3BF',          // slate blue — entire canvas
+        slateblue: '#8FA3BF',
+        cognac: '#8B5E3C',      // primary CTA fill, active states
+        hermes: '#E8600A',      // notification dots / urgency only
+        champagne: '#E8D5B0',   // card surface + light text on cognac
+        card: '#E8D5B0',        // champagne paper-card surface
+        body: '#1A1410',        // dark warm near-black — body text on cards
+        muted: '#6B5D4F',       // warm muted brown
         success: '#2ECC71',
         warning: '#F39C12',
         error: '#E74C3C',
@@ -23,12 +23,12 @@ export default {
         // shadcn semantic tokens mapped to brand
         background: '#8FA3BF',
         foreground: '#1A1410',
-        primary: { DEFAULT: '#E8D5B0', foreground: '#1A1410' },
-        secondary: { DEFAULT: '#F5F0E8', foreground: '#1A1410' },
-        accent: { DEFAULT: '#8B5E3C', foreground: '#F5F0E8' },
-        destructive: { DEFAULT: '#E74C3C', foreground: '#F5F0E8' },
-        border: '#C9B8A0',     // warm tan — soft champagne-darker
-        input: '#F5F0E8',
+        primary: { DEFAULT: '#8B5E3C', foreground: '#E8D5B0' }, // cognac CTA, champagne text
+        secondary: { DEFAULT: '#E8D5B0', foreground: '#1A1410' },
+        accent: { DEFAULT: '#8B5E3C', foreground: '#E8D5B0' },
+        destructive: { DEFAULT: '#E74C3C', foreground: '#E8D5B0' },
+        border: '#BFA47C',     // darker tan — gives champagne cards visible edges
+        input: '#E8D5B0',
         ring: '#8B5E3C',
       },
       fontFamily: {

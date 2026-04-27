@@ -17,7 +17,7 @@ export default function StatusPipeline({ status }) {
   return (
     <div className="space-y-3">
       <div className="relative h-2 rounded-full bg-border overflow-hidden">
-        <div className="absolute inset-y-0 left-0 bg-champagne transition-all" style={{ width: `${pct}%` }} />
+        <div className="absolute inset-y-0 left-0 bg-cognac transition-all" style={{ width: `${pct}%` }} />
       </div>
       <div className="grid grid-cols-6 gap-1 text-[10px]">
         {STAGES.map((s, i) => (
@@ -25,7 +25,7 @@ export default function StatusPipeline({ status }) {
             <div
               className={cn(
                 'h-5 w-5 rounded-full flex items-center justify-center border',
-                i <= idx ? 'bg-champagne border-champagne text-body' : 'bg-card border-border text-muted'
+                i <= idx ? 'bg-cognac border-cognac text-champagne' : 'bg-card border-border text-muted'
               )}
             >
               {i <= idx ? <Check className="h-3 w-3" strokeWidth={3} /> : <span>{i + 1}</span>}

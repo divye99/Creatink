@@ -90,13 +90,13 @@ psql $SUPABASE_DB_URL < supabase/seed.sql       # optional dev seed
 | Role            | Token       | Hex       | Usage                                                   |
 |-----------------|-------------|-----------|---------------------------------------------------------|
 | Canvas          | `bg`        | `#8FA3BF` | Slate blue — the entire app background                  |
-| Card surface    | `card`      | `#F5F0E8` | Cream "paper" cards floating on the slate canvas        |
-| CTA             | `champagne` | `#E8D5B0` | Primary buttons, active nav                             |
-| Warm accent     | `cognac`    | `#8B5E3C` | Card hover glow, secondary CTA, badges, charts          |
+| Card surface    | `card`      | `#E8D5B0` | Champagne "paper" cards on the slate canvas             |
+| Primary CTA     | `cognac`    | `#8B5E3C` | Buttons, active tabs/chips, progress, switch on, charts |
 | Energy accent   | `hermes`    | `#E8600A` | **Only** for unread dots, live indicators, urgency      |
-| Body text       | `body`      | `#1A1410` | Warm near-black — readable on both slate and cream      |
+| Light text on cognac | `champagne` | `#E8D5B0` | Text inside cognac fills (CTAs, active tabs)        |
+| Body text       | `body`      | `#1A1410` | Warm near-black — for body text on champagne cards     |
 | Muted text      | `muted`     | `#6B5D4F` | Warm muted brown                                        |
-| Border          | `border`    | `#C9B8A0` | Soft champagne-darker tan                               |
+| Border          | `border`    | `#BFA47C` | Darker tan — gives champagne cards visible edges        |
 | Success / Warn / Error | … | `#2ECC71` `#F39C12` `#E74C3C` |                                |
 
 - Headings use **Playfair Display**, body uses **Inter**.
