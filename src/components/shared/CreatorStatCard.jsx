@@ -35,9 +35,15 @@ export default function CreatorStatCard({ creator, onClick }) {
             <h3 className="font-display text-lg truncate">{c.name}</h3>
           </div>
           <p className="text-sm text-muted truncate">{c.handle || ''}</p>
-          {niche && <Badge variant="slate" className="mt-1">{niche}</Badge>}
+          <div className="mt-1 flex flex-wrap items-center gap-1">
+            {niche && <Badge variant="slate">{niche}</Badge>}
+            {c.score != null && <Badge variant="cognac">{c.score}% match</Badge>}
+          </div>
         </div>
       </div>
+      {c.reasoning && (
+        <p className="text-xs text-muted -mt-1">{c.reasoning}</p>
+      )}
 
       <div className="grid grid-cols-2 gap-3">
         <div className="rounded-md bg-slateblue/15 p-3">

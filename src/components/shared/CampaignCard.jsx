@@ -12,10 +12,14 @@ export default function CampaignCard({ campaign, brandName, onClick, trending })
           <p className="text-xs uppercase tracking-wider text-muted">{brandName}</p>
           <h3 className="font-display text-lg mt-0.5 truncate">{c.title}</h3>
         </div>
-        {trending && <Badge variant="hermes">Trending</Badge>}
+        <div className="flex flex-col items-end gap-1">
+          {trending && <Badge variant="hermes">Trending</Badge>}
+          {c.score != null && <Badge variant="cognac">{c.score}% match</Badge>}
+        </div>
       </div>
 
       <p className="text-sm text-muted line-clamp-2">{c.brief}</p>
+      {c.reasoning && <p className="text-xs text-cognac -mt-1">{c.reasoning}</p>}
 
       <div className="flex flex-wrap gap-1.5">
         {(c.deliverables || []).slice(0, 3).map((d) => (

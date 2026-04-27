@@ -6,7 +6,7 @@ export const DEMO_CREATORS = [
     user_id: 'cr-001', name: 'Aanya Kapoor', handle: '@aanyak',
     photo_url: 'https://i.pravatar.cc/200?img=47',
     bio: 'Mumbai-based fashion + lifestyle creator. Honest reviews, calm aesthetics.',
-    niches: ['Fashion','Lifestyle'], follower_count: 84500, engagement_rate: 5.2,
+    niches: ['Fashion','Beauty','Lifestyle'], follower_count: 84500, engagement_rate: 5.2,
     availability: 'available', verified: true, tax_ready: true, castink_linked: true,
     top_demographic: { age_range: '18-24', gender_split: 'F 78%', top_city: 'Mumbai' },
     rate_card: { reel: 25000, story: 8000, static_post: 15000, youtube_video: null, custom_package: 60000 },

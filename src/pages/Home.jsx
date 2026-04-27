@@ -1,20 +1,36 @@
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '@/contexts/AuthContext'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import CreatorStatCard from '@/components/shared/CreatorStatCard'
 import CampaignCard from '@/components/shared/CampaignCard'
-import { DEMO_CREATORS, DEMO_BRANDS, DEMO_CAMPAIGNS } from '@/lib/demoData'
+import { matchCreatorsForBrand, matchCampaignsForCreator } from '@/lib/match'
 import { Sparkles, TrendingUp, Eye, Inbox } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
 
 export default function Home() {
   const { profile, userType } = useAuth()
   const nav = useNavigate()
 
-  const greetingName = profile?.name?.split(' ')[0] || 'there'
   const isBrand = userType === 'brand'
+  const greetingName = profile?.name?.split(' ')[0] || 'there'
+
+  const [matches, setMatches] = useState([])
+  const [matching, setMatching] = useState(false)
+
+  useEffect(() => {
+    if (!profile) return
+    const id = profile.user_id || profile.id
+    setMatching(true)
+    const fetcher = isBrand
+      ? matchCreatorsForBrand(id, profile.categories || [])
+      : matchCampaignsForCreator(id, profile.niches || [])
+    fetcher
+      .then((rows) => setMatches(rows.slice(0, 3)))
+      .catch((e) => { console.error('match error', e); setMatches([]) })
+      .finally(() => setMatching(false))
+  }, [profile, isBrand])
 
   return (
     <div className="space-y-6">
@@ -54,25 +70,34 @@ export default function Home() {
           </h2>
           <Link to="/discover" className="text-xs text-cognac">See all</Link>
         </div>
-        {isBrand ? (
+
+        {matching && matches.length === 0 ? (
+          <p className="text-xs text-muted">Finding your best matches…</p>
+        ) : matches.length === 0 ? (
+          <p className="text-xs text-muted">
+            {isBrand
+              ? 'Add categories to your brand profile to see matched creators.'
+              : 'Add niches to your profile to see matched campaigns.'}
+          </p>
+        ) : isBrand ? (
           <div className="grid gap-3">
-            {DEMO_CREATORS.slice(0, 3).map((c) => (
+            {matches.map((c) => (
               <CreatorStatCard
-                key={c.user_id}
+                key={c.creator_id || c.user_id}
                 creator={c}
-                onClick={() => nav(`/pitch/${c.user_id}`)}
+                onClick={() => nav(`/pitch/${c.creator_id || c.user_id}`)}
               />
             ))}
           </div>
         ) : (
           <div className="grid gap-3">
-            {DEMO_CAMPAIGNS.slice(0, 3).map((c) => (
+            {matches.map((c) => (
               <CampaignCard
-                key={c.id}
+                key={c.campaign_id || c.id}
                 campaign={c}
-                brandName={DEMO_BRANDS.find((b) => b.user_id === c.brand_id)?.name}
-                onClick={() => nav(`/campaigns/${c.id}`)}
-                trending={c.id === 'cmp-002'}
+                brandName={c.brand_name}
+                onClick={() => nav(`/campaigns/${c.campaign_id || c.id}`)}
+                trending={c.score >= 90}
               />
             ))}
           </div>
