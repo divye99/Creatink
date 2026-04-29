@@ -200,14 +200,14 @@ function RefineTrigger({
           className={cn(
             'inline-flex items-center gap-2 px-3.5 h-8 rounded-md',
             'text-[10px] uppercase tracking-[0.22em]',
-            'bg-champagne text-cognac border border-champagne hover:brightness-95 transition',
+            'bg-cognac text-creme border border-cognac hover:brightness-110 transition',
             'shrink-0',
           )}
         >
           <Sliders className="h-3.5 w-3.5" strokeWidth={1.5} />
           Refine
           {activeFilters > 0 && (
-            <span className="inline-flex items-center justify-center min-w-[16px] h-4 px-1 rounded-full bg-cognac text-creme text-[9px] tracking-normal">
+            <span className="inline-flex items-center justify-center min-w-[16px] h-4 px-1 rounded-full bg-creme text-cognac text-[9px] tracking-normal">
               {activeFilters}
             </span>
           )}
