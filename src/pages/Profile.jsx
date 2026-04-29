@@ -410,29 +410,24 @@ function ActionCard({ eyebrow, title, body, cta, to }) {
   )
 }
 
-/** Mini leather-gradient stat pill — same material as DynamicStatCard, scaled down. */
+/** Glowy editorial stat tile — matches the Home Activity card pattern.
+ *  Mesa Clay border + dark translucent base + soft Mesa Clay radial glow. */
 function LeatherStat({ label, value, accent }) {
   return (
     <div
-      className="relative overflow-hidden p-3 text-champagne flex flex-col"
+      className="relative overflow-hidden rounded-2xl p-3.5 flex flex-col transition hover:border-cognac/55"
       style={{
-        borderRadius: '14px 2px 14px 2px',
-        backgroundImage: 'linear-gradient(135deg, #9C6B47 0%, #7B5232 55%, #5F3E25 100%)',
-        boxShadow: '0 10px 24px -16px rgba(142, 74, 47, 0.55)',
+        border: '1px solid rgba(142, 74, 47, 0.30)',
+        background:
+          'radial-gradient(120% 110% at 100% 0%, rgba(168, 85, 57, 0.10) 0%, rgba(142, 74, 47, 0.05) 55%, transparent 85%), rgba(11, 9, 7, 0.55)',
       }}
     >
-      <span
-        aria-hidden
-        className="absolute inset-0 opacity-[0.06] pointer-events-none"
-        style={{
-          backgroundImage:
-            'repeating-linear-gradient(135deg, transparent 0, transparent 6px, #F2E7D3 6px, #F2E7D3 7px)',
-        }}
-      />
-      <p className="relative text-[9px] uppercase tracking-[0.22em] text-champagne/65">{label}</p>
-      <p className="relative font-display text-3xl mt-1 leading-none">{value}</p>
+      <p className="text-[9px] uppercase tracking-[0.22em] text-cognac/75">{label}</p>
+      <p className="font-display text-[2rem] leading-none mt-2 text-champagne">{value}</p>
       {accent && (
-        <p className="relative text-[9px] tracking-[0.18em] uppercase text-hermes/95 mt-2">{accent}</p>
+        <p className="text-[9px] tracking-[0.18em] uppercase text-hermes mt-2.5 inline-flex items-center gap-1">
+          {accent}
+        </p>
       )}
     </div>
   )
