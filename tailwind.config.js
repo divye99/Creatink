@@ -19,7 +19,7 @@ export default {
         inkslate: '#161311',
         cognac: '#8E4A2F',              // Mesa Clay — borders, hairlines
         hermes: '#A85539',              // Mesa Clay vivid — energy / dot
-        champagne: '#D4B07A',           // Prairie Gold — primary text on dark
+        champagne: '#E8C68F',           // Prairie Gold — primary text on dark
         card: '#111111',
         body: '#F4ECDC',                // Creme
         muted: '#A89B85',               // Stone
@@ -29,7 +29,7 @@ export default {
 
         // Named aliases (for use directly when desired)
         mesa:    '#8E4A2F',
-        prairie: '#D4B07A',
+        prairie: '#E8C68F',
         creme:   '#F4ECDC',
         stone:   '#A89B85',
         ironwood:'#8E9A8B',
@@ -53,7 +53,7 @@ export default {
       boxShadow: {
         cognac: '0 0 20px rgba(142, 74, 47, 0.10)',
         glow: '0 0 24px rgba(142, 74, 47, 0.14)',
-        champagne: '0 0 24px rgba(212, 176, 122, 0.10)',
+        champagne: '0 0 24px rgba(232, 198, 143, 0.10)',
       },
       keyframes: {
         'fade-in': { '0%': { opacity: 0 }, '100%': { opacity: 1 } },

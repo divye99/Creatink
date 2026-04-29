@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   h: { fontSize: 14, marginTop: 16, marginBottom: 8, color: '#1A1410' },
   row: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 4 },
   bold: { fontWeight: 'bold' },
-  hr: { borderBottomWidth: 1, borderBottomColor: '#D4B07A', marginVertical: 12 },
+  hr: { borderBottomWidth: 1, borderBottomColor: '#E8C68F', marginVertical: 12 },
   total: { fontSize: 16, color: '#1A1410', marginTop: 16 },
   small: { fontSize: 9, color: '#666' },
 })

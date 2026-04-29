@@ -45,7 +45,7 @@ p, span, div, label, button, input, textarea, select {
   letter-spacing: 0.2em;
 }
 
-::selection { background: #D4B07A; color: #080808; } /* Prairie Gold */
+::selection { background: #E8C68F; color: #080808; } /* Prairie Gold */
 
 *:focus-visible {
   outline: 1px solid #A85539; /* Mesa Clay vivid */
