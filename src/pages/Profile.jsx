@@ -5,15 +5,8 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Switch } from '@/components/ui/switch'
 import { useAuth } from '@/contexts/AuthContext'
-import {
-  AvailabilityBadge,
-  ContractReadyBadge,
-  RegisteredBusinessBadge,
-  TaxReadyBadge,
-  UnverifiedBadge,
-  VerifiedCreatorBadge,
-} from '@/components/shared/VerifiedBadges'
-import { engagementColor, formatFollowers, formatINR } from '@/lib/utils'
+import { engagementColor, formatFollowers, formatINR, cn } from '@/lib/utils'
+import { FileText } from 'lucide-react'
 
 export default function Profile() {
   const { profile, userType, signOut, updateProfile } = useAuth()
@@ -25,27 +18,28 @@ export default function Profile() {
 
   const taxComplete = isCreator && profile.tax_info?.pan && profile.tax_info?.upi_id
   const contractUploaded = !isCreator && profile.contract_vault_url
+  const verified = profile.verified
 
   return (
-    <div className="space-y-12">
-      {/* Hero header */}
+    <div className="space-y-10">
+      {/* Editorial hero — avatar + brand-profile eyebrow + serif name */}
       <header className="space-y-5">
         <div className="flex items-start gap-5">
           <Avatar
             className={
               isCreator
-                ? 'h-20 w-20 ring-1 ring-cognac/20'
-                : 'h-20 w-20 rounded-md ring-1 ring-cognac/20'
+                ? 'h-16 w-16 ring-1 ring-cognac/30 shrink-0'
+                : 'h-16 w-16 rounded-xl ring-1 ring-cognac/30 shrink-0 bg-gradient-to-br from-cognac/40 to-cognac/10'
             }
           >
             <AvatarImage src={isCreator ? profile.photo_url : profile.logo_url} />
-            <AvatarFallback className="text-3xl">{profile.name?.[0]}</AvatarFallback>
+            <AvatarFallback className="text-2xl font-display bg-transparent">{profile.name?.[0]?.toUpperCase()}</AvatarFallback>
           </Avatar>
-          <div className="flex-1 min-w-0 pt-1">
+          <div className="flex-1 min-w-0">
             <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">
               {isCreator ? 'Creator profile' : 'Brand profile'}
             </p>
-            <h1 className="font-display text-5xl mt-2 leading-none truncate">
+            <h1 className="font-display text-[2.6rem] mt-1.5 leading-[1] truncate">
               {profile.name || 'Your name'}
             </h1>
             {isCreator && profile.handle && (
@@ -54,21 +48,34 @@ export default function Profile() {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-1.5">
-          {profile.verified ? (
-            isCreator ? <VerifiedCreatorBadge /> : <RegisteredBusinessBadge />
-          ) : <UnverifiedBadge />}
-          {isCreator && taxComplete && <TaxReadyBadge />}
-          {!isCreator && contractUploaded && <ContractReadyBadge />}
-          {isCreator && <AvailabilityBadge availability={profile.availability} />}
-        </div>
+        {/* Verification status pill — full-width orange-tinted on unverified */}
+        {!verified ? (
+          <div
+            className="flex items-center gap-2.5 rounded-full px-4 py-2.5 border border-hermes/40"
+            style={{
+              background:
+                'radial-gradient(120% 200% at 0% 50%, rgba(232,96,10,0.18) 0%, rgba(232,96,10,0.06) 60%, transparent 100%)',
+            }}
+          >
+            <span className="dot-urgent" />
+            <span className="text-[10px] uppercase tracking-[0.22em] text-hermes">
+              Unverified — complete your profile
+            </span>
+          </div>
+        ) : (
+          <div className="flex items-center gap-2.5 rounded-full px-4 py-2.5 border border-cognac/30 bg-cognac/5">
+            <span className="h-1.5 w-1.5 rounded-full bg-success" />
+            <span className="text-[10px] uppercase tracking-[0.22em] text-champagne">
+              {isCreator ? 'Verified creator' : 'Registered business'}
+            </span>
+          </div>
+        )}
 
-        <div className="flex items-center gap-5 pt-2 border-t border-cognac/20 text-[10px] uppercase tracking-[0.22em]">
-          <Link to="/profile/edit" className="text-cognac hover:underline">Edit profile</Link>
-          <span className="text-cognac/30">/</span>
-          <Link to="/settings" className="text-muted hover:text-cognac transition-colors">Settings</Link>
-          <span className="text-cognac/30">/</span>
-          <button onClick={signOut} className="text-muted hover:text-cognac transition-colors">Sign out</button>
+        {/* Action pill row */}
+        <div className="grid grid-cols-3 gap-2">
+          <PillButton to="/profile/edit">Edit profile</PillButton>
+          <PillButton to="/settings">Settings</PillButton>
+          <PillButton onClick={signOut}>Sign out</PillButton>
         </div>
       </header>
 
@@ -211,78 +218,184 @@ const MOCK_BRAND_COLLABS = [
 ]
 
 function BrandSections({ profile, contractUploaded }) {
-  const budgetRange =
-    profile.budget_range?.min || profile.budget_range?.max
-      ? `${formatINR(profile.budget_range.min || 0)} – ${formatINR(profile.budget_range.max || 0)}`
-      : null
+  const memberSince = profile.created_at
+    ? new Date(profile.created_at)
+    : new Date('2026-03-01')
+  const memberLabel = memberSince.toLocaleDateString('en-IN', { month: 'short', year: 'numeric' })
+
+  const campaignCount = profile.active_campaigns ?? 0
+  const creatorCount = profile.connected_creators ?? 0
+
+  const budgetMid = profile.budget_range?.min ?? 0
+  const selectedBudget = pickBudgetBand(budgetMid, profile.budget_range?.max ?? 0)
 
   return (
     <>
-      <Section eyebrow="The story" title="About">
-        <p className="text-sm leading-relaxed text-champagne max-w-prose">
+      {/* At a glance — three pills */}
+      <PillSection eyebrow="At a glance">
+        <StatPill value={campaignCount} label="Campaigns" />
+        <StatPill value={creatorCount} label="Creators" />
+        <StatPill value={`Since ${memberLabel}`} />
+      </PillSection>
+
+      {/* About */}
+      <EyebrowSection eyebrow="About">
+        <p className="text-base leading-relaxed text-champagne">
           {profile.description || <span className="italic text-muted">No description yet.</span>}
         </p>
-      </Section>
+      </EyebrowSection>
 
-      <Section eyebrow="Categories" title="Verticals">
-        <div className="flex flex-wrap gap-1.5">
+      {/* Categories */}
+      <EyebrowSection eyebrow="Categories">
+        <div className="flex flex-wrap gap-2">
           {(profile.categories || []).length === 0
             ? <p className="text-sm italic text-muted">No categories selected.</p>
-            : profile.categories.map((c) => <Badge key={c} variant="cognac">{c}</Badge>)}
+            : profile.categories.map((c) => <CategoryPill key={c}>{c}</CategoryPill>)}
         </div>
-      </Section>
+      </EyebrowSection>
 
-      {profile.target_audience && (
-        <Section eyebrow="Target audience" title="Customer">
-          <p className="text-sm leading-relaxed text-champagne max-w-prose">
-            {profile.target_audience}
-          </p>
-        </Section>
-      )}
+      {/* Typical budget — selectable pill row */}
+      <EyebrowSection eyebrow="Typical budget">
+        <div className="flex flex-wrap gap-2">
+          {BUDGET_BANDS.map((b) => (
+            <BudgetPill key={b.label} active={b.label === selectedBudget}>{b.label}</BudgetPill>
+          ))}
+        </div>
+      </EyebrowSection>
 
-      {budgetRange && (
-        <Section eyebrow="Typical budget" title="Range">
-          <p className="font-display text-4xl leading-none">{budgetRange}</p>
-          <p className="text-[10px] uppercase tracking-[0.22em] text-muted mt-3">per campaign</p>
-        </Section>
-      )}
+      {/* Open campaigns — dotted-border empty state */}
+      <EyebrowSection eyebrow="Open campaigns">
+        <div
+          className="rounded-2xl px-6 py-7 text-center"
+          style={{
+            border: '1.5px dashed rgba(139, 94, 60, 0.45)',
+          }}
+        >
+          <p className="text-sm text-champagne/85">No campaigns yet.</p>
+          <p className="text-sm text-champagne/85 mt-1">Post a brief to start finding creators.</p>
+          <Link
+            to="/campaigns/new"
+            className="inline-flex items-center justify-center mt-5 rounded-full px-6 py-2.5 text-[11px] uppercase tracking-[0.22em] text-hermes border border-hermes/45 hover:bg-hermes/10 transition"
+          >
+            + Post a brief
+          </Link>
+        </div>
+      </EyebrowSection>
 
-      <Section
-        eyebrow="Compliance"
-        title="Contract Vault"
-        action={contractUploaded ? <Badge variant="cognac">Uploaded</Badge> : null}
-      >
-        {contractUploaded ? (
-          <p className="text-sm text-champagne leading-relaxed max-w-prose">
-            Your standard collaboration contract is on file. Creators acknowledge a copy at deal confirmation.
-          </p>
-        ) : (
-          <div className="space-y-4 max-w-prose">
-            <p className="text-sm text-champagne leading-relaxed">
-              Upload a contract template to begin paid collaborations. Creators tap-acknowledge it at deal confirmation — not a legal e-signature, just a record of receipt.
-            </p>
-            <Button size="sm" asChild><Link to="/profile/edit#contract">Upload contract</Link></Button>
+      {/* Compliance — Contract Vault row */}
+      <EyebrowSection eyebrow="Compliance">
+        <div className="flex items-center gap-3 rounded-2xl border border-cognac/25 px-4 py-3.5">
+          <div className="h-10 w-10 rounded-md bg-cognac/15 border border-cognac/25 flex items-center justify-center shrink-0">
+            <FileText className="h-4.5 w-4.5 text-champagne/80" strokeWidth={1.5} />
           </div>
-        )}
-      </Section>
+          <div className="flex-1 min-w-0">
+            <p className="font-display text-lg leading-none">Contract Vault</p>
+            <p className="text-xs text-muted mt-1.5">
+              {contractUploaded ? 'On file — creators acknowledge at deal confirmation' : 'Upload to unlock paid deals'}
+            </p>
+          </div>
+          <Link
+            to="/profile/edit#contract"
+            className="rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.22em] text-champagne border border-cognac/40 hover:border-cognac/80 transition shrink-0"
+          >
+            {contractUploaded ? 'Replace' : 'Upload'}
+          </Link>
+        </div>
+      </EyebrowSection>
 
-      <Section eyebrow="Activity" title="Brand Studio">
+      {/* Activity */}
+      <EyebrowSection eyebrow="Activity">
         <div className="grid grid-cols-3 gap-2">
           <LeatherStat label="Active" value="3" accent="↗ +1" />
           <LeatherStat label="Completed" value="12" />
           <LeatherStat label="Avg. Rating" value="4.8" />
         </div>
-      </Section>
+      </EyebrowSection>
 
-      <Section eyebrow="Past partnerships" title="Featured collaborations">
+      {/* Past partnerships */}
+      <EyebrowSection eyebrow="Past partnerships">
         <CollabList items={MOCK_BRAND_COLLABS} primaryKey="creator" />
-      </Section>
-
-      <Section eyebrow="On Creatink" title="Member since">
-        <p className="font-display text-3xl leading-none">March 2026</p>
-        <p className="text-[10px] uppercase tracking-[0.22em] text-muted mt-3">India</p>
-      </Section>
+      </EyebrowSection>
     </>
+  )
+}
+
+const BUDGET_BANDS = [
+  { label: 'Under ₹50K',  min: 0,        max: 50000 },
+  { label: '₹50K–₹2L',    min: 50000,    max: 200000 },
+  { label: '₹2L–₹10L',    min: 200000,   max: 1000000 },
+  { label: '₹10L+',        min: 1000000,  max: Infinity },
+]
+
+function pickBudgetBand(min, max) {
+  const mid = max ? (min + max) / 2 : min
+  if (!mid) return '₹50K–₹2L'
+  if (mid < 50000) return 'Under ₹50K'
+  if (mid < 200000) return '₹50K–₹2L'
+  if (mid < 1000000) return '₹2L–₹10L'
+  return '₹10L+'
+}
+
+/** Editorial section — small caps eyebrow above flat content (no card chrome). */
+function EyebrowSection({ eyebrow, children }) {
+  return (
+    <section className="space-y-3.5">
+      <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">{eyebrow}</p>
+      {children}
+    </section>
+  )
+}
+
+/** Same idea but for inline pill row. */
+function PillSection({ eyebrow, children }) {
+  return (
+    <section className="space-y-3.5">
+      <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">{eyebrow}</p>
+      <div className="flex flex-wrap gap-2">{children}</div>
+    </section>
+  )
+}
+
+function StatPill({ value, label }) {
+  return (
+    <span className="inline-flex items-baseline gap-1.5 rounded-full border border-cognac/30 bg-cognac/5 px-3.5 py-1.5">
+      <span className="font-display text-[15px] leading-none text-champagne">{value}</span>
+      {label && <span className="text-[11px] text-muted">{label}</span>}
+    </span>
+  )
+}
+
+function CategoryPill({ children }) {
+  return (
+    <span className="inline-flex items-center rounded-full border border-cognac/35 px-3.5 py-1.5 text-[12px] text-champagne">
+      {children}
+    </span>
+  )
+}
+
+function BudgetPill({ active, children }) {
+  return (
+    <button
+      type="button"
+      className={cn(
+        'inline-flex items-center rounded-full px-3.5 py-1.5 text-[12px] transition',
+        active
+          ? 'border border-hermes/55 bg-hermes/15 text-champagne'
+          : 'border border-cognac/30 bg-transparent text-champagne/85 hover:border-cognac/60'
+      )}
+    >
+      {children}
+    </button>
+  )
+}
+
+function PillButton({ to, onClick, children }) {
+  const cls =
+    'inline-flex items-center justify-center rounded-full px-4 py-2.5 text-[10px] uppercase tracking-[0.22em] text-champagne border border-cognac/30 hover:border-cognac/70 transition'
+  return to ? (
+    <Link to={to} className={cls}>{children}</Link>
+  ) : (
+    <button type="button" onClick={onClick} className={cls}>{children}</button>
   )
 }
 
