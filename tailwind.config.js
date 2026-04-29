@@ -14,7 +14,7 @@ export default {
         //   Ironwood (cool sage) — verified, slate accents        -> slateblue
         // Background and dark cards stay near-black.
         bg: '#080808',
-        slateblue: '#7E907A',           // Ironwood
+        slateblue: '#8F9A8D',           // Ironwood
         surface2: '#161311',
         inkslate: '#161311',
         cognac: '#8E4A2F',              // Mesa Clay — borders, hairlines
@@ -23,7 +23,7 @@ export default {
         card: '#111111',
         body: '#ECDFC2',                // Creme
         muted: '#BCA286',               // Stone
-        success: '#7E907A',           // Ironwood sage — aligned with the palette
+        success: '#8F9A8D',           // Ironwood sage — aligned with the palette
         warning: '#D4A574',
         error: '#A85539',
 
@@ -32,7 +32,7 @@ export default {
         prairie: '#B58A2B',
         creme:   '#ECDFC2',
         stone:   '#BCA286',
-        ironwood:'#7E907A',
+        ironwood:'#8F9A8D',
 
         background: '#080808',
         foreground: '#ECDFC2',
