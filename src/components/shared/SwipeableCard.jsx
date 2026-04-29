@@ -96,7 +96,7 @@ export default function SwipeableCard({ creator, isFront, slot = 0, onSwipeUp, o
 
       {/* Match score (top right) */}
       {c.score != null && (
-        <div className="absolute top-4 right-4 px-2.5 py-1 rounded-full bg-cognac/95 text-champagne text-[10px] tracking-[0.2em] uppercase backdrop-blur-sm">
+        <div className="absolute top-4 right-4 px-2.5 py-1 rounded-full bg-cognac/95 text-creme text-[10px] tracking-[0.2em] uppercase backdrop-blur-sm">
           {c.score}% match
         </div>
       )}

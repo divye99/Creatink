@@ -87,7 +87,7 @@ export default function SwipeableCampaignCard({ campaign, isFront, slot = 0, onS
       )}
 
       {c.score != null && (
-        <div className="absolute top-4 right-4 px-2.5 py-1 rounded-full bg-cognac/95 text-champagne text-[10px] tracking-[0.2em] uppercase backdrop-blur-sm">
+        <div className="absolute top-4 right-4 px-2.5 py-1 rounded-full bg-cognac/95 text-creme text-[10px] tracking-[0.2em] uppercase backdrop-blur-sm">
           {c.score}% match
         </div>
       )}

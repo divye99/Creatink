@@ -103,7 +103,7 @@ export default function Home() {
       <section>
         <div className="flex items-end justify-between mb-5">
           <div>
-            <p className="text-[10px] uppercase tracking-[0.22em] text-slateblue/80">Curated for you</p>
+            <p className="text-[10px] uppercase tracking-[0.22em] text-creme/80">Curated for you</p>
             <h2 className="font-display text-[2rem] mt-2 leading-none italic font-display-italic text-slateblue">Smart Matches</h2>
           </div>
           <Link to="/discover" className="text-[10px] uppercase tracking-[0.22em] text-hermes hover:text-hermes/80 transition">

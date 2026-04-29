@@ -38,7 +38,7 @@ export default function DiscoverCreatorCard({ creator, onClick }) {
 
       {/* Match score top-right (if present) */}
       {c.score != null && (
-        <div className="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-cognac/95 text-champagne text-[9px] tracking-[0.18em] uppercase backdrop-blur-sm">
+        <div className="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-cognac/95 text-creme text-[9px] tracking-[0.18em] uppercase backdrop-blur-sm">
           {c.score}%
         </div>
       )}
