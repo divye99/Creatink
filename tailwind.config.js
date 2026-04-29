@@ -17,18 +17,18 @@ export default {
         slateblue: '#8E9A8B',           // Ironwood
         surface2: '#161311',
         inkslate: '#161311',
-        cognac: '#B86E4F',              // Mesa Clay — borders, hairlines
-        hermes: '#C8654A',              // Mesa Clay vivid — energy / dot
+        cognac: '#8E4A2F',              // Mesa Clay — borders, hairlines
+        hermes: '#A85539',              // Mesa Clay vivid — energy / dot
         champagne: '#D4B07A',           // Prairie Gold — primary text on dark
         card: '#111111',
         body: '#F4ECDC',                // Creme
         muted: '#A89B85',               // Stone
         success: '#7BAA7E',
         warning: '#D4A574',
-        error: '#C8654A',
+        error: '#A85539',
 
         // Named aliases (for use directly when desired)
-        mesa:    '#B86E4F',
+        mesa:    '#8E4A2F',
         prairie: '#D4B07A',
         creme:   '#F4ECDC',
         stone:   '#A89B85',
@@ -36,13 +36,13 @@ export default {
 
         background: '#080808',
         foreground: '#F4ECDC',
-        primary:    { DEFAULT: '#C8654A', foreground: '#F4ECDC' },
+        primary:    { DEFAULT: '#A85539', foreground: '#F4ECDC' },
         secondary:  { DEFAULT: '#161311', foreground: '#F4ECDC' },
-        accent:     { DEFAULT: '#B86E4F', foreground: '#F4ECDC' },
-        destructive:{ DEFAULT: '#C8654A', foreground: '#F4ECDC' },
-        border: 'rgba(184, 110, 79, 0.25)',
+        accent:     { DEFAULT: '#8E4A2F', foreground: '#F4ECDC' },
+        destructive:{ DEFAULT: '#A85539', foreground: '#F4ECDC' },
+        border: 'rgba(142, 74, 47, 0.25)',
         input: '#161311',
-        ring: '#C8654A',
+        ring: '#A85539',
       },
       fontFamily: {
         display: ['Fraunces', 'Georgia', 'Times New Roman', 'serif'],
@@ -51,8 +51,8 @@ export default {
       },
       borderRadius: { lg: '16px', md: '10px', sm: '6px' },
       boxShadow: {
-        cognac: '0 0 20px rgba(184, 110, 79, 0.10)',
-        glow: '0 0 24px rgba(184, 110, 79, 0.14)',
+        cognac: '0 0 20px rgba(142, 74, 47, 0.10)',
+        glow: '0 0 24px rgba(142, 74, 47, 0.14)',
         champagne: '0 0 24px rgba(212, 176, 122, 0.10)',
       },
       keyframes: {

@@ -97,7 +97,7 @@ function SuggestionRow({ suggestion }) {
   return (
     <div
       className="flex items-center gap-3.5 rounded-2xl px-4 py-3"
-      style={{ border: '1.25px dashed rgba(184, 110, 79, 0.45)' }}
+      style={{ border: '1.25px dashed rgba(142, 74, 47, 0.45)' }}
     >
       <Avatar className="h-10 w-10 shrink-0 ring-1 ring-cognac/15">
         <AvatarImage src={person.photo_url || person.logo_url} />
