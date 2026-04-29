@@ -13,14 +13,14 @@ export default {
         //   Stone (warm beige) — secondary text, muted labels     -> muted
         //   Ironwood (cool sage) — verified, slate accents        -> slateblue
         // Background and dark cards stay near-black.
-        bg: '#1A1410',
+        bg: '#080808',
         slateblue: '#6F8470',           // Ironwood
         surface2: '#161311',
         inkslate: '#161311',
         cognac: '#A85539',              // Mesa Clay — borders, hairlines
         hermes: '#8E4A2F',              // Mesa Clay vivid — energy / dot
         champagne: '#B58A2B',           // Prairie Gold — primary text on dark
-        card: '#14100C',
+        card: '#111111',
         body: '#ECDFC2',                // Creme
         muted: '#BCA286',               // Stone
         success: '#6F8470',           // Ironwood sage — aligned with the palette
@@ -34,7 +34,7 @@ export default {
         stone:   '#BCA286',
         ironwood:'#6F8470',
 
-        background: '#1A1410',
+        background: '#080808',
         foreground: '#ECDFC2',
         primary:    { DEFAULT: '#8E4A2F', foreground: '#ECDFC2' },
         secondary:  { DEFAULT: '#161311', foreground: '#ECDFC2' },
