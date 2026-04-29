@@ -50,23 +50,23 @@ export default function DiscoverCreatorCard({ creator, onClick }) {
       )}
 
       {/* Bottom-bound details */}
-      <div className="absolute inset-x-0 bottom-0 p-4 text-white">
+      <div className="absolute inset-x-0 bottom-0 p-4 text-creme">
         <h3 className="font-display text-xl leading-none">{c.name}</h3>
         {c.handle && (
-          <p className="text-[10px] text-white/70 mt-1">{c.handle}</p>
+          <p className="text-[10px] text-creme/70 mt-1">{c.handle}</p>
         )}
 
         <div className="flex items-baseline gap-2 mt-2.5 text-[10px]">
-          <span className="text-white/55 uppercase tracking-[0.18em] text-[8.5px]">Foll.</span>
+          <span className="text-creme/55 uppercase tracking-[0.18em] text-[8.5px]">Foll.</span>
           <span className="font-display text-sm">{formatFollowers(c.follower_count)}</span>
-          <span className="text-white/30">·</span>
-          <span className="text-white/55 uppercase tracking-[0.18em] text-[8.5px]">Eng</span>
+          <span className="text-creme/30">·</span>
+          <span className="text-creme/55 uppercase tracking-[0.18em] text-[8.5px]">Eng</span>
           <span className={cn('font-display text-sm', engagementColor(c.engagement_rate).replace('text-', 'text-'))}>
             {c.engagement_rate != null ? `${Number(c.engagement_rate).toFixed(1)}%` : '—'}
           </span>
         </div>
 
-        <p className="text-[10px] text-white/75 mt-2 leading-relaxed">
+        <p className="text-[10px] text-creme/75 mt-2 leading-relaxed">
           {[niche, demoString].filter(Boolean).join('  ·  ')}
         </p>
       </div>

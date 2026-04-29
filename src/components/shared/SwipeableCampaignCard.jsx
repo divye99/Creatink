@@ -94,7 +94,7 @@ export default function SwipeableCampaignCard({ campaign, isFront, slot = 0, onS
 
       {isFront && (
         <div
-          className="absolute top-4 left-4 px-3 py-1 rounded-full bg-hermes text-white text-[10px] uppercase tracking-[0.22em] transition-opacity"
+          className="absolute top-4 left-4 px-3 py-1 rounded-full bg-hermes text-creme text-[10px] uppercase tracking-[0.22em] transition-opacity"
           style={{ opacity: passOpacity }}
         >
           Pass
@@ -113,30 +113,30 @@ export default function SwipeableCampaignCard({ campaign, isFront, slot = 0, onS
         </div>
       )}
 
-      <div className="absolute inset-x-0 bottom-0 p-5 text-white">
+      <div className="absolute inset-x-0 bottom-0 p-5 text-creme">
         <h3 className="font-display text-3xl leading-tight">{c.title}</h3>
 
         {c.brief && (
-          <p className="text-[12px] text-white/85 mt-3 leading-relaxed line-clamp-3">{c.brief}</p>
+          <p className="text-[12px] text-creme/85 mt-3 leading-relaxed line-clamp-3">{c.brief}</p>
         )}
 
         <div className="flex items-baseline gap-3 text-[11px] mt-4 pt-4 border-t border-white/15">
-          <span className="text-white/65 uppercase tracking-[0.18em] text-[9px]">Deliverables</span>
-          <span className="text-white/95">{delsSummary || '—'}</span>
+          <span className="text-creme/65 uppercase tracking-[0.18em] text-[9px]">Deliverables</span>
+          <span className="text-creme/95">{delsSummary || '—'}</span>
         </div>
 
         <div className="flex items-baseline justify-between gap-3 mt-2.5">
           <div className="flex items-baseline gap-2">
-            <span className="text-white/65 uppercase tracking-[0.18em] text-[9px]">Budget</span>
+            <span className="text-creme/65 uppercase tracking-[0.18em] text-[9px]">Budget</span>
             <span className="font-display text-lg">
               {c.budget != null ? formatINR(c.budget) : 'Barter'}
             </span>
           </div>
-          <span className="text-[9px] uppercase tracking-[0.18em] text-white/55">{dayDelta(c.created_at)}</span>
+          <span className="text-[9px] uppercase tracking-[0.18em] text-creme/55">{dayDelta(c.created_at)}</span>
         </div>
 
         {c.reasoning && (
-          <p className="text-[10.5px] text-white/75 italic mt-3">{c.reasoning}</p>
+          <p className="text-[10.5px] text-creme/75 italic mt-3">{c.reasoning}</p>
         )}
       </div>
     </div>

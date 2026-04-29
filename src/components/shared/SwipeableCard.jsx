@@ -104,7 +104,7 @@ export default function SwipeableCard({ creator, isFront, slot = 0, onSwipeUp, o
       {/* PASS overlay (visible while dragging up) */}
       {isFront && (
         <div
-          className="absolute top-4 left-4 px-3 py-1 rounded-full bg-hermes text-white text-[10px] uppercase tracking-[0.22em] transition-opacity"
+          className="absolute top-4 left-4 px-3 py-1 rounded-full bg-hermes text-creme text-[10px] uppercase tracking-[0.22em] transition-opacity"
           style={{ opacity: passOpacity }}
         >
           Pass
@@ -112,28 +112,28 @@ export default function SwipeableCard({ creator, isFront, slot = 0, onSwipeUp, o
       )}
 
       {/* Details overlay (bottom) */}
-      <div className="absolute inset-x-0 bottom-0 p-5 text-white">
+      <div className="absolute inset-x-0 bottom-0 p-5 text-creme">
         <h3 className="font-display text-3xl leading-none">{c.name}</h3>
         {c.handle && (
-          <p className="text-[11px] text-white/75 mt-1.5">{c.handle}</p>
+          <p className="text-[11px] text-creme/75 mt-1.5">{c.handle}</p>
         )}
 
         <div className="flex items-baseline gap-3 text-[11px] mt-3">
-          <span className="text-white/65 uppercase tracking-[0.18em] text-[9px]">Followers</span>
+          <span className="text-creme/65 uppercase tracking-[0.18em] text-[9px]">Followers</span>
           <span className="font-display text-base">{formatFollowers(c.follower_count)}</span>
-          <span className="text-white/30">·</span>
-          <span className="text-white/65 uppercase tracking-[0.18em] text-[9px]">Eng</span>
+          <span className="text-creme/30">·</span>
+          <span className="text-creme/65 uppercase tracking-[0.18em] text-[9px]">Eng</span>
           <span className="font-display text-base">
             {c.engagement_rate != null ? `${Number(c.engagement_rate).toFixed(1)}%` : '—'}
           </span>
         </div>
 
-        <p className="text-[11px] text-white/85 mt-3 leading-relaxed">
+        <p className="text-[11px] text-creme/85 mt-3 leading-relaxed">
           {[c.niches?.[0], demoString].filter(Boolean).join('  ·  ')}
         </p>
 
         {c.reasoning && (
-          <p className="text-[10.5px] text-white/75 italic mt-2">{c.reasoning}</p>
+          <p className="text-[10.5px] text-creme/75 italic mt-2">{c.reasoning}</p>
         )}
       </div>
     </div>

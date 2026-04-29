@@ -44,10 +44,10 @@ export default function BrandCard({ brand, onClick }) {
         </div>
       )}
 
-      <div className="absolute inset-x-0 bottom-0 p-4 text-white">
+      <div className="absolute inset-x-0 bottom-0 p-4 text-creme">
         <h3 className="font-display text-xl leading-none">{b.name}</h3>
         {b.description && (
-          <p className="text-[11px] text-white/80 mt-2 leading-relaxed line-clamp-2 max-w-prose">
+          <p className="text-[11px] text-creme/80 mt-2 leading-relaxed line-clamp-2 max-w-prose">
             {b.description}
           </p>
         )}
@@ -56,7 +56,7 @@ export default function BrandCard({ brand, onClick }) {
           {cats.map((c) => (
             <span
               key={c}
-              className="px-2 py-0.5 rounded-full bg-white/10 text-white/85 text-[9px] tracking-[0.18em] uppercase backdrop-blur-sm"
+              className="px-2 py-0.5 rounded-full bg-white/10 text-creme/85 text-[9px] tracking-[0.18em] uppercase backdrop-blur-sm"
             >
               {c}
             </span>
