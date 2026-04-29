@@ -24,7 +24,7 @@ export async function initiateRazorpayPayout({ amount, dealRef, payeeName, upi }
         ok: true, razorpay_id: resp.razorpay_payment_id, upi_ref: null,
       }),
       modal: { ondismiss: () => resolve({ ok: false }) },
-      theme: { color: '#E8D5B0' },
+      theme: { color: '#D4B07A' },
     })
     rzp.open()
   })

@@ -49,9 +49,9 @@ export default function Home() {
       <section
         className="rounded-3xl px-5 py-5 space-y-5"
         style={{
-          border: '1px solid rgba(139, 94, 60, 0.32)',
+          border: '1px solid rgba(184, 110, 79, 0.32)',
           background:
-            'radial-gradient(120% 90% at 100% 0%, rgba(232,96,10,0.08) 0%, rgba(139,94,60,0.04) 50%, transparent 80%), linear-gradient(180deg, rgba(22,16,10,0.4) 0%, rgba(8,8,8,0) 100%)',
+            'radial-gradient(120% 90% at 100% 0%, rgba(200, 101, 74,0.08) 0%, rgba(184, 110, 79,0.04) 50%, transparent 80%), linear-gradient(180deg, rgba(22,16,10,0.4) 0%, rgba(8,8,8,0) 100%)',
         }}
       >
         {/* Eyebrow with hermes dot */}
@@ -161,7 +161,7 @@ function ActivityTile({ href, label, value, valueTone, trend, caption }) {
       to={href}
       className="block rounded-2xl px-4 py-4 transition hover:border-cognac/55"
       style={{
-        border: '1px solid rgba(139, 94, 60, 0.28)',
+        border: '1px solid rgba(184, 110, 79, 0.28)',
         background: 'rgba(11, 9, 7, 0.55)',
       }}
     >

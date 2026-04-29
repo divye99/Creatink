@@ -6,31 +6,43 @@ export default {
     container: { center: true, padding: '1rem', screens: { '2xl': '1400px' } },
     extend: {
       colors: {
-        // WHOOP-style: near-black canvas, dark cards, champagne hero numbers,
-        // slate-blue secondary accent, cognac for hairline borders, hermes for CTAs.
+        // Southwest desert palette:
+        //   Mesa Clay (terracotta) — borders + energy moments    -> cognac / hermes
+        //   Prairie Gold (warm tan) — primary text, hero numbers  -> champagne
+        //   Creme (off-white) — headings, names                   -> body / foreground
+        //   Stone (warm beige) — secondary text, muted labels     -> muted
+        //   Ironwood (cool sage) — verified, slate accents        -> slateblue
+        // Background and dark cards stay near-black.
         bg: '#080808',
-        slateblue: '#8FA3BF',
-        surface2: '#161616',
-        inkslate: '#161616',
-        cognac: '#8B5E3C',
-        hermes: '#E8600A',
-        champagne: '#E8D5B0',
+        slateblue: '#8E9A8B',           // Ironwood
+        surface2: '#161311',
+        inkslate: '#161311',
+        cognac: '#B86E4F',              // Mesa Clay — borders, hairlines
+        hermes: '#C8654A',              // Mesa Clay vivid — energy / dot
+        champagne: '#D4B07A',           // Prairie Gold — primary text on dark
         card: '#111111',
-        body: '#F5F0E8',
-        muted: '#444444',
-        success: '#2ECC71',
-        warning: '#F39C12',
-        error: '#E74C3C',
+        body: '#F4ECDC',                // Creme
+        muted: '#A89B85',               // Stone
+        success: '#7BAA7E',
+        warning: '#D4A574',
+        error: '#C8654A',
+
+        // Named aliases (for use directly when desired)
+        mesa:    '#B86E4F',
+        prairie: '#D4B07A',
+        creme:   '#F4ECDC',
+        stone:   '#A89B85',
+        ironwood:'#8E9A8B',
 
         background: '#080808',
-        foreground: '#F5F0E8',
-        primary: { DEFAULT: '#E8600A', foreground: '#F5F0E8' },
-        secondary: { DEFAULT: '#161616', foreground: '#F5F0E8' },
-        accent: { DEFAULT: '#8B5E3C', foreground: '#F5F0E8' },
-        destructive: { DEFAULT: '#E74C3C', foreground: '#F5F0E8' },
-        border: 'rgba(139, 94, 60, 0.25)',
-        input: '#161616',
-        ring: '#E8600A',
+        foreground: '#F4ECDC',
+        primary:    { DEFAULT: '#C8654A', foreground: '#F4ECDC' },
+        secondary:  { DEFAULT: '#161311', foreground: '#F4ECDC' },
+        accent:     { DEFAULT: '#B86E4F', foreground: '#F4ECDC' },
+        destructive:{ DEFAULT: '#C8654A', foreground: '#F4ECDC' },
+        border: 'rgba(184, 110, 79, 0.25)',
+        input: '#161311',
+        ring: '#C8654A',
       },
       fontFamily: {
         display: ['Fraunces', 'Georgia', 'Times New Roman', 'serif'],
@@ -39,9 +51,9 @@ export default {
       },
       borderRadius: { lg: '16px', md: '10px', sm: '6px' },
       boxShadow: {
-        cognac: '0 0 20px rgba(139, 94, 60, 0.08)',
-        glow: '0 0 24px rgba(139, 94, 60, 0.12)',
-        champagne: '0 0 24px rgba(232, 213, 176, 0.08)',
+        cognac: '0 0 20px rgba(184, 110, 79, 0.10)',
+        glow: '0 0 24px rgba(184, 110, 79, 0.14)',
+        champagne: '0 0 24px rgba(212, 176, 122, 0.10)',
       },
       keyframes: {
         'fade-in': { '0%': { opacity: 0 }, '100%': { opacity: 1 } },

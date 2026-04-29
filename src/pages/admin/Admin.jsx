@@ -78,7 +78,7 @@ export default function Admin() {
               <XAxis dataKey="d" stroke="#6B5D4F" fontSize={11} />
               <YAxis stroke="#6B5D4F" fontSize={11} />
               <Tooltip contentStyle={{ background: '#F2E7D3', border: '1px solid #BFA47C', color: '#1A1410', borderRadius: 8 }} />
-              <Line type="monotone" dataKey="v" stroke="#8B5E3C" strokeWidth={2} />
+              <Line type="monotone" dataKey="v" stroke="#B86E4F" strokeWidth={2} />
             </LineChart>
           </ResponsiveContainer>
         </Card>

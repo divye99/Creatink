@@ -54,7 +54,7 @@ export default function Profile() {
             className="flex items-center gap-2.5 rounded-full px-4 py-2.5 border border-hermes/40"
             style={{
               background:
-                'radial-gradient(120% 200% at 0% 50%, rgba(232,96,10,0.18) 0%, rgba(232,96,10,0.06) 60%, transparent 100%)',
+                'radial-gradient(120% 200% at 0% 50%, rgba(200, 101, 74,0.18) 0%, rgba(200, 101, 74,0.06) 60%, transparent 100%)',
             }}
           >
             <span className="dot-urgent" />
@@ -268,7 +268,7 @@ function BrandSections({ profile, contractUploaded }) {
         <div
           className="rounded-2xl px-6 py-7 text-center"
           style={{
-            border: '1.5px dashed rgba(139, 94, 60, 0.45)',
+            border: '1.5px dashed rgba(184, 110, 79, 0.45)',
           }}
         >
           <p className="text-sm text-champagne/85">No campaigns yet.</p>
@@ -418,7 +418,7 @@ function LeatherStat({ label, value, accent }) {
       style={{
         borderRadius: '14px 2px 14px 2px',
         backgroundImage: 'linear-gradient(135deg, #9C6B47 0%, #7B5232 55%, #5F3E25 100%)',
-        boxShadow: '0 10px 24px -16px rgba(139, 94, 60, 0.55)',
+        boxShadow: '0 10px 24px -16px rgba(184, 110, 79, 0.55)',
       }}
     >
       <span
