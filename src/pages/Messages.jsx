@@ -95,7 +95,7 @@ export default function Messages() {
 function SuggestionRow({ suggestion }) {
   const { person, action, copy, tone = 'clay' } = suggestion
   const isSage = tone === 'sage'
-  const borderRgba = isSage ? 'rgba(143, 154, 141, 0.45)' : 'rgba(142, 74, 47, 0.45)'
+  const borderRgba = isSage ? 'rgba(111, 132, 112, 0.45)' : 'rgba(142, 74, 47, 0.45)'
   const ctaClass = isSage
     ? 'text-slateblue hover:text-slateblue/80'
     : 'text-hermes hover:text-hermes/80'
