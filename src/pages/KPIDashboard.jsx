@@ -85,7 +85,7 @@ export default function KPIDashboard() {
             <XAxis dataKey="d" stroke="#6B5D4F" fontSize={11} />
             <YAxis stroke="#6B5D4F" fontSize={11} />
             <Tooltip contentStyle={{ background: '#F2E7D3', border: '1px solid #BFA47C', color: '#1A1410', borderRadius: 8 }} />
-            <Line type="monotone" dataKey="v" stroke="#8E4A2F" strokeWidth={2} dot={false} />
+            <Line type="monotone" dataKey="v" stroke="#A85539" strokeWidth={2} dot={false} />
           </LineChart>
         </ResponsiveContainer>
       </Card>
@@ -98,7 +98,7 @@ export default function KPIDashboard() {
             <XAxis dataKey="name" stroke="#6B5D4F" fontSize={11} />
             <YAxis stroke="#6B5D4F" fontSize={11} />
             <Tooltip contentStyle={{ background: '#F2E7D3', border: '1px solid #BFA47C', color: '#1A1410', borderRadius: 8 }} />
-            <Bar dataKey="value" fill="#8E4A2F" radius={[6, 6, 0, 0]} />
+            <Bar dataKey="value" fill="#A85539" radius={[6, 6, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </Card>

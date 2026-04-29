@@ -48,15 +48,15 @@ p, span, div, label, button, input, textarea, select {
 ::selection { background: #B58A2B; color: #080808; } /* Prairie Gold */
 
 *:focus-visible {
-  outline: 1px solid #A85539; /* Mesa Clay vivid */
+  outline: 1px solid #8E4A2F; /* Mesa Clay vivid */
   outline-offset: 3px;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(142, 74, 47, 0.4); border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(142, 74, 47, 0.7); }
+::-webkit-scrollbar-thumb { background: rgba(168, 85, 57, 0.4); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(168, 85, 57, 0.7); }
 
 .card-glow {
   transition: box-shadow 480ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -64,20 +64,20 @@ p, span, div, label, button, input, textarea, select {
               border-color 480ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 .card-glow:hover, .card-glow:focus-within {
-  box-shadow: 0 0 0 1px rgba(142, 74, 47, 0.4), 0 0 32px rgba(142, 74, 47, 0.20);
+  box-shadow: 0 0 0 1px rgba(168, 85, 57, 0.4), 0 0 32px rgba(168, 85, 57, 0.20);
   transform: translateY(-1px);
 }
 
 /* Mesa Clay vivid dot — for unread / urgency / live indicators */
 .dot-hermes {
   width: 6px; height: 6px; border-radius: 9999px;
-  background: #A85539;
-  box-shadow: 0 0 0 2px rgba(168, 85, 57, 0.20);
+  background: #8E4A2F;
+  box-shadow: 0 0 0 2px rgba(142, 74, 47, 0.20);
 }
 .dot-urgent {
   width: 7px; height: 7px; border-radius: 9999px;
-  background: #A85539;
-  box-shadow: 0 0 0 2.5px rgba(168, 85, 57, 0.24);
+  background: #8E4A2F;
+  box-shadow: 0 0 0 2.5px rgba(142, 74, 47, 0.24);
 }
 
 /* Page transition — slow opacity-only fade, no slide.

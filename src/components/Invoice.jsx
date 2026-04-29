@@ -4,7 +4,7 @@ import { saveAs } from './saveAs'
 const styles = StyleSheet.create({
   page: { padding: 40, backgroundColor: '#FFFFFF', fontSize: 10, fontFamily: 'Helvetica' },
   brand: { fontSize: 22, color: '#1A1410', marginBottom: 4, fontWeight: 'bold' },
-  tagline: { fontSize: 10, color: '#8E4A2F', marginBottom: 24, letterSpacing: 2 },
+  tagline: { fontSize: 10, color: '#A85539', marginBottom: 24, letterSpacing: 2 },
   h: { fontSize: 14, marginTop: 16, marginBottom: 8, color: '#1A1410' },
   row: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 4 },
   bold: { fontWeight: 'bold' },
