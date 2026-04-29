@@ -34,7 +34,7 @@ export default function Messages() {
       {/* Editorial header */}
       <header className="space-y-1.5">
         <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">Inbox</p>
-        <h1 className="font-display text-[2.6rem] leading-none">Messages</h1>
+        <h1 className="font-display text-[2.6rem] leading-none text-slateblue">Messages</h1>
       </header>
 
       {/* Active threads */}

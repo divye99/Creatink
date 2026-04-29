@@ -383,8 +383,8 @@ function BudgetPill({ active, children }) {
       className={cn(
         'inline-flex items-center rounded-full px-3.5 py-1.5 text-[12px] transition',
         active
-          ? 'border border-hermes/55 bg-hermes/15 text-champagne'
-          : 'border border-cognac/30 bg-transparent text-champagne/85 hover:border-cognac/60'
+          ? 'border border-slateblue/55 bg-slateblue/15 text-creme'
+          : 'border border-slateblue/30 bg-transparent text-creme/85 hover:border-slateblue/60'
       )}
     >
       {children}
@@ -426,7 +426,7 @@ function LeatherStat({ label, value, accent }) {
       }}
     >
       <p className="text-[9px] uppercase tracking-[0.22em] text-cognac/75">{label}</p>
-      <p className="font-display text-[2rem] leading-none mt-2 text-champagne">{value}</p>
+      <p className="font-display text-[2rem] leading-none mt-2 text-slateblue">{value}</p>
       {accent && (
         <p className="text-[9px] tracking-[0.18em] uppercase text-hermes mt-2.5 inline-flex items-center gap-1">
           {accent}
