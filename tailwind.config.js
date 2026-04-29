@@ -33,7 +33,8 @@ export default {
         ring: '#E8600A',
       },
       fontFamily: {
-        display: ['Manrope', 'system-ui', 'sans-serif'],
+        display: ['Fraunces', 'Georgia', 'Times New Roman', 'serif'],
+        editorial: ['Fraunces', 'Georgia', 'Times New Roman', 'serif'],
         sans: ['Manrope', 'system-ui', 'sans-serif'],
       },
       borderRadius: { lg: '16px', md: '10px', sm: '6px' },
