@@ -85,7 +85,7 @@ export default function Messages() {
 
       {/* Footer */}
       <div className="text-center pt-4 space-y-1">
-        <p className="text-xs text-champagne/85">All caught up</p>
+        <p className="text-xs text-creme/90">All caught up</p>
         <p className="text-[11px] text-muted">Messages unlock after a pitch is accepted</p>
       </div>
     </div>

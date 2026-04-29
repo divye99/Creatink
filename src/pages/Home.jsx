@@ -89,9 +89,9 @@ export default function Home() {
           to="/whos-looking"
           className="flex items-center justify-between gap-3 group"
         >
-          <p className="text-[13px] text-champagne/90 leading-snug max-w-[70%]">
-            <span className="text-champagne font-medium">4 {topNiche} {viewerNoun}</span>{' '}
-            <span className="text-champagne/75">viewed you but haven’t pitched yet</span>
+          <p className="text-[13px] text-creme/90 leading-snug max-w-[70%]">
+            <span className="text-creme font-medium">4 {topNiche} {viewerNoun}</span>{' '}
+            <span className="text-creme/70">viewed you but haven’t pitched yet</span>
           </p>
           <span className="text-[10px] uppercase tracking-[0.22em] text-hermes shrink-0 inline-flex items-center gap-1.5 group-hover:text-hermes/80 transition">
             Pitch <span aria-hidden>→</span>
@@ -139,7 +139,7 @@ export default function Home() {
         <section className="border-t border-cognac/20 pt-9">
           <p className="text-[10px] uppercase tracking-[0.22em] text-slateblue/80">Brand Studio</p>
           <h3 className="font-display text-3xl mt-2 leading-tight max-w-md">Ready to launch?</h3>
-          <p className="text-sm text-champagne mt-3 max-w-md leading-relaxed">
+          <p className="text-sm text-creme/90 mt-3 max-w-md leading-relaxed">
             Post a brief, get matched with creators in your niche, and run end-to-end.
           </p>
           <Button className="mt-5" asChild>

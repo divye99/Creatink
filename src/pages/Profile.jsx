@@ -136,7 +136,7 @@ function CreatorSections({ profile, taxComplete, updateProfile }) {
       </Section>
 
       <Section eyebrow="In their words" title="Bio" tone="sage">
-        <p className="text-sm leading-relaxed text-champagne max-w-prose">
+        <p className="text-sm leading-relaxed text-creme/95 max-w-prose">
           {profile.bio || <span className="italic text-muted">No bio yet.</span>}
         </p>
       </Section>
@@ -241,7 +241,7 @@ function BrandSections({ profile, contractUploaded }) {
 
       {/* About */}
       <EyebrowSection eyebrow="About" tone="sage">
-        <p className="text-base leading-relaxed text-champagne">
+        <p className="text-base leading-relaxed text-creme/95">
           {profile.description || <span className="italic text-muted">No description yet.</span>}
         </p>
       </EyebrowSection>
@@ -272,8 +272,8 @@ function BrandSections({ profile, contractUploaded }) {
             border: '1.5px dashed rgba(142, 74, 47, 0.45)',
           }}
         >
-          <p className="text-sm text-champagne/85">No campaigns yet.</p>
-          <p className="text-sm text-champagne/85 mt-1">Post a brief to start finding creators.</p>
+          <p className="text-sm text-creme/90">No campaigns yet.</p>
+          <p className="text-sm text-creme/75 mt-1">Post a brief to start finding creators.</p>
           <Link
             to="/campaigns/new"
             className="inline-flex items-center justify-center mt-5 rounded-full px-6 py-2.5 text-[11px] uppercase tracking-[0.22em] text-hermes border border-hermes/45 hover:bg-hermes/10 transition"
@@ -451,7 +451,7 @@ function CollabList({ items, primaryKey }) {
             </span>
             <div>
               <p className="font-display text-lg leading-none">{it[primaryKey]}</p>
-              <p className="text-[11px] text-champagne/85 mt-1.5">{it.campaign}</p>
+              <p className="text-[11px] text-creme/85 mt-1.5">{it.campaign}</p>
             </div>
           </div>
           <span className="text-[10px] uppercase tracking-[0.22em] text-muted shrink-0 ml-3">

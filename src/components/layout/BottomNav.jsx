@@ -27,7 +27,7 @@ export default function BottomNav() {
               className={({ isActive }) =>
                 cn(
                   'relative flex items-center justify-center py-4 transition-colors duration-200',
-                  isActive ? 'text-champagne' : 'text-[#333333] hover:text-champagne/70'
+                  isActive ? 'text-creme' : 'text-[#333333] hover:text-creme/70'
                 )
               }
             >
