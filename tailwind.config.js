@@ -14,32 +14,32 @@ export default {
         //   Ironwood (cool sage) — verified, slate accents        -> slateblue
         // Background and dark cards stay near-black.
         bg: '#080808',
-        slateblue: '#8E9A8B',           // Ironwood
+        slateblue: '#9DA48F',           // Ironwood
         surface2: '#161311',
         inkslate: '#161311',
         cognac: '#8E4A2F',              // Mesa Clay — borders, hairlines
         hermes: '#A85539',              // Mesa Clay vivid — energy / dot
-        champagne: '#E8C68F',           // Prairie Gold — primary text on dark
+        champagne: '#B58A2B',           // Prairie Gold — primary text on dark
         card: '#111111',
-        body: '#F4ECDC',                // Creme
-        muted: '#A89B85',               // Stone
+        body: '#ECDFC2',                // Creme
+        muted: '#BCA286',               // Stone
         success: '#7BAA7E',
         warning: '#D4A574',
         error: '#A85539',
 
         // Named aliases (for use directly when desired)
         mesa:    '#8E4A2F',
-        prairie: '#E8C68F',
-        creme:   '#F4ECDC',
-        stone:   '#A89B85',
-        ironwood:'#8E9A8B',
+        prairie: '#B58A2B',
+        creme:   '#ECDFC2',
+        stone:   '#BCA286',
+        ironwood:'#9DA48F',
 
         background: '#080808',
-        foreground: '#F4ECDC',
-        primary:    { DEFAULT: '#A85539', foreground: '#F4ECDC' },
-        secondary:  { DEFAULT: '#161311', foreground: '#F4ECDC' },
-        accent:     { DEFAULT: '#8E4A2F', foreground: '#F4ECDC' },
-        destructive:{ DEFAULT: '#A85539', foreground: '#F4ECDC' },
+        foreground: '#ECDFC2',
+        primary:    { DEFAULT: '#A85539', foreground: '#ECDFC2' },
+        secondary:  { DEFAULT: '#161311', foreground: '#ECDFC2' },
+        accent:     { DEFAULT: '#8E4A2F', foreground: '#ECDFC2' },
+        destructive:{ DEFAULT: '#A85539', foreground: '#ECDFC2' },
         border: 'rgba(142, 74, 47, 0.25)',
         input: '#161311',
         ring: '#A85539',
@@ -53,7 +53,7 @@ export default {
       boxShadow: {
         cognac: '0 0 20px rgba(142, 74, 47, 0.10)',
         glow: '0 0 24px rgba(142, 74, 47, 0.14)',
-        champagne: '0 0 24px rgba(232, 198, 143, 0.10)',
+        champagne: '0 0 24px rgba(181, 138, 43, 0.10)',
       },
       keyframes: {
         'fade-in': { '0%': { opacity: 0 }, '100%': { opacity: 1 } },

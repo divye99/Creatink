@@ -8,7 +8,7 @@ html, body, #root { height: 100%; }
 
 body {
   background-color: #080808;
-  color: #F4ECDC; /* Creme */
+  color: #ECDFC2; /* Creme */
   font-family: 'Manrope', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -22,7 +22,7 @@ h1, h2, h3, h4, h5, h6, .font-display {
   font-variation-settings: 'opsz' 96, 'SOFT' 50;
   letter-spacing: -0.012em;
   line-height: 1.05;
-  color: #F4ECDC; /* Creme */
+  color: #ECDFC2; /* Creme */
 }
 .font-display-roman {
   font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
@@ -45,7 +45,7 @@ p, span, div, label, button, input, textarea, select {
   letter-spacing: 0.2em;
 }
 
-::selection { background: #E8C68F; color: #080808; } /* Prairie Gold */
+::selection { background: #B58A2B; color: #080808; } /* Prairie Gold */
 
 *:focus-visible {
   outline: 1px solid #A85539; /* Mesa Clay vivid */
