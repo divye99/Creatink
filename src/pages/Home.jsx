@@ -52,7 +52,7 @@ export default function Home() {
         style={{
           border: '1px solid rgba(168, 85, 57, 0.32)',
           background:
-            'radial-gradient(120% 90% at 100% 0%, rgba(142, 74, 47,0.08) 0%, rgba(168, 85, 57,0.04) 50%, transparent 80%), linear-gradient(180deg, rgba(22,16,10,0.4) 0%, rgba(8,8,8,0) 100%)',
+            'radial-gradient(120% 90% at 100% 0%, rgba(142, 74, 47,0.08) 0%, rgba(168, 85, 57,0.04) 50%, transparent 80%), linear-gradient(180deg, rgba(22,16,10,0.4) 0%, rgba(26, 20, 16,0) 100%)',
         }}
       >
         {/* Eyebrow with hermes dot */}

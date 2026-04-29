@@ -7,7 +7,7 @@
 html, body, #root { height: 100%; }
 
 body {
-  background-color: #080808;
+  background-color: #1A1410;
   color: #ECDFC2; /* Creme */
   font-family: 'Manrope', system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -45,7 +45,7 @@ p, span, div, label, button, input, textarea, select {
   letter-spacing: 0.2em;
 }
 
-::selection { background: #B58A2B; color: #080808; } /* Prairie Gold */
+::selection { background: #B58A2B; color: #1A1410; } /* Prairie Gold */
 
 *:focus-visible {
   outline: 1px solid #8E4A2F; /* Mesa Clay vivid */
