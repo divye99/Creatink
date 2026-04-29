@@ -89,12 +89,13 @@ export default function Profile() {
 }
 
 /** Unboxed editorial section — no card chrome, just typography on canvas. */
-function Section({ eyebrow, title, action, children }) {
+function Section({ eyebrow, title, action, tone = 'clay', children }) {
+  const toneClass = tone === 'sage' ? 'text-slateblue/80' : 'text-cognac/70'
   return (
     <section className="border-t border-cognac/15 pt-6">
       <div className="flex items-end justify-between mb-4">
         <div>
-          <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">{eyebrow}</p>
+          <p className={`text-[10px] uppercase tracking-[0.22em] ${toneClass}`}>{eyebrow}</p>
           <h2 className="font-display text-3xl mt-2 leading-none">{title}</h2>
         </div>
         {action}
@@ -134,7 +135,7 @@ function CreatorSections({ profile, taxComplete, updateProfile }) {
         </div>
       </Section>
 
-      <Section eyebrow="In their words" title="Bio">
+      <Section eyebrow="In their words" title="Bio" tone="sage">
         <p className="text-sm leading-relaxed text-champagne max-w-prose">
           {profile.bio || <span className="italic text-muted">No bio yet.</span>}
         </p>
@@ -148,7 +149,7 @@ function CreatorSections({ profile, taxComplete, updateProfile }) {
         </div>
       </Section>
 
-      <Section eyebrow="Activity" title="Creator Studio">
+      <Section eyebrow="Activity" title="Creator Studio" tone="sage">
         <div className="grid grid-cols-3 gap-2">
           <LeatherStat label="Active" value="2" accent="↗ +1" />
           <LeatherStat label="Completed" value="9" />
@@ -177,7 +178,7 @@ function CreatorSections({ profile, taxComplete, updateProfile }) {
         )}
       </Section>
 
-      <Section eyebrow="Spoken" title="Languages">
+      <Section eyebrow="Spoken" title="Languages" tone="sage">
         <div className="flex flex-wrap gap-1.5">
           {(profile.languages || ['English', 'Hindi']).map((l) => (
             <Badge key={l} variant="cognac">{l}</Badge>
@@ -239,7 +240,7 @@ function BrandSections({ profile, contractUploaded }) {
       </PillSection>
 
       {/* About */}
-      <EyebrowSection eyebrow="About">
+      <EyebrowSection eyebrow="About" tone="sage">
         <p className="text-base leading-relaxed text-champagne">
           {profile.description || <span className="italic text-muted">No description yet.</span>}
         </p>
@@ -255,7 +256,7 @@ function BrandSections({ profile, contractUploaded }) {
       </EyebrowSection>
 
       {/* Typical budget — selectable pill row */}
-      <EyebrowSection eyebrow="Typical budget">
+      <EyebrowSection eyebrow="Typical budget" tone="sage">
         <div className="flex flex-wrap gap-2">
           {BUDGET_BANDS.map((b) => (
             <BudgetPill key={b.label} active={b.label === selectedBudget}>{b.label}</BudgetPill>
@@ -283,7 +284,7 @@ function BrandSections({ profile, contractUploaded }) {
       </EyebrowSection>
 
       {/* Compliance — Contract Vault row */}
-      <EyebrowSection eyebrow="Compliance">
+      <EyebrowSection eyebrow="Compliance" tone="sage">
         <div className="flex items-center gap-3 rounded-2xl border border-cognac/25 px-4 py-3.5">
           <div className="h-10 w-10 rounded-md bg-cognac/15 border border-cognac/25 flex items-center justify-center shrink-0">
             <FileText className="h-4.5 w-4.5 text-champagne/80" strokeWidth={1.5} />
@@ -313,7 +314,7 @@ function BrandSections({ profile, contractUploaded }) {
       </EyebrowSection>
 
       {/* Past partnerships */}
-      <EyebrowSection eyebrow="Past partnerships">
+      <EyebrowSection eyebrow="Past partnerships" tone="sage">
         <CollabList items={MOCK_BRAND_COLLABS} primaryKey="creator" />
       </EyebrowSection>
     </>
@@ -337,20 +338,22 @@ function pickBudgetBand(min, max) {
 }
 
 /** Editorial section — small caps eyebrow above flat content (no card chrome). */
-function EyebrowSection({ eyebrow, children }) {
+function EyebrowSection({ eyebrow, tone = 'clay', children }) {
+  const toneClass = tone === 'sage' ? 'text-slateblue/80' : 'text-cognac/70'
   return (
     <section className="space-y-3.5">
-      <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">{eyebrow}</p>
+      <p className={`text-[10px] uppercase tracking-[0.22em] ${toneClass}`}>{eyebrow}</p>
       {children}
     </section>
   )
 }
 
 /** Same idea but for inline pill row. */
-function PillSection({ eyebrow, children }) {
+function PillSection({ eyebrow, tone = 'clay', children }) {
+  const toneClass = tone === 'sage' ? 'text-slateblue/80' : 'text-cognac/70'
   return (
     <section className="space-y-3.5">
-      <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">{eyebrow}</p>
+      <p className={`text-[10px] uppercase tracking-[0.22em] ${toneClass}`}>{eyebrow}</p>
       <div className="flex flex-wrap gap-2">{children}</div>
     </section>
   )

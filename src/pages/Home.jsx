@@ -103,7 +103,7 @@ export default function Home() {
       <section>
         <div className="flex items-end justify-between mb-5">
           <div>
-            <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">Curated for you</p>
+            <p className="text-[10px] uppercase tracking-[0.22em] text-slateblue/80">Curated for you</p>
             <h2 className="font-display text-[2rem] mt-2 leading-none italic font-display-italic">Smart Matches</h2>
           </div>
           <Link to="/discover" className="text-[10px] uppercase tracking-[0.22em] text-hermes hover:text-hermes/80 transition">
@@ -137,7 +137,7 @@ export default function Home() {
       {/* Brand Studio CTA — only for brands */}
       {isBrand && (
         <section className="border-t border-cognac/20 pt-9">
-          <p className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">Brand Studio</p>
+          <p className="text-[10px] uppercase tracking-[0.22em] text-slateblue/80">Brand Studio</p>
           <h3 className="font-display text-3xl mt-2 leading-tight max-w-md">Ready to launch?</h3>
           <p className="text-sm text-champagne mt-3 max-w-md leading-relaxed">
             Post a brief, get matched with creators in your niche, and run end-to-end.

@@ -23,10 +23,10 @@ export default function Messages() {
   )
 
   const suggestions = [
-    { person: suggestionPool[0], action: 'Say hi',  copy: 'Viewed your campaign — say hello' },
-    { person: suggestionPool[1], action: 'Pitch',   copy: '87% match · Travel · hasn’t applied yet' },
-    { person: suggestionPool[2], action: 'Review',  copy: 'Applied to your open campaign' },
-    { person: suggestionPool[3], action: 'View',    copy: 'Fitness · 200K · viewed your profile' },
+    { person: suggestionPool[0], action: 'Say hi',  copy: 'Viewed your campaign — say hello',         tone: 'sage' },
+    { person: suggestionPool[1], action: 'Pitch',   copy: '87% match · Travel · hasn’t applied yet', tone: 'clay' },
+    { person: suggestionPool[2], action: 'Review',  copy: 'Applied to your open campaign',            tone: 'sage' },
+    { person: suggestionPool[3], action: 'View',    copy: 'Fitness · 200K · viewed your profile',     tone: 'sage' },
   ].filter((s) => s.person)
 
   return (
@@ -70,9 +70,9 @@ export default function Messages() {
       {suggestions.length > 0 && (
         <>
           <div className="flex items-center gap-3 pt-1">
-            <div className="flex-1 h-px bg-cognac/20" />
-            <span className="text-[10px] uppercase tracking-[0.22em] text-cognac/70">Suggested</span>
-            <div className="flex-1 h-px bg-cognac/20" />
+            <div className="flex-1 h-px bg-slateblue/25" />
+            <span className="text-[10px] uppercase tracking-[0.22em] text-slateblue/80">Suggested</span>
+            <div className="flex-1 h-px bg-slateblue/25" />
           </div>
 
           <div className="grid gap-2.5 stagger">
@@ -93,11 +93,16 @@ export default function Messages() {
 }
 
 function SuggestionRow({ suggestion }) {
-  const { person, action, copy } = suggestion
+  const { person, action, copy, tone = 'clay' } = suggestion
+  const isSage = tone === 'sage'
+  const borderRgba = isSage ? 'rgba(157, 164, 143, 0.45)' : 'rgba(142, 74, 47, 0.45)'
+  const ctaClass = isSage
+    ? 'text-slateblue hover:text-slateblue/80'
+    : 'text-hermes hover:text-hermes/80'
   return (
     <div
       className="flex items-center gap-3.5 rounded-2xl px-4 py-3"
-      style={{ border: '1.25px dashed rgba(142, 74, 47, 0.45)' }}
+      style={{ border: `1.25px dashed ${borderRgba}` }}
     >
       <Avatar className="h-10 w-10 shrink-0 ring-1 ring-cognac/15">
         <AvatarImage src={person.photo_url || person.logo_url} />
@@ -111,7 +116,7 @@ function SuggestionRow({ suggestion }) {
       </div>
       <button
         type="button"
-        className="text-[10px] uppercase tracking-[0.22em] text-hermes hover:text-hermes/80 transition shrink-0 inline-flex items-center gap-1.5"
+        className={`text-[10px] uppercase tracking-[0.22em] transition shrink-0 inline-flex items-center gap-1.5 ${ctaClass}`}
       >
         {action} <span aria-hidden>→</span>
       </button>
