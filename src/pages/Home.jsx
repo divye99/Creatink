@@ -32,7 +32,8 @@ export default function Home() {
   const lookingCount = isBrand ? 9 : 4
   const proposalsCount = 2
   const lookingHref = isBrand ? '/whos-looking' : '/whos-looking'
-  const lookingCaption = isBrand ? 'brands viewing you' : 'people viewing your profile'
+  const lookingCaption = isBrand ? 'creators viewing you' : 'brands viewing you'
+  const viewerNoun = isBrand ? 'creators' : 'brands'
 
   // Footer "X Fashion brands viewed you but haven't pitched yet"
   const topNiche = (isBrand ? profile?.categories : profile?.niches)?.[0] || 'Fashion'
@@ -89,7 +90,7 @@ export default function Home() {
           className="flex items-center justify-between gap-3 group"
         >
           <p className="text-[13px] text-champagne/90 leading-snug max-w-[70%]">
-            <span className="text-champagne font-medium">4 {topNiche} brands</span>{' '}
+            <span className="text-champagne font-medium">4 {topNiche} {viewerNoun}</span>{' '}
             <span className="text-champagne/75">viewed you but haven’t pitched yet</span>
           </p>
           <span className="text-[10px] uppercase tracking-[0.22em] text-hermes shrink-0 inline-flex items-center gap-1.5 group-hover:text-hermes/80 transition">
