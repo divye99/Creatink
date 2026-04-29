@@ -63,9 +63,9 @@ export default function Profile() {
             </span>
           </div>
         ) : (
-          <div className="flex items-center gap-2.5 rounded-full px-4 py-2.5 border border-cognac/30 bg-cognac/5">
-            <span className="h-1.5 w-1.5 rounded-full bg-success" />
-            <span className="text-[10px] uppercase tracking-[0.22em] text-champagne">
+          <div className="flex items-center gap-2.5 rounded-full px-4 py-2.5 border border-slateblue/40 bg-slateblue/10">
+            <span className="h-1.5 w-1.5 rounded-full bg-slateblue" />
+            <span className="text-[10px] uppercase tracking-[0.22em] text-slateblue">
               {isCreator ? 'Verified creator' : 'Registered business'}
             </span>
           </div>

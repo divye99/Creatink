@@ -23,7 +23,7 @@ export default {
         card: '#111111',
         body: '#ECDFC2',                // Creme
         muted: '#BCA286',               // Stone
-        success: '#7BAA7E',
+        success: '#9DA48F',           // Ironwood sage — aligned with the palette
         warning: '#D4A574',
         error: '#A85539',
 

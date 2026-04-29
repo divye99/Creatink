@@ -28,7 +28,7 @@ export default function BrandCard({ brand, onClick }) {
       <div className="absolute inset-0 bg-gradient-to-br from-cognac/40 via-black/75 to-black/96 pointer-events-none" />
 
       {verified && (
-        <div className="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-cognac/95 text-champagne text-[9px] tracking-[0.18em] uppercase backdrop-blur-sm">
+        <div className="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-slateblue/85 text-creme text-[9px] tracking-[0.18em] uppercase backdrop-blur-sm">
           Verified
         </div>
       )}

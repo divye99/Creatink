@@ -2,7 +2,7 @@ import { Badge } from '@/components/ui/badge'
 import { ShieldCheck, BadgeCheck, ReceiptText, FileSignature, Link2 } from 'lucide-react'
 
 export function VerifiedCreatorBadge() {
-  return <Badge variant="hermes"><BadgeCheck className="h-3 w-3" /> Verified Creator</Badge>
+  return <Badge variant="slate"><BadgeCheck className="h-3 w-3" /> Verified Creator</Badge>
 }
 export function RegisteredBusinessBadge() {
   return <Badge variant="slate"><ShieldCheck className="h-3 w-3" /> Registered Business</Badge>

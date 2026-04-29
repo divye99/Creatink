@@ -44,7 +44,7 @@ export default function DiscoverCreatorCard({ creator, onClick }) {
       )}
 
       {c.verified && (
-        <div className="absolute top-3 left-3 px-2 py-0.5 rounded-full bg-slateblue/90 text-black text-[9px] tracking-[0.18em] uppercase font-medium">
+        <div className="absolute top-3 left-3 px-2 py-0.5 rounded-full bg-slateblue/85 text-creme text-[9px] tracking-[0.18em] uppercase backdrop-blur-sm">
           Verified
         </div>
       )}
